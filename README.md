@@ -40,6 +40,10 @@
 ・投稿された診断結果の一覧表示  
 ・LINEログイン  
 
+### 追加で考えている機能
+・LINE通知（LINE Messaging API）  
+LINEでログインしている人に、他者の投稿があった時に、本アプリの公式LINEから通知がいくようにする。
+
 ## 主な使用技術
 ### バックエンド
 ・Ruby on Rails 7.1.3  
@@ -52,7 +56,9 @@
 
 ### API  
 ・OpenAI GPT-4 API もしくは GPT-3.5 turbo API  
-OpenAIのAPIキーを取得、取得したキーをRails credentialに記述。app/service/chatgpt_service.rbのようなファイルで、OpenAIのAPIを叩く関数を定義。年齢、性別、血液型、その日の気分、予定、名言の種類（漫画や偉人、有名人）の６項目をプルダウンで選べるようにコントローラーとビューを記述して、RailsアプリにChatGPT APIの回答結果を出力する。
+OpenAIのAPIキーを取得、取得したキーをRails credentialに記述。app/service/chatgpt_service.rbのようなファイルで、OpenAIのAPIを叩く関数を定義。年齢、性別、血液型、その日の気分、予定、名言の種類（漫画や偉人、有名人）の６項目をプルダウンで選べるようにコントローラーとビューを記述して、RailsアプリにChatGPT APIの回答結果を出力する。  
+・LINE Messaging API  
+LINEでログインしている人に、他者の投稿があった時に、本アプリの公式LINEから通知がいくようにする。  
 
 ### フロントエンド
 ・Tailwind CSS  
