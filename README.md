@@ -44,7 +44,7 @@
 ### 追加で考えている機能
 ・LINEログイン. 
 ・LINE通知（LINE Messaging API）. 
-  LINEでログインしている人に、他者の投稿があった時に、本アプリの公式LINEから通知がくる. 
+  マイページからの設定で、他者の投稿があった時に、本アプリの公式LINEから通知がくるように設定できる. 
 
 ## 主な使用技術
 ### バックエンド
@@ -61,7 +61,7 @@
 ・OpenAI GPT-4 API もしくは GPT-3.5 turbo API  
 OpenAIのAPIキーを取得、取得したキーをRails credentialに記述。app/service/chatgpt_service.rbのようなファイルで、OpenAIのAPIを叩く関数を定義。年齢、性別、今の気分、今日の予定、名言の種類の６項目をプルダウンで選べるようにコントローラーとビューを記述して、RailsアプリにChatGPT APIの回答結果を出力する。  
 ・LINE Messaging API  
-  LINEでログインしている人に、他者の投稿があった時に、本アプリの公式LINEから通知がくる。
+  マイページからの設定で、他者の投稿があった時に、本アプリの公式LINEから通知がくるように設定できる.  
 
 ### フロントエンド
 ・Tailwind CSS  
