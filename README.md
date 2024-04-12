@@ -76,3 +76,6 @@ OpenAIのAPIキーを取得、取得したキーをRails credentialに記述。a
 ・RSpec  
 ・Capybara  
 ・rubocop  
+
+### 画面遷移図
+https://www.figma.com/file/S1z6X4vCrSX253LngTahUD/Untitled?type=design&node-id=0%3A1&mode=design&t=qtfzVvXWKeEaqBhC-1
