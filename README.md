@@ -25,7 +25,7 @@
 
 ## 実装を予定している機能
 
-### MVP 
+### MVPリリース  
 - [ ] ユーザー登録機能
 - [ ] ログイン機能
 - [ ] googleログイン機能
@@ -40,16 +40,16 @@
 - [ ] プロフィールページでの診断履歴の公開、非公開機能
 - [ ] プロフィールページでの診断履歴の削除機能
 - [ ] 他のユーザーの診断履歴一覧機能
-- [ ] 掲示板投稿機能（名言募集機能）
-- [ ] プロフィールページでの掲示板投稿一覧機能
-- [ ] プロフィールページでの掲示板投稿詳細機能
-- [ ] プロフィールページでの掲示板投稿詳細からの投稿編集機能
-- [ ] プロフィールページでの掲示板投稿詳細からの投稿削除機能
-- [ ] 他のユーザーの掲示板投稿一覧機能
-- [ ] 他のユーザーの掲示板投稿詳細での回答一覧機能
-- [ ] 他のユーザーの掲示板投稿詳細での回答機能（名言回答機能）
-- [ ] プロフィールページでの掲示板投稿詳細からの回答編集機能
-- [ ] プロフィールページでの掲示板投稿詳細からの回答削除機能
+- [ ] 名言募集機能
+- [ ] プロフィールページでの名言募集一覧機能
+- [ ] プロフィールページでの名言募集詳細機能
+- [ ] プロフィールページでの名言募集詳細からの編集機能
+- [ ] プロフィールページでの名言募集詳細からの削除機能
+- [ ] 他のユーザーの名言募集一覧機能
+- [ ] 他のユーザーの名言募集詳細での回答一覧機能
+- [ ] 他のユーザーの名言募集詳細での回答機能（名言回答機能）
+- [ ] プロフィールページでの名言募集詳細からの回答編集機能
+- [ ] プロフィールページでの名言募集詳細からの回答削除機能
 
 ### 本リリース
 - [ ] 他のユーザーの診断履歴のプルダウンの内容（気分、予定、名言の種類）からの検索機能
@@ -59,7 +59,7 @@
       ※掲示板投稿時に、気分、予定、名言の種類をコンディション（カテゴリー）として保存しておく
       ※他のユーザーの掲示板投稿一覧から検索可能
 
-### 追加で考えている機能
+### 追加で考えている機能（未定）  
 - [ ] LINEログイン  
 - [ ] LINE通知（LINE Messaging API）  
       ※マイページからの設定で、他者の投稿があった時に、本アプリの公式LINEから通知がくるように設定できる  
@@ -99,4 +99,4 @@ OpenAIのAPIキーを取得、取得したキーをRails credentialに記述。a
 https://www.figma.com/file/S1z6X4vCrSX253LngTahUD/Untitled?type=design&node-id=0-1&mode=design&t=F0ngmkwPdbmGs7d7-0
 
 ### ER図
-https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNq9VbtuwjAU_RXLM0hlZetDXViQUDckZOILWE3s1L5pi4AhHatO_YZ2bdeKfg6o31Ebh3cIFbTd4uPjk3PP9U0GNFAcaJWCvhCsq1nUlIRcGdCGDIflshoQh0tlhKmSJq1Mx-NJ-jYjTNL3k-nn6_Tj0SIL1uTh-espnaQvTboldaaY5sU6nlIkcirNnV0WqmSc3TJDUteqI0LI06nYE3Y5ZxSpNKRpBRo4SBQsLBDbIG5onivJBQold6TuNZasH0W_LbqSf6FibhM8mNcFr5Ud2teGZYQD90hIW3SFRCI4qdc8YlAL2SWxVreCg14DJYtgDYCIidAjnCGgiIDYoO0jbzHc2OAQwnJj5N1stGavr0TwAp8Hmphftt1vz5DEZtey8GXNRq-hAxpkAMb36C9jWrlO-xKKlFqPyAQ94Em4bukmUQgt7MdwlK_F9T82uowVzOvcn3Ks4iRkWmDfwwj3SDSY2IZ0XFHZsP1fRc6KQRbFW0aXO7lOsxn_JattV3eRTZewrQftsB4YMC3RCLQdB25_ezPXTYo9sPNC3deMM33t3uZ4LEHV6MuAVlEnUKJJ7ESzHyWtduzXAkbfVtjGWg
+https://mermaid-js.github.io/mermaid-live-editor/view#pako:eNq9VbtOwzAU_RXLM0iwduMhFhYkxBYpcuNLsZrY4foGqFqGMiImvgFWWFH5nFZ8B3adPtJHilRgi4-Pj889vo67PDESeIMDHivRQpFFmrELC2hZr7e7a7rM49pYZRss4vujwWDYfxsThv33vdHn6-jj0SFT1vDh-eupP-y_RHxJ6tAIlPU6gVIncqDtrRvWqpSc9TI9dq5tnCBI0KREukpu3y10wwXiguaR0VKRMnpNXkFjxvpRaMuic8nVKq6ML4Cr8gta5aJNAc4i7PpPxpqqpTQxJdnZaUAsodItpkUGFQAyodIqohPs5AQyzoW1twZlZRrBAk2nYjJt0IEgBQGpDBYp1p1PLGiJlEHWBPQnKPxuS4y1ExJSmE3ch_oXmmFjEoWq1pWjuVEScCsTc-2xaf_MmKoBm1yBLNLq8VwXhiCmTg5b-Zq283pbJVK4NoodfHLquhDhEtD1A9jQrlNWMqmzhjrJ1eRFKlBRJ8AEd-Q7JHchbVdUeXn-r6KxdUck12NbOS_v8C9Zb_oc_tY23-EZoPtVSPcgjV1HnK7cDY64_1tJgW2_m-eJgsx5Rye8QVjADi9yL1o-YQG8_wZ_fJ8y
