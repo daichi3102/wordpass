@@ -1,24 +1,116 @@
-# README
+# WORDPASS
+# [サービス名]
+[WORDPASS]
+## サービス概要
+[WORDPASS]は、気分や予定に基づいて、偉人、有名人、名著、映画、漫画、アニメなどから、名言や格言を提供します。日々の生活において必要な刺激となる言葉を通じて、心のエネルギーをサポートします。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 想定されるユーザー層
+・リモートワークの多いビジネスパーソン  
+・受験生や学生  
+・セルフケアに取り組んでいる方  
 
-Things you may want to cover:
+## サービスコンセプト
+日々の生活の中で、「やる気が出ない」「パフォーマンスが上がらない」「人との接触を避けたくなる」など、誰もが時々ネガティブな気持ちに襲われます。私自身もAB型で気分が変わりやすく、そう感じることがしばしばあります。そのような時、名言を読むことで、私は大きな支えを得てきました。スポーツ選手として活動していた経験からも、心の支えがあるとトレーニングにも熱が入り、より良い結果を出すことができました。そんな経験をもとに、簡単な設問に答えるだけで、ユーザーにぴったりの名言や格言を提供し、心のエネルギーをサポートするこのアプリを開発しました。
 
-* Ruby version
+ユーザーは、トップページからボタン1つで名言を取得できます。体験終了後、ユーザーは会員登録することで、パーソナライズされた名言を取得することができます。今の気分、今日の予定、どんな名言か、作品の有名度、名言の種類（偉人、有名人、名著、映画、漫画、アニメ）、をプルダウンメニューから簡単に選択し、個人に合った名言や格言を受け取ることができます。この流れは、名言取得結果に対する興味を引き、会員登録のメリットを直感的に理解してもらうために設計されています。
 
-* System dependencies
+### ユーザー体験のシナリオ
+月曜の朝、週末の休息が終わり、新しい一週間が始まることに少し気が重い…そんな時、[WORDPASS]はユーザーに活力を与えます。パーソナライズされた情報に基づいて、ユーザーを励まし、元気づける格言や名言を提供します。例えば、重要なプレゼンテーションを控えて緊張している時には、「勇気」に関する名言を、長い一日の後に疲れを感じているユーザーには、「癒し」に関する名言を提供します。
 
-* Configuration
+また、試験勉強や仕事のプロジェクトで忙しい学生や社会人には、集中力やモチベーションを高める名言を提供。これにより、ユーザーは自分一人では気づかなかった新たな視点を得ることができ、心に響くメッセージが新たな一歩を踏み出す勇気を与えます。
 
-* Database creation
+### 差別化、売りのポイント
+・気分、予定、名言の種類、作品の有名度など、細やかな入力に基づく状況に合った名言の提供  
+・体験後の会員登録での名言の保存やシェアにより、ユーザー同士で名言や格言を共有可能  
+・名言作成という機能により、ユーザー同士で名言や格言を共有可能  
+## 実装を予定している機能
 
-* Database initialization
+### MVPリリース
+- [ ] お問い合わせ機能
+- [ ] 日本語化対応機能
+- [ ] サインアップ機能
+- [ ] サインイン機能
+- [ ] サインアウト機能
+- [ ] パスワードリセット機能
+- [ ] Google認証機能
+- [ ] プロフィールページ機能
+- [ ] 名前変更機能
+- [ ] メールアドレス変更機能
+- [ ] アバター登録機能
+- [ ] AIからの名言取得機能
+- [ ] AIからの名言取得パーソナライズ機能
+- [ ] AIから取得した名言削除機能
+- [ ] 名言取得結果のXへのシェア機能
+- [ ] 名言作成機能
+- [ ] 名言作成の削除機能
+- [ ] 名言作成の編集機能
+- [ ] 他のユーザーの名言作成一覧機能
+- [ ] 他のユーザーの名言作成一覧詳細機能
+- [ ] 他のユーザーの名言作成一覧からのいいね！機能
+- [ ] 他のユーザーの名言作成一覧からのいいね！解除機能
+- [ ] プロフィールページでのいいね！した名言一覧機能
+- [ ] プロフィールページでのいいね！した名言解除機能
+- [ ] レスポンシブ対応機能
 
-* How to run the test suite
+### 本リリース
+- [ ] 名言作成時のタグ作成機能
+- [ ] 他のユーザーの名言作成一覧からのソート機能
 
-* Services (job queues, cache servers, search engines, etc.)
+### 必要なページ
+- [ ] トップページ
+- [ ] トップページ（２）
+- [ ] 利用規約ページ
+- [ ] プライバシーポリシーページ
+- [ ] サインアップページ
+- [ ] サインインページ
+- [ ] プロフィールページ
+- [ ] 名言取得トップページ
+- [ ] 名言取得入力ページ
+- [ ] 名言取得結果表示ページ
+- [ ] 名言取得結果表示ページ（２）
+- [ ] 名言取得履歴ページ
+- [ ] 名言作成＆他ユーザーの名言作成一覧ページ
+- [ ] 名言作成入力ページ
+- [ ] いいね！した名言一覧ページ
 
-* Deployment instructions
+### 追加で考えている機能（未定）
+- [ ] LINEログイン
+- [ ] LINE通知（LINE Messaging API）
+      ※マイページからの設定で、他者の投稿があった時に、本アプリの公式LINEから通知がくるように設定できる  
 
-* ...
+## 主な使用技術
+### バックエンド
+・Ruby on Rails 7.1.3  
+・Ruby 3.2.2  
+
+### gem  
+・devise  
+・httparty  
+・kaminari  
+・ransack  
+
+### API  
+・OpenAI GPT-4 API もしくは GPT-3.5 turbo API  
+OpenAIのAPIキーを取得、取得したキーをRails credentialに記述。app/service/chatgpt_service.rbのようなファイルで、OpenAIのAPIを叩く関数を定義。今の気分、今日の予定、名言の種類、作品の有名度の項目を、プルダウンで選べるようにコントローラーとビューを記述して、RailsアプリにChatGPT APIの回答結果を出力する。  
+・LINE Messaging API  
+  マイページからの設定で、他者の投稿があった時に、本アプリの公式LINEから通知がくるように設定できる.  
+
+### フロントエンド
+・Tailwind CSS  
+・daisyUI  
+・JavaScript  
+
+### インフラ
+・Render  
+・PostgreSQL  
+
+### テスティング
+・RSpec  
+・Capybara  
+・rubocop  
+
+### 画面遷移図
+https://www.figma.com/file/S1z6X4vCrSX253LngTahUD/Untitled?type=design&node-id=0-1&mode=design&t=F0ngmkwPdbmGs7d7-0
+
+### ER図
+https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqtlMFOwzAMhl8lypm9wG5IiAsgIQG3SpXXmM7akhTHBaqxdydpy1g2tgrBbXW-_bZ_x9noyhvUc418RVAz2MIp9RSQg_r4mM38Rj24UFaMBp0QrMNcFXoJobTgukIf0Zc0RdzBCqeYW_qRieITRC_-GyZ9PEL9A5ai09R36Zv0U6kF1eREkVH3N0MkCJOrlQOLWQAt0DqLwCsIcg65irtG0JQNhPDm2WTHjAFld1SKX6EbABOlhCweIiHOsQQ5gizaBXKaNKRsA7EterWDKzDZakt5lQ37VzJDZ6NkGuVJmTHSRl_LGL6-ibYzPiNHNzAMxu-oyjtDQt6dQcc6rPd5YaFaomnX-VyW_i2v3jftGpiky8IvrRcspWvGfwu-SzK78S7gXqfDdftjr0FoKDiOIB0c5l140-3l7G_-P_kLNM3Y2ONJas-HfqemyjortqME6qmM57N9WZqE0m6eytf7e-R7n0JfaIsc19jEF7RPVGhZxlUqdHopDPAqqWwjB634h85Vei7c4oVum7R745ur589xrXD7CQlI4lI
