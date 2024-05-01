@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV["RENDER_DB_HOSTNAME"] %>
   database: <%= ENV["RENDER_DB"] %>
   username: <%= ENV["RENDER_DB_USERNAME"] %>
   password: <%= ENV["RENDER_DB_PASSWORD"] %>
