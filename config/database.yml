@@ -82,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: wordpass
-  username: wordpass_user
-  password: <%= ENV["WORDPASS_DATABASE_PASSWORD"] %>
+  database: <%= ENV["RENDER_DB"] %>
+  username: <%= ENV["RENDER_DB_USERNAME"] %>
+  password: <%= ENV["RENDER_DB_PASSWORD"] %>
