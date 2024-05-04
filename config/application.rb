@@ -39,7 +39,7 @@ module Wordpass
                        controller_specs: true,
                        request_specs: false,
                        model_specs: true,
-                       fixtures: true,
+                       fixtures: true
       g.fixture_replacement :factory_bot, dir: 'spec/factories' # fixtureはfactory_botを使用
     end
   end

@@ -11,9 +11,11 @@
   </head>
   <body class="flex flex-col min-h-screen">
     <%= render 'shared/header' %>
-  <div class="flex-grow">
-    <%= yield %>
-  </div>
+    <div class="flex-grow">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>
