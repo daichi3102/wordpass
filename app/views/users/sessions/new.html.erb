@@ -1,12 +1,13 @@
 <div style="text-align: center;">
-  <h2>Sign in</h2>
+  <h2><%= t('devise.sessions.new.sign_in') %></h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
     <div class="field">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true %>
     </div>
-
+  
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -25,7 +26,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Sign in" %>
+      <%= f.submit t('devise.sessions.new.sign_in') %>
     </div>
   <% end %>
 
