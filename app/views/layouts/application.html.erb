@@ -10,7 +10,11 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body class="flex flex-col min-h-screen">
-    <%= render 'shared/header' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_signin_header' %>
+    <% end %>
     <div class="flex-grow">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
