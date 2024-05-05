@@ -4,6 +4,8 @@ ruby '3.2.3'
 
 gem 'rails-i18n', '~> 7.0.0'
 
+gem 'devise', '~> 4.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
@@ -66,6 +68,8 @@ group :development do
   gem 'pry-byebug'
 
   gem 'rubocop'
+
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :test do

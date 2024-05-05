@@ -5,6 +5,7 @@ ja:
       submit: 保存
       update: 更新
     label:
+      name: 名前
       email: メールアドレス
       password: パスワード
   user_sessions:

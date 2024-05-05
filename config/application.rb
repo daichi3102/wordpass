@@ -26,5 +26,21 @@ module Wordpass
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Custom generator configuration
+    config.generators do |g|
+      g.assets false                         # TailwindCSSを使っているので CSS/JSファイルの生成をしない
+      g.skip_routes true                     # trueにより routes.rbの変更をしない
+      g.helper false                         # helperファイルの生成をしない
+      g.test_framework :rspec,               # テストフレームワークはrspecを使用する可能性
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: true,
+                       request_specs: false,
+                       model_specs: true,
+                       fixtures: true
+      g.fixture_replacement :factory_bot, dir: 'spec/factories' # fixtureはfactory_botを使用
+    end
   end
 end

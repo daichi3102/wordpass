@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'tops#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get '/terms_of_service', to: 'tops#terms_of_service'
-  get '/privacy_policy', to: 'tops#privacy_policy'
+  get '/terms', to: 'tops#terms'
+  get '/privacy', to: 'tops#privacy'
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
