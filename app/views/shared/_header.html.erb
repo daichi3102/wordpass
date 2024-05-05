@@ -14,10 +14,13 @@
       </div>
       <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 mt-4">
         <li>
-          <a href="#" data-turbo-method="delete" method="delete" class="btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"><%= t('header.signup') %></a>
+          <%= link_to t('header.signup'), new_user_registration_path, class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
         </li>
         <li>
-          <a href="#" data-turbo-method="delete" method="delete" class="btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"><%= t('header.signin') %></a>
+          <%= link_to t('header.signin'), new_user_session_path, class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
+        </li>
+        <li>
+          <%= link_to t('header.signout'), destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
         </li>
         <li>
           <a href="#" class="btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"><%= t('header.profile') %></a>
