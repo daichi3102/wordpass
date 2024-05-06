@@ -38,7 +38,7 @@ ja:
         forgot_your_password: パスワードを忘れましたか？
         didn_t_receive_confirmation_instructions: アカウント確認のメールを受け取っていませんか？
         didn_t_receive_unlock_instructions: アカウントのロック解除方法のメールを受け取っていませんか？
-        sign_in_with_provider: "%{provider}でサインイン"
+        sign_in_with_provider: "%{kind}でサインイン"
       send_instructions: アカウントの有効化について数分以内にメールでご連絡します。
       send_paranoid_instructions: メールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。
     failure:
