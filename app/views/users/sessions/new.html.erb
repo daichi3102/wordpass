@@ -10,7 +10,7 @@
   
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autocomplete: "email" %>
     </div>
 
     <div class="field">
@@ -30,5 +30,7 @@
     </div>
   <% end %>
 
-  <%= render "users/shared/links" %>
+  <div class="actions">
+    <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false } %>
+  </div>
 </div>

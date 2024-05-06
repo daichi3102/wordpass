@@ -26,6 +26,11 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
+  # Google OAuth2の設定
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], skip_jwt: true
+  # 開発環境でOmniAuthのロギングを設定
+  OmniAuth.config.logger = Rails.logger if Rails.env.development?
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
