@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: 'devise/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+  resource :profile, only: %i[show edit update]
   root to: 'tops#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/terms', to: 'tops#terms'
