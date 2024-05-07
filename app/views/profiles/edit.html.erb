@@ -1,0 +1,56 @@
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="card bg-base-100 shadow-xl w-auto max-w-4xl">
+    <div class="card-body">
+      <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
+        <h1 class="text-xl font-bold mb-4">Update Your Profile</h1>
+        <!-- Name Label -->
+        <div class="chat chat-start flex justify-start">
+          <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+            <%= f.label :name, class: "form-label" %>
+          </div>
+        </div>
+        <!-- Name Input -->
+        <div class="chat chat-end flex justify-end">
+          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+            <%= f.text_field :name, class: "input w-full max-w-lg bg-blue-600 text-white", placeholder: @user.name %>
+          </div>
+        </div>
+        <!-- Email Address Label -->
+        <div class="chat chat-start flex justify-start">
+          <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+            <%= f.label :email, class: "form-label" %>
+          </div>
+        </div>
+        <!-- Email Address Input -->
+        <div class="chat chat-end flex justify-end">
+          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+            <%= f.email_field :email, class: "input w-full max-w-lg bg-blue-600 text-white", placeholder: "Enter your email" %>
+          </div>
+        </div>
+        <!-- Avatar Label -->
+        <div class="chat chat-start flex justify-start">
+          <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+            <%= f.label :avatar, class: "form-label" %>
+          </div>
+        </div>
+        <!-- Avatar Input -->
+        <div class="chat chat-end flex justify-end">
+          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+            <%= f.file_field :avatar, class: 'form-control mb-3', accept: 'image/*' %>
+            <%= f.hidden_field :avatar_cache %>
+          <div class='mt-3 mb-3'>
+            <%= image_tag @user.avatar.url,
+                          class: 'rounded-circle',
+                          id: 'preview',
+                          size: '100x100' %>
+          </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div class="chat chat-end flex justify-end">
+          <%= f.submit "Update Profile", class: "btn btn-primary mt-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,8 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Ignore uploaded files in development.
+/public/uploads
 /public/assets
 
 # Ignore master key for decrypting credentials and more.

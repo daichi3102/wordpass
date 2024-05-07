@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :rememberable, :validatable,
          # ===== Omniauthを使用するためのオプションを追加 =====
          :omniauthable, omniauth_providers: %i[google_oauth2]
+  mount_uploader :avatar, AvatarUploader
 
   has_many :sns_credentials, dependent: :destroy
 
