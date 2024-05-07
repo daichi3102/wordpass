@@ -1,12 +1,11 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
-    <h2>
+  <div id="error_explanation" class="max-w-lg mx-auto w-full bg-base-300 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert" data-turbo-cache="false">
+    <h2 class="font-bold">
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
-                 resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'errors.messages.not_saved'))
-       %>
+                 resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'errors.messages.not_saved'))%>
     </h2>
-    <ul>
+    <ul class="list-disc pl-5 mt-3">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
