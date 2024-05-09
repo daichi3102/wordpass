@@ -8,6 +8,24 @@ ja:
       name: 名前
       email: メールアドレス
       password: パスワード
+      avatar: アバター
+  defaults:
+    create: 作成
+    post: 投稿
+    edit: 編集
+    show: 詳細
+    delete: 削除
+    delete_confirm: 削除しますか？
+    password_reset: パスワードリセット
+    unspecified: 指定なし
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+      require_login: ログインしてください
+      not_authorized: 権限がありません
   user_sessions:
     new:
       title: ログイン
@@ -30,3 +48,8 @@ ja:
     terms: 利用規約
     privacy: プライバシーポリシー
     contact: お問い合わせ
+  profiles:
+    show:
+      title: プロフィール
+    edit:
+      title: プロフィール編集
