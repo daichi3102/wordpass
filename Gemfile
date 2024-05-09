@@ -16,6 +16,8 @@ gem 'dotenv-rails'
 
 gem 'carrierwave', '~> 2.0'
 
+gem 'httparty'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
