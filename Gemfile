@@ -16,6 +16,10 @@ gem 'dotenv-rails'
 
 gem 'carrierwave', '~> 2.0'
 
+gem 'aws-sdk-s3', require: false
+
+gem 'fog-aws'
+
 gem 'httparty'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
