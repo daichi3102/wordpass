@@ -8,6 +8,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :sns_credentials, dependent: :destroy
+  has_many :fetch_ais, dependent: :destroy
 
   validates :name, presence: true
   validates :email, uniqueness: true
