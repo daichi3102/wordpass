@@ -1,3 +1,20 @@
 <!-- app/views/fetch_ais/show.html.erb -->
-<h1>Generated Quote</h1>
-<p><%= @fetch_ai.response %></p>
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="card bg-base-100 shadow-xl w-auto" style="width: 32%; max-width: 1280px;">
+  <h1 class="text-xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
+    <div class="card-body">
+      <!-- AI response -->
+      <div class="chat chat-start flex justify-start">
+        <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+          <%= @fetch_ai.response %>
+        </div>
+      </div>
+        <!-- share -->
+        <div class="chat chat-end flex justify-end">
+          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+            <%= link_to t('fetch_ais.show.share'), "#", class: "btn btn-primary mt-4" %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

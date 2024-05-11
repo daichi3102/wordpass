@@ -1,8 +1,8 @@
 <div class="flex justify-center items-start min-h-screen pt-8">
   <div class="card bg-base-100 shadow-xl w-auto" style="width: 32%; max-width: 1280px;">
+  <h1 class="text-3xl font-bold mb-4 text-center"><%= t('profiles.edit.title') %></h1>
     <div class="card-body">
       <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
-        <h1 class="text-xl font-bold mb-4"><%= t('profiles.edit.title') %></h1>
         <!-- Name Label -->
         <div class="chat chat-start flex justify-start">
           <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
@@ -48,7 +48,7 @@
         </div>
         <!-- Submit Button -->
         <div class="chat chat-end flex justify-end">
-          <%= f.submit "Update", class: "btn btn-primary mt-4" %>
+          <%= f.submit t('profiles.edit.update'), class: "btn btn-primary mt-4" %>
         </div>
       <% end %>
     </div>

@@ -26,6 +26,8 @@ ja:
       deleted: "%{item}を削除しました"
       require_login: ログインしてください
       not_authorized: 権限がありません
+      fetch_ai: AIから名言を受け取りました
+      not_fetch_ai: AIから名言を受け取れませんでした
   user_sessions:
     new:
       title: ログイン
@@ -37,6 +39,7 @@ ja:
       title: ユーザー登録
       to_login_page: ログインページへ
   header:
+    title: WORDPASS
     signup: サインアップ
     signin: サインイン
     signout: サインアウト
@@ -48,8 +51,18 @@ ja:
     terms: 利用規約
     privacy: プライバシーポリシー
     contact: お問い合わせ
+  tops:
+    title: WORDPASS
+    subtitle: AIが名言を提供
+    get: すぐに取得
   profiles:
     show:
       title: プロフィール
+      edit: 編集
     edit:
       title: プロフィール編集
+      update: 更新
+  fetch_ais:
+    show:
+      title: AIからの取得結果
+      share: Xでシェア

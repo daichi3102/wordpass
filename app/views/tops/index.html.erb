@@ -1,6 +1,16 @@
-<h1 class="text-3xl font-bold underline text-center">
-    Hello world!
-</h1>
-<div class="flex justify-center mt-4">
-  <%= button_to '名言を取得', fetch_ais_path, method: :post %>
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
+    <h1 class="text-3xl font-bold mb-4"><%= t('tops.title') %></h1>
+    <figure><img src="/meigenapp777.jpg" alt="Shoes" /></figure>
+    <div class="card-body">
+      <h2 class="card-title justify-center"><%= t('tops.subtitle') %></h2>
+      <p>偉人、有名人、名著、映画、漫画、アニメなど<br>
+      様々な作品からの名言や格言を提供します。<br>
+      日々の生活において必要な刺激となる名言を通じて<br>
+      心のエネルギーをサポートします。</p>
+      <div class="card-actions justify-center">
+        <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
+      </div>
+    </div>
+  </div>
 </div>
