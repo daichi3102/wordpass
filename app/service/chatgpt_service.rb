@@ -32,7 +32,7 @@ class ChatgptService
   end
 
   class << self
-    def call(message, model = 'gpt-4.0-turbo')
+    def call(message, model = 'gpt-3.5-turbo')
       new(message, model).call
     end
   end

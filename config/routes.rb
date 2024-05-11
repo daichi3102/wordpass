@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resource :profile, only: %i[show edit update]
+  resources :fetch_ais
   root to: 'tops#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/terms', to: 'tops#terms'
