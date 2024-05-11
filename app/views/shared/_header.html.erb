@@ -2,7 +2,7 @@
   <div class="flex justify-between items-center w-full">
     <!-- logo on the left -->
     <div class="flex-1 px-2 lg:flex-none">
-      <a href="<%= root_path %>" class="btn btn-ghost text-xl text-blue-500 font-bold">WORDPASS</a>
+      <a href="<%= root_path %>" class="btn btn-ghost text-2xl text-blue-500 font-bold"><%= t('header.title') %></a>
     </div>
 
     <!-- Hamburger menu icon with dropdown on the right -->
@@ -20,7 +20,7 @@
           <%= link_to t('header.profile'), profile_path, class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
         </li>
         <li>
-          <a href="#" class="btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"><%= t('header.ai') %></a>
+          <%= link_to t('header.ai'), root_path, class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
         </li>
         <li>
           <a href="#" class="btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"><%= t('header.bookmark') %></a>
