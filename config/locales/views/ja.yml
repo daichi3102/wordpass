@@ -39,7 +39,7 @@ ja:
       title: ユーザー登録
       to_login_page: ログインページへ
   header:
-    title: WORDPASS
+    title: MeigenOtter
     signup: サインアップ
     signin: サインイン
     signout: サインアウト
@@ -52,9 +52,14 @@ ja:
     privacy: プライバシーポリシー
     contact: お問い合わせ
   tops:
-    title: WORDPASS
-    subtitle: AIが名言を提供
+    title: MeigenOtter
+    subtitle: 今すぐ、名言の海に飛び込もう！！
+    racco: 名言おった？
     get: すぐに取得
+    signin: サインインすると...
+    personalized: 今の自分に合った名言がもらえるよ！
+    signup: サインアップ
+    make: 名言作成もできる！
   profiles:
     show:
       title: プロフィール
