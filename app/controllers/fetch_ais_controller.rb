@@ -2,7 +2,7 @@ class FetchAisController < ApplicationController
   before_action :authenticate_user!, only: %i[index destroy]
 
   def index
-    @fetch_ais = current_user.fetch_ais
+    @fetch_ais = current_user.fetch_ais.order(created_at: :desc)
   end
 
   def show
@@ -18,7 +18,7 @@ class FetchAisController < ApplicationController
   def destroy
     @fetch_ai = current_user.fetch_ais.find(params[:id])
     @fetch_ai.destroy
-    redirect_to fetch_ais_path, notice: 'FetchAi was successfully destroyed.'
+    redirect_to fetch_ais_path, notice: t('defaults.flash_message.destroy_fetch_ai')
   end
 
   def create

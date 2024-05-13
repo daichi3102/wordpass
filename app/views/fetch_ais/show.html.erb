@@ -9,12 +9,17 @@
           <%= @fetch_ai.response %>
         </div>
       </div>
-        <!-- share -->
-        <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
-            <%= link_to t('fetch_ais.show.share'), "#", class: "btn btn-primary mt-4" %>
+      <!-- share -->
+      <div class="chat chat-end flex justify-end">
+        <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+          <div class="mt-4">
+            <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=今日は〇〇さんに励まされました！%0a%0a#{@fetch_ai.response}", target: '_blank', class: "btn btn-info flex items-center justify-center gap-2" do %>
+              <i class="fa-brands fa-x-twitter"></i>
+              <span><%= t('fetch_ais.show.share') %></span>
+            <% end %>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

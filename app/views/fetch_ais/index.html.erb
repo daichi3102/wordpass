@@ -12,7 +12,13 @@
             </div>
             <div class="chat chat-end flex justify-end"> <!-- justify-endで右に配置 -->
               <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
-                <%= button_to 'destroy', fetch_ai_path(fetch_ai), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn text-white mt-4', style: 'background-color: #1f2937;' %> <!-- bg-blue-600の色を保持 -->
+                <%= button_to 'destroy', fetch_ai_path(fetch_ai), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn text-white mt-4', style: 'background-color: #1f2937;' %>
+                <div class="mt-4">
+                  <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=今日は〇〇さんに励まされました！%0a%0a#{fetch_ai.response}", target: '_blank', class: "btn btn-info flex items-center justify-center gap-2" do %>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span><%= t('fetch_ais.show.share') %></span>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
