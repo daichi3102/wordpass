@@ -44,8 +44,8 @@ ja:
     signin: サインイン
     signout: サインアウト
     profile: プロフィール
-    ai_index: AIからの一覧
-    ai: AI
+    ai: AIから受け取る
+    ai_index: 受け取った名言一覧
     bookmark: ブックマーク
   footer:
     about: このサイトについて
@@ -55,12 +55,10 @@ ja:
   tops:
     title: MeigenOtter
     subtitle: 今すぐ、名言の海に飛び込もう！！
-    racco: 名言おった？
-    get: すぐに取得
-    signin: サインインすると...
-    personalized: 今の自分に合った名言がもらえるよ！
-    signup: サインアップ
-    make: 名言作成もできる！
+    get: すぐに受け取る
+    personalize_get: パーソナライズして受け取る
+    receive: 受け取る
+    signup: サインイン
   profiles:
     show:
       title: プロフィール
@@ -70,5 +68,5 @@ ja:
       update: 更新
   fetch_ais:
     show:
-      title: AIからの取得結果
+      title: AIから受け取った名言一覧
       share: Xでシェア
