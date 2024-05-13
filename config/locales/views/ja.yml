@@ -28,6 +28,7 @@ ja:
       not_authorized: 権限がありません
       fetch_ai: AIから名言を受け取りました
       not_fetch_ai: AIから名言を受け取れませんでした
+      destroy_fetch_ai: AIから受け取った名言を削除しました
   user_sessions:
     new:
       title: ログイン
@@ -69,4 +70,4 @@ ja:
   fetch_ais:
     show:
       title: AIから受け取った名言一覧
-      share: Xでシェア
+      share: シェア
