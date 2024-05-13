@@ -1,5 +1,5 @@
 <div class="flex justify-center items-start min-h-screen pt-8">
-  <div class="card bg-base-100 shadow-xl w-auto" style="width: 32%; max-width: 1280px;">
+  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
   <h1 class="text-3xl font-bold mb-4 text-center"><%= t('profiles.edit.title') %></h1>
     <div class="card-body">
       <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>

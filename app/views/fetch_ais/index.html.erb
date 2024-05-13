@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class="flex justify-center items-center min-h-screen pt-8 flex-col"> <!-- flex-colを追加、items-startをitems-centerに変更 -->
-    <h1 class="text-xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
+    <h1 class="text-3xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
     <% @fetch_ais.each do |fetch_ai| %>
       <% if fetch_ai.response.present? %>
         <div class="card bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;"> <!-- mx-autoでカードを中央に配置 -->
