@@ -16,7 +16,7 @@
         <div class="card-actions justify-center">
           <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
         </div>
-        <button class="btn btn-primary mt-4" onclick="my_modal_2.showModal()"><%= t('tops.personalize_get') %></button>
+        <button class="btn btn-primary mt-4" onclick="document.getElementById('my_modal_2').showModal()"><%= t('tops.personalize_get') %></button>
         <dialog id="my_modal_2" class="modal">
           <div class="modal-box text-center">
             <form method="dialog">
@@ -24,7 +24,7 @@
             </form>
             <h3 class="font-bold text-lg">パーソナライズ</h3>
             <p class="py-4">セレクトボックスから適当なものを選んでください</p>
-            <%= form_with model: @fetch_ai, local: true do |form| %>
+            <%= form_with model: @fetch_ai, local: true, id: "personalize_form" do |form| %>
               <%= form.hidden_field :prompt_type, value: 'personalized' %>
               <div class="mb-3 text-center">
                 <%= form.label :mood, class: "form-label block mb-2 text-sm font-bold" %>
@@ -52,6 +52,14 @@
             <% end %>
           </div>
         </dialog>
+        <!-- yuriraccoモーダル -->
+        <dialog id="loading_modal" class="modal">
+          <div class="modal-box text-center">
+            <figure class="px-10 pt-10">
+              <img src="/20240514_164506.GIF" alt="Shoes" class="rounded-xl w-48 h-48" />
+            </figure>
+          </div>
+        </dialog>
       <% else %>
         <div class="card-actions justify-center">
           <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
@@ -60,7 +68,7 @@
       <br><br><br><br>
       <h2 class="card-title justify-center">名言おった？</h2>
       <figure class="px-10 pt-10">
-        <img src="/IMG_4588.JPG" alt="Shoes" class="rounded-xl w-40 h-48" />
+        <img src="/IMG_4982.JPG" alt="Shoes" class="rounded-xl w-48 h-48" />
       </figure>
     </div>
   </div>

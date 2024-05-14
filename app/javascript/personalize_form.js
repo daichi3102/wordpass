@@ -4,12 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (personalizeForm) {
     personalizeForm.addEventListener("submit", function(event) {
-      // 新しいモーダルを表示
       if (loadingModal) {
         loadingModal.showModal();
       }
 
-      // フォーム送信を非同期に処理
       event.preventDefault();
 
       const formData = new FormData(personalizeForm);
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (data.redirect_url) {
           window.location.href = data.redirect_url;
         } else {
-          // エラーハンドリング
           if (loadingModal) {
             loadingModal.close();
           }

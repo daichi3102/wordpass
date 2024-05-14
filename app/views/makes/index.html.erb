@@ -1,0 +1,14 @@
+<h1>Makes</h1>
+
+<%= link_to 'New Make', new_make_path, class: 'btn btn-primary' %>
+
+<% @makes.each do |make| %>
+  <div class="make">
+    <h2>Make ##<%= make.id %></h2>
+    <p><strong>First Part:</strong> <%= make.first_part&.content || 'Not yet added' %></p>
+    <p><strong>Second Part:</strong> <%= make.second_part&.content || 'Not yet added' %></p>
+    <%= link_to 'Details', make_path(make), class: 'btn btn-secondary' %>
+  </div>
+<% end %>
+
+

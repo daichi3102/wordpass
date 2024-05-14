@@ -1,0 +1,14 @@
+<h1>Make #<%= @make.id %></h1>
+
+<p><strong>First Part:</strong> <%= @make.first_part&.content || 'Not yet added' %></p>
+<p><strong>Second Part:</strong> <%= @make.second_part&.content || 'Not yet added' %></p>
+
+<% if @make.first_part.nil? %>
+  <%= link_to 'Add First Part', edit_make_first_part_path(@make), class: 'btn btn-secondary' %>
+<% end %>
+
+<% if @make.second_part.nil? %>
+  <%= link_to 'Add Second Part', edit_make_second_part_path(@make), class: 'btn btn-secondary' %>
+<% end %>
+
+<%= link_to 'Back to Makes', makes_path, class: 'btn btn-primary' %>
