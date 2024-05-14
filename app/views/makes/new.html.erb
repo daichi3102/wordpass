@@ -1,0 +1,26 @@
+<h1>New Make</h1>
+
+<%= form_with(model: @make, local: true) do |form| %>
+  <%= form.fields_for :first_part do |fp_form| %>
+    <div class="field">
+      <%= fp_form.label :content, "First Part" %>
+      <%= fp_form.text_area :content %>
+      <%= fp_form.hidden_field :user_id, value: current_user.id %>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :second_part do |sp_form| %>
+    <div class="field">
+      <%= sp_form.label :content, "Second Part" %>
+      <%= sp_form.text_area :content %>
+      <%= sp_form.hidden_field :user_id, value: current_user.id %>
+    </div>
+    <small>Second Part is optional</small>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Create Make', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Makes', makes_path, class: 'btn btn-secondary' %>

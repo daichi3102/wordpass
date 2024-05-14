@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   has_many :sns_credentials, dependent: :destroy
   has_many :fetch_ais, dependent: :destroy
+  has_many :makes, dependent: :destroy
+  has_many :first_parts, dependent: :destroy
+  has_many :second_parts, dependent: :destroy
 
   validates :name, presence: true
   validates :email, uniqueness: true
