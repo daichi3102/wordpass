@@ -48,8 +48,8 @@
       <% end %>
     </div>
 
-    <%= link_to 'Details', make_path(make), class: 'btn btn-secondary mt-4' %>
-    <%= link_to 'Add First Part', new_make_first_part_path(make), class: 'btn btn-primary mt-4' if make.first_part.nil? %>
-    <%= link_to 'Add Second Part', new_make_second_part_path(make), class: 'btn btn-primary mt-4' if make.second_part.nil? %>
+    <%= link_to '貝を見る', make_path(make), class: 'btn btn-secondary mt-4' %>
+    <%= link_to '上の貝を作る', new_make_first_part_path(make), class: 'btn btn-primary mt-4' if make.first_part.nil? %>
+    <%= link_to '下の貝を作る', new_make_second_part_path(make), class: 'btn btn-primary mt-4' if make.second_part.nil? %>
   </div>
 <% end %>

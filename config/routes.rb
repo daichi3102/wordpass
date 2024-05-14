@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resource :first_part, only: %i[new create edit update]
     resource :second_part, only: %i[new create edit update]
   end
+  # 上のルーティングとは別に、first_partsとsecond_partsのindexアクションを呼び出すためのルーティングを追加
   resources :first_parts, only: [:index]
   resources :second_parts, only: [:index]
 
