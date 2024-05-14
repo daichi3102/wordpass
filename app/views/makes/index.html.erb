@@ -1,14 +1,55 @@
-<h1>Makes</h1>
+<h1 class="text-2xl font-bold mb-4">Makes</h1>
 
-<%= link_to 'New Make', new_make_path, class: 'btn btn-primary' %>
+<%= link_to 'New Make', new_make_path, class: 'btn btn-primary mb-4' %>
 
 <% @makes.each do |make| %>
-  <div class="make">
-    <h2>Make ##<%= make.id %></h2>
-    <p><strong>First Part:</strong> <%= make.first_part&.content || 'Not yet added' %></p>
-    <p><strong>Second Part:</strong> <%= make.second_part&.content || 'Not yet added' %></p>
-    <%= link_to 'Details', make_path(make), class: 'btn btn-secondary' %>
+  <div class="make card shadow-lg p-4 mb-4">
+    <h2 class="text-xl font-semibold mb-2">
+      <%= make.first_part&.content || '' %> <%= make.second_part&.content || '' %>
+    </h2>
+    
+    <div class="user-info flex items-center mt-4 space-x-4">
+      <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
+        <div class="avatar">
+          <div class="rounded-full w-10 h-10">
+            <% if make.first_part.user.avatar.present? %>
+              <%= image_tag make.first_part.user.avatar.url %>
+            <% else %>
+              <%= image_tag 'default-avatar.png' %>
+            <% end %>
+          </div>
+        </div>
+        <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
+      <% else %>
+        <% if make.first_part %>
+          <div class="avatar">
+            <div class="rounded-full w-10 h-10">
+              <% if make.first_part.user.avatar.present? %>
+                <%= image_tag make.first_part.user.avatar.url %>
+              <% else %>
+                <%= image_tag 'default-avatar.png' %>
+              <% end %>
+            </div>
+          </div>
+          <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
+        <% end %>
+        <% if make.second_part %>
+          <div class="avatar">
+            <div class="rounded-full w-10 h-10">
+              <% if make.second_part.user.avatar.present? %>
+                <%= image_tag make.second_part.user.avatar.url %>
+              <% else %>
+                <%= image_tag 'default-avatar.png' %>
+              <% end %>
+            </div>
+          </div>
+          <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= link_to 'Details', make_path(make), class: 'btn btn-secondary mt-4' %>
+    <%= link_to 'Add First Part', new_make_first_part_path(make), class: 'btn btn-primary mt-4' if make.first_part.nil? %>
+    <%= link_to 'Add Second Part', new_make_second_part_path(make), class: 'btn btn-primary mt-4' if make.second_part.nil? %>
   </div>
 <% end %>
-
-

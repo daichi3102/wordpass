@@ -1,6 +1,10 @@
 class SecondPartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_make
+  before_action :set_make, only: %i[new create edit update]
+
+  def index
+    @second_parts = SecondPart.all
+  end
 
   def new
     @second_part = @make.build_second_part

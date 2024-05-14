@@ -1,6 +1,10 @@
 class FirstPartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_make
+  before_action :set_make, only: %i[new create edit update]
+
+  def index
+    @first_parts = FirstPart.all
+  end
 
   def new
     @first_part = @make.build_first_part
