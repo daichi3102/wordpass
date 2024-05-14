@@ -47,7 +47,8 @@ ja:
     profile: プロフィール
     ai: AIから受け取る
     ai_index: 受け取った名言一覧
-    bookmark: ブックマーク
+    makes: 名言を作る
+    likes: いいねした名言
   footer:
     about: このサイトについて
     terms: 利用規約
@@ -71,3 +72,12 @@ ja:
     show:
       title: AIから受け取った名言一覧
       share: シェア
+  makes:
+    index:
+      title: 名言を作ろう！
+      create: 作る
+      first_parts: 未完成の上の句
+      second_parts: 未完成の下の句
+      detail: 詳細
+      add_first_part: 上の句を作る
+      add_second_part: 下の句を作る

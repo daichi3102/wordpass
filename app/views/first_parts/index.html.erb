@@ -1,24 +1,31 @@
-<h1 class="text-2xl font-bold mb-4">First Parts</h1>
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
+  <h1 class="text-3xl font-bold mb-4 text-center">First Parts</h1>
 
-<% @first_parts.each do |first_part| %>
-  <div class="first-part card shadow-lg p-4 mb-4">
-    <h2 class="text-xl font-semibold mb-2">
-      <%= first_part.content %>
-    </h2>
+  <% @first_parts.each do |first_part| %>
+    <div class="card bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+      <div class="card-body">
+        <h2 class="text-xl font-semibold mb-2 text-center">
+          <%= first_part.content %>
+        </h2>
 
-    <div class="user-info flex items-center mt-4 space-x-4">
-      <div class="avatar">
-        <div class="rounded-full w-10 h-10">
-          <% if first_part.user.avatar.present? %>
-            <%= image_tag first_part.user.avatar.url %>
-          <% else %>
-            <%= image_tag 'default-avatar.png' %>
-          <% end %>
+        <div class="user-info flex items-center justify-center mt-4 space-x-4">
+          <div class="avatar">
+            <div class="rounded-full w-10 h-10">
+              <% if first_part.user.avatar.present? %>
+                <%= image_tag first_part.user.avatar.url, class: "rounded-full" %>
+              <% else %>
+                <%= image_tag 'default-avatar.png', class: "rounded-full" %>
+              <% end %>
+            </div>
+          </div>
+          <span class="text-sm font-bold"><%= first_part.user.name %></span>
+        </div>
+
+        <div class="mt-4 flex justify-center space-x-4">
+          <%= link_to '下の句を作る', make_path(first_part.make), class: 'btn btn-secondary' %>
         </div>
       </div>
-      <span class="text-sm font-bold"><%= first_part.user.name %></span>
     </div>
-
-    <%= link_to '下の貝を見る', make_path(first_part.make), class: 'btn btn-secondary mt-4' %>
-  </div>
-<% end %>
+  <% end %>
+</div>
