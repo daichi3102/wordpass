@@ -1,12 +1,13 @@
 class MakesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_make, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[edit update destroy]
 
   def index
-    @makes = Make.all
+    @makes = Make.order(created_at: :desc)
   end
 
   def show
-    @make = Make.find(params[:id])
   end
 
   def new
@@ -34,7 +35,31 @@ class MakesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @make.update(make_params)
+      redirect_to @make, notice: 'Make was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @make.destroy
+    redirect_to makes_path, notice: 'Make was successfully destroyed.'
+  end
+
   private
+
+  def set_make
+    @make = Make.find(params[:id])
+  end
+
+  def authorize_user!
+    redirect_to makes_path, alert: 'You are not authorized to perform this action.' unless @make.user == current_user
+  end
 
   def make_params
     params.require(:make).permit(

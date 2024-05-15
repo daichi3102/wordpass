@@ -4,7 +4,11 @@ class SecondPartsController < ApplicationController
 
   # first_partsが存在しないmakeのみを取得
   def index
-    @second_parts = SecondPart.joins(:make).where(makes: { id: Make.left_outer_joins(:first_part).where(first_parts: { id: nil }).select(:id) })
+    @second_parts = SecondPart.joins(:make)
+                              .where(makes: { id: Make.left_outer_joins(:first_part)
+                                                  .where(first_parts: { id: nil })
+                                                  .select(:id) })
+                              .order(created_at: :desc)
   end
 
   def new

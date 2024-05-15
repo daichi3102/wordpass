@@ -1,3 +1,4 @@
+<!-- app/views/tops/index.html.erb -->
 <div class="flex flex-col justify-center items-center min-h-screen pt-8">
   <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
     <h1 class="text-3xl font-bold mb-4"><%= t('tops.title') %></h1>
@@ -12,59 +13,7 @@
       様々な作品からの名言や格言を受け取ろう！<br>
       日々の生活において必要な刺激となる言葉を通じて<br>
       心のエネルギーを蓄えよう！</p>
-      <% if user_signed_in? %>
-        <div class="card-actions justify-center">
-          <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
-        </div>
-        <button class="btn btn-primary mt-4" onclick="document.getElementById('my_modal_2').showModal()"><%= t('tops.personalize_get') %></button>
-        <dialog id="my_modal_2" class="modal">
-          <div class="modal-box text-center">
-            <form method="dialog">
-              <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-            </form>
-            <h3 class="font-bold text-lg">パーソナライズ</h3>
-            <p class="py-4">セレクトボックスから適当なものを選んでください</p>
-            <%= form_with model: @fetch_ai, local: true, id: "personalize_form" do |form| %>
-              <%= form.hidden_field :prompt_type, value: 'personalized' %>
-              <div class="mb-3 text-center">
-                <%= form.label :mood, class: "form-label block mb-2 text-sm font-bold" %>
-                <%= form.select :mood, options_for_select(["元気", "落ち気味", "普通", "悲しい", "イライラ"], @fetch_ai.mood), {}, {class: "select select-bordered w-full max-w-xs"} %>
-              </div>
-              <div class="mb-3 text-center">
-                <%= form.label :schedule, class: "form-label block mb-2 text-sm font-bold" %>
-                <%= form.select :schedule, options_for_select(["仕事", "学習", "健康の事", "家庭の事", "趣味", "自己に関わること"], @fetch_ai.schedule), {}, {class: "select select-bordered w-full max-w-xs"} %>
-              </div>
-              <div class="mb-3 text-center">
-                <%= form.label :how, class: "form-label block mb-2 text-sm font-bold" %>
-                <%= form.select :how, options_for_select(["心に刺さる名言", "心に寄り添う名言", "クスっと笑ってしまう名言", "厳しい名言"], @fetch_ai.how), {}, {class: "select select-bordered w-full max-w-xs"} %>
-              </div>
-              <div class="mb-3 text-center">
-                <%= form.label :popularity, class: "form-label block mb-2 text-sm font-bold" %>
-                <%= form.select :popularity, options_for_select(["メジャー", "マイナー", "メジャーでもマイナーでもないよう"], @fetch_ai.popularity), {}, {class: "select select-bordered w-full max-w-xs"} %>
-              </div>
-              <div class="mb-3 text-center">
-                <%= form.label :quote_type, class: "form-label block mb-2 text-sm font-bold" %>
-                <%= form.select :quote_type, options_for_select(["漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], @fetch_ai.quote_type), {}, {class: "select select-bordered w-full max-w-xs"} %>
-              </div>
-              <div class="modal-action justify-center">
-                <%= form.submit t('tops.receive'), class: "btn btn-primary mt-4" %>
-              </div>
-            <% end %>
-          </div>
-        </dialog>
-        <!-- yuriraccoモーダル -->
-        <dialog id="loading_modal" class="modal">
-          <div class="modal-box text-center">
-            <figure class="px-10 pt-10">
-              <img src="/20240514_164506.GIF" alt="Shoes" class="rounded-xl w-48 h-48" />
-            </figure>
-          </div>
-        </dialog>
-      <% else %>
-        <div class="card-actions justify-center">
-          <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
-        </div>
-      <% end %>
+      <%= render 'shared/ai_buttons', fetch_ai: @fetch_ai %>
       <br><br><br><br>
       <h2 class="card-title justify-center">名言おった？</h2>
       <figure class="px-10 pt-10">
@@ -74,28 +23,54 @@
   </div>
   <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
     <br><br>
-    <h1 class="text-2xl font-bold mb-4">サインインすると...</h1>
-    <br>
-    <div class="card-body">
-      <h2 class="card-title justify-center">今の自分に合った名言がもらえるよ！</h2>
+    <% if user_signed_in? %>
+      <h1 class="text-2xl font-bold mb-4">名言の海にようこそ！</h1>
       <br>
-      <p>プルダウン式の項目から<br>
-      気分、予定、どんな名言か<br>
-      メジャーなのかマイナーな作品なのか<br>
-      偉人、有名人、名著、映画、漫画、アニメなのか<br>
-      自分で選択できるよ！</p>
-      <div class="card-actions justify-center">
-        <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
+      <div class="card-body">
+        <h2 class="card-title justify-center">あなたに合った名言を見つけよう！</h2>
+        <br>
+        <p>プルダウン式の項目から<br>
+        気分、予定、どんな名言か<br>
+        メジャーなのかマイナーな作品なのか<br>
+        偉人、有名人、名著、映画、漫画、アニメなのか<br>
+        自分で選択できるよ！</p>
+        <div class="card-actions justify-center">
+          <%= link_to '名言の海に行く', fetch_ais_path, class: "btn btn-primary mt-4" %>
+        </div>
+        <br><br>
+        <h2 class="card-title justify-center">名言作成！</h2>
+        <br>
+        <p>自分の好きな名言の作成（投稿）<br>
+        誰かと協力しての作成（投稿）<br>
+        みんなで名言を共有しよう！</p>
+        <div class="card-actions justify-center">
+          <%= link_to '名言を作成', makes_path, class: "btn btn-primary mt-4" %>
+        </div>
       </div>
-      <br><br>
-      <h2 class="card-title justify-center">名言作成もできる！></h2>
+    <% else %>
+      <h1 class="text-2xl font-bold mb-4">サインインすると...</h1>
       <br>
-      <p>自分の好きな名言の作成（投稿）<br>
-      誰かと協力しての作成（投稿）<br>
-      みんなで名言を共有しよう！</p>
-      <div class="card-actions justify-center">
-        <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
+      <div class="card-body">
+        <h2 class="card-title justify-center">今の自分に合った名言がもらえるよ！</h2>
+        <br>
+        <p>プルダウン式の項目から<br>
+        気分、予定、どんな名言か<br>
+        メジャーなのかマイナーな作品なのか<br>
+        偉人、有名人、名著、映画、漫画、アニメなのか<br>
+        自分で選択できるよ！</p>
+        <div class="card-actions justify-center">
+          <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
+        </div>
+        <br><br>
+        <h2 class="card-title justify-center">名言作成もできる！</h2>
+        <br>
+        <p>自分の好きな名言の作成（投稿）<br>
+        誰かと協力しての作成（投稿）<br>
+        みんなで名言を共有しよう！</p>
+        <div class="card-actions justify-center">
+          <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
