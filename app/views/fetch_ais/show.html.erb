@@ -1,22 +1,41 @@
 <!-- app/views/fetch_ais/show.html.erb -->
 <div class="flex justify-center items-start min-h-screen pt-8">
-  <div class="card bg-base-100 shadow-xl w-auto" style="width: 32%; max-width: 1280px;">
-  <h1 class="text-xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
+  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
     <div class="card-body">
       <!-- AI response -->
-      <div class="chat chat-start flex justify-start">
-        <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
-          <%= @fetch_ai.response %>
-        </div>
-      </div>
+      <% if @fetch_ai.response.present? %>
+        <% quote = @fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
+        <% info = @fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
+        
+        <% if quote %>
+          <div class="chat chat-start flex justify-start mb-4">
+            <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: bold;">
+              <%= quote %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if info %>
+          <div class="chat chat-start flex justify-start mb-4">
+            <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: normal;">
+              <%= info %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
       <!-- share -->
       <div class="chat chat-end flex justify-end">
         <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
           <div class="mt-4">
-            <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=今日は〇〇さんに励まされました！%0a%0a#{@fetch_ai.response}", target: '_blank', class: "btn btn-info flex items-center justify-center gap-2" do %>
+            <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=名言の海を探索したら、この方の言葉を見つけたよ！%0a%0a#{quote}", target: '_blank', class: "btn btn-info flex items-center justify-center gap-2" do %>
               <i class="fa-brands fa-x-twitter"></i>
               <span><%= t('fetch_ais.show.share') %></span>
             <% end %>
+            <br>
+            <%= link_to '名言一覧に戻る', fetch_ais_path, class: 'btn btn-secondary flex items-center justify-center gap-2 mt-2' %>
+            <br>
+            <%= link_to '編集', edit_fetch_ai_path(@fetch_ai), class: 'btn btn-warning flex items-center justify-center gap-2 mt-2' %>          
           </div>
         </div>
       </div>

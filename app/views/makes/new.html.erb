@@ -1,26 +1,39 @@
-<h1>New Make</h1>
+<!-- app/views/makes/new.html.erb -->
+<br>
+<h1 class="text-3xl font-bold mb-4 text-center"><%= t('makes.new.title') %></h1>
+<div class="flex justify-center items-center">
+  <div class="card card-compact w-full max-w-lg bg-base-100 shadow-xl p-8">
+    <%= form_with(model: @make, local: true) do |form| %>
+      <div class="mb-4">
+        <%= form.fields_for :first_part do |fp_form| %>
+          <div class="form-control">
+            <%= fp_form.label :content, t('makes.new.first_parts'), class: "label" %>
+            <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
+            <%= fp_form.hidden_field :user_id, value: current_user.id %>
+          </div>
+        <% end %>
+      </div>
 
-<%= form_with(model: @make, local: true) do |form| %>
-  <%= form.fields_for :first_part do |fp_form| %>
-    <div class="field">
-      <%= fp_form.label :content, "First Part" %>
-      <%= fp_form.text_area :content %>
-      <%= fp_form.hidden_field :user_id, value: current_user.id %>
+      <div class="mb-4">
+        <%= form.fields_for :second_part do |sp_form| %>
+          <div class="form-control">
+            <%= sp_form.label :content, t('makes.new.second_parts'), class: "label" %>
+            <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
+            <%= sp_form.hidden_field :user_id, value: current_user.id %>
+          </div>
+          <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
+          <br>※ひとりで投稿する場合は、両方を選択しよう！
+          </small>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit t('makes.new.create'), class: 'btn btn-primary w-full' %>
+      </div>
+    <% end %>
+
+    <div class="mt-4">
+      <%= link_to t('makes.new.back'), makes_path, class: 'btn btn-secondary w-full' %>
     </div>
-  <% end %>
-
-  <%= form.fields_for :second_part do |sp_form| %>
-    <div class="field">
-      <%= sp_form.label :content, "Second Part" %>
-      <%= sp_form.text_area :content %>
-      <%= sp_form.hidden_field :user_id, value: current_user.id %>
-    </div>
-    <small>Second Part is optional</small>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit 'Create Make', class: 'btn btn-primary' %>
   </div>
-<% end %>
-
-<%= link_to 'Back to Makes', makes_path, class: 'btn btn-secondary' %>
+</div>

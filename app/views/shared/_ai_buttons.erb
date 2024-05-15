@@ -1,0 +1,54 @@
+<!-- app/views/shared/_personalized_buttons.html.erb -->
+<% if user_signed_in? %>
+  <div class="card-actions justify-center">
+    <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
+  </div>
+  <button class="btn btn-primary mt-4" onclick="document.getElementById('my_modal_2').showModal()"><%= t('tops.personalize_get') %></button>
+  <dialog id="my_modal_2" class="modal">
+    <div class="modal-box text-center">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <h3 class="font-bold text-lg">パーソナライズ</h3>
+      <p class="py-4">セレクトボックスから適当なものを選んでください</p>
+      <%= form_with model: @fetch_ai, local: true, id: "personalize_form" do |form| %>
+        <%= form.hidden_field :prompt_type, value: 'personalized' %>
+        <div class="mb-3 text-center">
+          <%= form.label :mood, class: "form-label block mb-2 text-sm font-bold" %>
+          <%= form.select :mood, options_for_select(["元気", "落ち気味", "普通", "悲しい", "イライラ"], @fetch_ai.mood), {}, {class: "select select-bordered w-full max-w-xs"} %>
+        </div>
+        <div class="mb-3 text-center">
+          <%= form.label :schedule, class: "form-label block mb-2 text-sm font-bold" %>
+          <%= form.select :schedule, options_for_select(["仕事", "学習", "健康の事", "家庭の事", "趣味", "自己に関わること"], @fetch_ai.schedule), {}, {class: "select select-bordered w-full max-w-xs"} %>
+        </div>
+        <div class="mb-3 text-center">
+          <%= form.label :how, class: "form-label block mb-2 text-sm font-bold" %>
+          <%= form.select :how, options_for_select(["心に刺さる名言", "心に寄り添う名言", "クスっと笑ってしまう名言", "厳しい名言"], @fetch_ai.how), {}, {class: "select select-bordered w-full max-w-xs"} %>
+        </div>
+        <div class="mb-3 text-center">
+          <%= form.label :popularity, class: "form-label block mb-2 text-sm font-bold" %>
+          <%= form.select :popularity, options_for_select(["メジャー", "マイナー", "メジャーでもマイナーでもないよう"], @fetch_ai.popularity), {}, {class: "select select-bordered w-full max-w-xs"} %>
+        </div>
+        <div class="mb-3 text-center">
+          <%= form.label :quote_type, class: "form-label block mb-2 text-sm font-bold" %>
+          <%= form.select :quote_type, options_for_select(["漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], @fetch_ai.quote_type), {}, {class: "select select-bordered w-full max-w-xs"} %>
+        </div>
+        <div class="modal-action justify-center">
+          <%= form.submit t('tops.receive'), class: "btn btn-primary mt-4" %>
+        </div>
+      <% end %>
+    </div>
+  </dialog>
+  <!-- yuriraccoモーダル -->
+  <dialog id="loading_modal" class="modal">
+    <div class="modal-box text-center">
+      <figure class="px-10 pt-10">
+        <img src="/20240514_164506.GIF" alt="Shoes" class="rounded-xl w-48 h-48" />
+      </figure>
+    </div>
+  </dialog>
+<% else %>
+  <div class="card-actions justify-center">
+    <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
+  </div>
+<% end %>

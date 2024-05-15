@@ -1,30 +1,54 @@
+<!-- app/views/fetch_ais/index.html.erb -->
 <% if user_signed_in? %>
-  <div class="flex justify-center items-center min-h-screen pt-8 flex-col"> <!-- flex-colを追加、items-startをitems-centerに変更 -->
-    <h1 class="text-3xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
-    <% @fetch_ais.each do |fetch_ai| %>
-      <% if fetch_ai.response.present? %>
-        <div class="card bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;"> <!-- mx-autoでカードを中央に配置 -->
-          <div class="card-body">
-            <div class="chat chat-start flex justify-start">
-              <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
-                <%= fetch_ai.response %>
-              </div>
-            </div>
-            <div class="chat chat-end flex justify-end"> <!-- justify-endで右に配置 -->
-              <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
-                <%= button_to 'destroy', fetch_ai_path(fetch_ai), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn text-white mt-4', style: 'background-color: #1f2937;' %>
-                <div class="mt-4">
-                  <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=今日は〇〇さんに励まされました！%0a%0a#{fetch_ai.response}", target: '_blank', class: "btn btn-info flex items-center justify-center gap-2" do %>
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <span><%= t('fetch_ais.show.share') %></span>
-                  <% end %>
+  <div class="flex justify-center items-start min-h-screen pt-8">
+    <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
+      <%= render 'shared/ai_buttons', fetch_ai: @fetch_ai %>
+      <br><br>
+      <h1 class="text-3xl font-bold mb-4 text-center"><%= t('fetch_ais.index.title') %></h1>
+      <div class="card-body">
+        <% @fetch_ais.each do |fetch_ai| %>
+          <% if fetch_ai.response.present? %>
+            <div class="card bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+              <div class="card-body">
+                <!-- AI response -->
+                <% quote = fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
+                <% info = fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
+                
+                <% if quote %>
+                  <div class="chat chat-start flex justify-start mb-4">
+                    <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: bold;">
+                      <%= quote %>
+                    </div>
+                  </div>
+                <% end %>
+
+                <% if info %>
+                  <div class="chat chat-start flex justify-start mb-4">
+                    <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: normal;">
+                      <%= info %>
+                    </div>
+                  </div>
+                <% end %>
+
+                <!-- share, delete, and show details -->
+                <div class="chat chat-end flex justify-end">
+                  <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md text-left">
+                    <div class="mt-4">
+                      <%= link_to '詳細', fetch_ai_path(fetch_ai), class: 'btn btn-primary flex items-center justify-center gap-2 mt-2' %>
+                      <br>
+                      <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=今日は〇〇さんに励まされました！%0a%0a#{quote}", target: '_blank', class: "btn btn-info flex items-center justify-center gap-2 mt-2" do %>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span><%= t('fetch_ais.show.share') %></span>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% else %>
   <p>サインインしてください。</p>

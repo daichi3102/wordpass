@@ -1,2 +1,39 @@
-<h1>FetchAis#edit</h1>
-<p>Find me in app/views/fetch_ais/edit.html.erb</p>
+<!-- app/views/fetch_ais/edit.html.erb -->
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center"><%= t('fetch_ais.edit.title') %></h1>
+    <div class="card-body">
+      <!-- AI response -->
+      <% if @fetch_ai.response.present? %>
+        <% quote = @fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
+        <% info = @fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
+        
+        <% if quote %>
+          <div class="chat chat-start flex justify-start mb-4">
+            <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: bold;">
+              <%= quote %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if info %>
+          <div class="chat chat-start flex justify-start mb-4">
+            <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: normal;">
+              <%= info %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <!-- delete and back to show -->
+      <div class="chat chat-end flex justify-end">
+        <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+          <div class="mt-4">
+            <%= link_to '詳細', fetch_ai_path(@fetch_ai), class: 'btn btn-primary flex items-center justify-center gap-2 mt-2' %>
+            <br>
+            <%= button_to '削除', fetch_ai_path(@fetch_ai), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

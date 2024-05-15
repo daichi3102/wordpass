@@ -1,14 +1,24 @@
-<h1>Add Second Part</h1>
+<!-- app/views/second_parts/new.html.erb -->
+<br>
+<h1 class="text-3xl font-bold mb-4 text-center">Add Second Part</h1>
+<div class="flex justify-center items-center">
+  <div class="card card-compact w-full max-w-lg bg-base-100 shadow-xl p-8">
+    <%= form_with(model: [@make, @second_part], url: make_second_part_path(@make), local: true) do |form| %>
+      <div class="mb-4">
+        <div class="form-control">
+          <%= form.label :content, "Second Part", class: "label" %>
+          <%= form.text_area :content, class: "textarea textarea-bordered w-full" %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= form.submit '作成', class: 'btn btn-primary w-full' %>
+      </div>
+    <% end %>
 
-<%= form_with(model: [@make, @second_part], url: make_second_part_path(@make), local: true) do |form| %>
-  <div class="field">
-    <%= form.label :content, "Second Part" %>
-    <%= form.text_area :content %>
+    <div class="mt-4">
+      <%= link_to '一覧に戻る', makes_path, class: 'btn btn-secondary w-full' %>
+      <br><br>
+      <%= link_to '詳細に戻る', make_path(@make), class: 'btn btn-secondary w-full' %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit 'Add Second Part', class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%= link_to 'Back to Make', make_path(@make), class: 'btn btn-secondary' %>
+</div>

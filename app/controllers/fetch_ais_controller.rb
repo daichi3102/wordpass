@@ -1,22 +1,33 @@
 class FetchAisController < ApplicationController
-  before_action :authenticate_user!, only: %i[index destroy]
+  before_action :authenticate_user!, only: %i[index new create edit update destroy]
+  before_action :set_fetch_ai, only: %i[show edit update destroy]
 
   def index
     @fetch_ais = current_user.fetch_ais.order(created_at: :desc)
+    @fetch_ai = FetchAi.new
   end
 
   def show
-    @fetch_ai = FetchAi.find(params[:id])
+    # @fetch_ai は before_action :set_fetch_ai によって設定されます
   end
 
   def new
+    @fetch_ai = FetchAi.new
   end
 
   def edit
+    # @fetch_ai は before_action :set_fetch_ai によって設定されます
+  end
+
+  def update
+    if @fetch_ai.update(fetch_ai_params)
+      redirect_to @fetch_ai, notice: 'FetchAi was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @fetch_ai = current_user.fetch_ais.find(params[:id])
     @fetch_ai.destroy
     redirect_to fetch_ais_path, notice: t('defaults.flash_message.destroy_fetch_ai')
   end
@@ -40,14 +51,14 @@ class FetchAisController < ApplicationController
                    #{how}を、#{popularity}な#{quote_type}から1つ引用してください。
                    偉人や有名人の場合は、名前を記載してください。
                    書籍、映画、漫画、アニメの場合には引用作品名と、作者か登場人物名を記載してください。
-                   対話型の返答は省き、引用情報のみの日本語でお願いします。
+                   対話型の返答は省き、引用情報のみの日本語、名言を<quote></quote>で括り、その他の情報を<info></info>で括ってください。
                  PROMPT
                end
              else
                <<~PROMPT
                  名言や格言と言われるものを、映画、書籍、漫画、アニメ等から１つ引用してください。
                  引用作品名、作者、登場人物名を記載してください。
-                 引用情報のみで、対話型の返答は省き、日本語でお願いします。
+                 対話型の返答は省き、引用情報のみの日本語、名言を<quote></quote>で括り、その他の情報を<info></info>で括ってください。
                PROMPT
              end
 
@@ -81,5 +92,9 @@ class FetchAisController < ApplicationController
 
   def fetch_ai_params
     params.fetch(:fetch_ai, {}).permit(:prompt_type, :popularity, :quote_type, :mood, :schedule, :how)
+  end
+
+  def set_fetch_ai
+    @fetch_ai = FetchAi.find(params[:id])
   end
 end
