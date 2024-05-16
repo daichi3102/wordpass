@@ -1,7 +1,7 @@
 <!-- app/views/tops/index.html.erb -->
 <div class="flex flex-col justify-center items-center min-h-screen pt-8">
   <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
-    <h1 class="text-3xl font-bold mb-4"><%= t('tops.title') %></h1>
+    <figure><img src="/LMO2.png" alt="Shoes" /></figure>
     <br>
     <figure><img src="/meigenottertop.webp" alt="Shoes" /></figure>
     <br>
@@ -19,9 +19,6 @@
       <figure class="px-10 pt-10">
         <img src="/IMG_4982.JPG" alt="Shoes" class="rounded-xl w-48 h-48" />
       </figure>
-    </div>
-  </div>
-  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
     <br><br>
     <% if user_signed_in? %>
       <h1 class="text-2xl font-bold mb-4">名言の海にようこそ！</h1>
@@ -38,10 +35,10 @@
           <%= link_to '名言の海に行く', fetch_ais_path, class: "btn btn-primary mt-4" %>
         </div>
         <br><br>
-        <h2 class="card-title justify-center">名言作成！</h2>
+        <h2 class="card-title justify-center">名言投稿をしよう！</h2>
         <br>
-        <p>自分の好きな名言の作成（投稿）<br>
-        誰かと協力しての作成（投稿）<br>
+        <p>自分の好きな名言の共有<br>
+        誰かと協力しての作成<br>
         みんなで名言を共有しよう！</p>
         <div class="card-actions justify-center">
           <%= link_to '名言を作成', makes_path, class: "btn btn-primary mt-4" %>
@@ -51,7 +48,7 @@
       <h1 class="text-2xl font-bold mb-4">サインインすると...</h1>
       <br>
       <div class="card-body">
-        <h2 class="card-title justify-center">今の自分に合った名言がもらえるよ！</h2>
+        <h2 class="card-title justify-center">今の自分に合った名言がもらえる！</h2>
         <br>
         <p>プルダウン式の項目から<br>
         気分、予定、どんな名言か<br>
@@ -62,11 +59,12 @@
           <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
         </div>
         <br><br>
-        <h2 class="card-title justify-center">名言作成もできる！</h2>
+        <h2 class="card-title justify-center">名言投稿をしよう！</h2>
         <br>
-        <p>自分の好きな名言の作成（投稿）<br>
-        誰かと協力しての作成（投稿）<br>
+        <p>自分の好きな名言の共有<br>
+        誰かと協力しての作成<br>
         みんなで名言を共有しよう！</p>
+        <br>
         <div class="card-actions justify-center">
           <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
         </div>

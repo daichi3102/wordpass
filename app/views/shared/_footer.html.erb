@@ -1,12 +1,11 @@
-<!-- フッターのリンクにもヘッダー同様のDaisyUIクラスを適用 -->
-<footer class="navbar bg-base-300">
-  <div class="flex justify-between items-center w-full">
-    <nav class="flex space-x-4">
-      <%= link_to t('footer.terms'), "terms", class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
-      <%= link_to t('footer.privacy'), "privacy", class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
-      <%= link_to t('footer.contact'), 'https://docs.google.com/forms/d/e/1FAIpQLSc_jJJPojl8KWO4qfvx7uIzvTkLzc5qfhx2PseONpIUF5_SLA/viewform?embedded=true', class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
+<footer class="navbar bg-base-300 p-4">
+  <div class="flex flex-col md:flex-row justify-between items-center w-full">
+    <nav class="flex space-x-4 mb-4 md:mb-0">
+      <%= link_to t('footer.terms'), "terms", class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
+      <%= link_to t('footer.privacy'), "privacy", class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
+      <%= link_to t('footer.contact'), 'https://docs.google.com/forms/d/e/1FAIpQLSc_jJJPojl8KWO4qfvx7uIzvTkLzc5qfhx2PseONpIUF5_SLA/viewform?embedded=true', class: "btn btn-ghost hover:bg-base-100 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800" %>
     </nav>
-    <aside class="text-sm text-right">
+    <aside class="text-sm text-center md:text-right">
       <p>Copyright © 2024 - MeigenOtter</p>
     </aside>
   </div>

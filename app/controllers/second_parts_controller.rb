@@ -1,6 +1,8 @@
 class SecondPartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_make, only: %i[new create edit update]
+  before_action :set_make, only: %i[new create]
+  before_action :set_make_and_second_part, only: %i[edit update]
+  before_action :authorize_user!, only: %i[edit update]
 
   # first_partsが存在しないmakeのみを取得
   def index
@@ -16,13 +18,9 @@ class SecondPartsController < ApplicationController
   end
 
   def edit
-    @second_part = @make.second_part || @make.build_second_part
   end
 
   def update
-    @second_part = @make.second_part || @make.build_second_part(second_part_params)
-    @second_part.user = current_user
-
     if @second_part.update(second_part_params)
       redirect_to @make, notice: 'Second part was successfully updated.'
     else
@@ -45,6 +43,17 @@ class SecondPartsController < ApplicationController
 
   def set_make
     @make = Make.find(params[:make_id])
+  end
+
+  def set_make_and_second_part
+    @make = Make.find(params[:make_id])
+    @second_part = @make.second_part
+  end
+
+  def authorize_user!
+    return if current_user == @make.first_part&.user || current_user == @make.second_part&.user
+
+    redirect_to @make, alert: 'You are not authorized to perform this action.'
   end
 
   def second_part_params

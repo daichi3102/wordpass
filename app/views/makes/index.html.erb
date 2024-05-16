@@ -2,6 +2,7 @@
   <div class="flex justify-center items-start min-h-screen pt-8">
     <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
     <h1 class="text-3xl font-bold mb-4 text-center"><%= t('makes.index.title') %></h1>
+    <br>
     <%= link_to t('makes.index.create'), new_make_path, class: 'btn btn-primary mb-4' %>
     <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
     <%= link_to t('makes.index.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
@@ -17,11 +18,7 @@
             <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
               <div class="avatar">
                 <div class="rounded-full w-10 h-10">
-                  <% if make.first_part.user.avatar.present? %>
-                    <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
-                  <% else %>
-                    <%= image_tag 'default-avatar.png', class: "rounded-full" %>
-                  <% end %>
+                  <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
                 </div>
               </div>
               <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
@@ -29,11 +26,7 @@
               <% if make.first_part %>
                 <div class="avatar">
                   <div class="rounded-full w-10 h-10">
-                    <% if make.first_part.user.avatar.present? %>
-                      <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
-                    <% else %>
-                      <%= image_tag 'default-avatar.png', class: "rounded-full" %>
-                    <% end %>
+                    <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
                   </div>
                 </div>
                 <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
@@ -41,11 +34,7 @@
               <% if make.second_part %>
                 <div class="avatar">
                   <div class="rounded-full w-10 h-10">
-                    <% if make.second_part.user.avatar.present? %>
-                      <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
-                    <% else %>
-                      <%= image_tag 'default-avatar.png', class: "rounded-full" %>
-                    <% end %>
+                    <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
                   </div>
                 </div>
                 <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
