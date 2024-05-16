@@ -58,13 +58,15 @@ class MakesController < ApplicationController
   end
 
   def authorize_user!
-    redirect_to makes_path, alert: 'You are not authorized to perform this action.' unless @make.user == current_user
+    unless current_user == @make.user || current_user == @make.first_part&.user || current_user == @make.second_part&.user
+      redirect_to makes_path, alert: 'You are not authorized to perform this action.'
+    end
   end
 
   def make_params
     params.require(:make).permit(
-      first_part_attributes: %i[content user_id],
-      second_part_attributes: %i[content user_id]
+      first_part_attributes: %i[id content],
+      second_part_attributes: %i[id content]
     )
   end
 end

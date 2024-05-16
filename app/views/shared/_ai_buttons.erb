@@ -1,9 +1,11 @@
 <!-- app/views/shared/_personalized_buttons.html.erb -->
 <% if user_signed_in? %>
   <div class="card-actions justify-center">
-    <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
+    <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4 w-full max-w-xs" %>
   </div>
-  <button class="btn btn-primary mt-4" onclick="document.getElementById('my_modal_2').showModal()"><%= t('tops.personalize_get') %></button>
+  <div class="card-actions justify-center">
+    <button class="btn btn-primary mt-4 w-auto" onclick="document.getElementById('my_modal_2').showModal()"><%= t('tops.personalize_get') %></button>
+  </div>
   <dialog id="my_modal_2" class="modal">
     <div class="modal-box text-center">
       <form method="dialog">
@@ -34,7 +36,7 @@
           <%= form.select :quote_type, options_for_select(["漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], @fetch_ai.quote_type), {}, {class: "select select-bordered w-full max-w-xs"} %>
         </div>
         <div class="modal-action justify-center">
-          <%= form.submit t('tops.receive'), class: "btn btn-primary mt-4" %>
+          <%= form.submit t('tops.receive'), class: "btn btn-primary mt-4 w-full max-w-xs" %>
         </div>
       <% end %>
     </div>
@@ -49,6 +51,6 @@
   </dialog>
 <% else %>
   <div class="card-actions justify-center">
-    <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4" %>
+    <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4 w-full max-w-xs" %>
   </div>
 <% end %>

@@ -2,6 +2,7 @@
   <div class="flex justify-center items-start min-h-screen pt-8">
     <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
     <h1 class="text-3xl font-bold mb-4 text-center"><%= t('makes.index.title') %></h1>
+    <br>
     <%= link_to t('makes.index.create'), new_make_path, class: 'btn btn-primary mb-4' %>
     <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
     <%= link_to t('makes.index.second_parts'), second_parts_path, class: 'btn btn-secondary' %>

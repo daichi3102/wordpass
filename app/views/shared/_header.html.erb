@@ -1,11 +1,13 @@
-<header class="w-full navbar bg-base-300">
-  <div class="flex justify-between items-center w-full">
+<header class="w-full navbar bg-base-300 h-16"> <!-- ヘッダーの高さを設定 -->
+  <div class="flex justify-between items-center w-full h-full"> <!-- 親要素の高さを設定 -->
     <!-- logo on the left -->
-    <div class="flex-1 px-2 lg:flex-none">
-      <a href="<%= root_path %>" class="btn btn-ghost text-2xl text-blue-500 font-bold"><%= t('header.title')%></a>
+    <div class="h-full flex-shrink-0"> <!-- ロゴを左に固定 -->
+      <a href="<%= root_path %>" class="btn btn-ghost h-full flex items-center"> <!-- リンクの高さとフレックスボックスで中央揃え -->
+        <%= image_tag '/LMO.png', alt: 'Logo', style: 'height: 100%; max-height: 100%;' %> <!-- 画像の高さを設定 -->
+      </a>
     </div>
 
-    <!-- Hamburger menu icon with dropdown on the right -->
+    <!-- 右にハンバーガー -->
     <div class="dropdown dropdown-end flex-none">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">

@@ -5,37 +5,37 @@
       <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
         <!-- Name Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md">
             <%= f.label :name, class: "form-label" %>
           </div>
         </div>
         <!-- Name -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md">
             <%= current_user.name %>
           </div>
         </div>
         <!-- Email Address Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md">
             <%= f.label :email, class: "form-label" %>
           </div>
         </div>
         <!-- Email Address -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md">
             <%= current_user.email %>
           </div>
         </div>
         <!-- Avatar Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-gray-800 text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md">
             <%= f.label :avatar, class: "form-label" %>
           </div>
         </div>
         <!-- Avatar Image -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-blue-600 text-white p-4 rounded-lg w-full">
+          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg w-full">
             <%= image_tag current_user.avatar_url, class: 'rounded-circle', size: '100x100' %>
           </div>
         </div>
