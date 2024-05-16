@@ -12,11 +12,7 @@
         <div class="user-info flex items-center justify-center mt-4 space-x-4">
           <div class="avatar">
             <div class="rounded-full w-10 h-10">
-              <% if first_part.user.avatar.present? %>
-                <%= image_tag first_part.user.avatar.url, class: "rounded-full" %>
-              <% else %>
-                <%= image_tag 'default-avatar.png', class: "rounded-full" %>
-              <% end %>
+              <%= image_tag first_part.user.avatar.url, class: "rounded-full" %>
             </div>
           </div>
           <span class="text-sm font-bold"><%= first_part.user.name %></span>
