@@ -2,6 +2,7 @@ class Make < ApplicationRecord
   belongs_to :user
   has_one :first_part, dependent: :destroy
   has_one :second_part, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   accepts_nested_attributes_for :first_part, reject_if: proc { |attributes| attributes['content'].blank? }
   accepts_nested_attributes_for :second_part, reject_if: proc { |attributes| attributes['content'].blank? }

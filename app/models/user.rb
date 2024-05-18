@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :makes, dependent: :destroy
   has_many :first_parts, dependent: :destroy
   has_many :second_parts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_makes, through: :likes, source: :make
 
   validates :name, presence: true
   validates :email, uniqueness: true
@@ -70,5 +72,17 @@ class User < ApplicationRecord
       end
       { user:, sns: }
     end
+  end
+
+  def like(make)
+    like_makes << make
+  end
+
+  def unlike(make)
+    like_makes.destroy(make)
+  end
+
+  def like?(make)
+    like_makes.include?(make)
   end
 end

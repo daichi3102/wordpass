@@ -51,6 +51,10 @@ class MakesController < ApplicationController
     redirect_to makes_path, notice: 'Make was successfully destroyed.'
   end
 
+  def likes
+    @like_makes = current_user.like_makes.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def set_make
