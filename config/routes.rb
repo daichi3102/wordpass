@@ -9,10 +9,18 @@ Rails.application.routes.draw do
   resources :makes do
     resource :first_part, only: %i[new create edit update]
     resource :second_part, only: %i[new create edit update]
+    # makeにネストしたいいね機能のルーティングを追加
+    collection do
+      get :makes
+    end
   end
+
   # 上のルーティングとは別に、first_partsとsecond_partsのindexアクションを呼び出すためのルーティングを追加
   resources :first_parts, only: [:index]
   resources :second_parts, only: [:index]
+
+  # そもそものいいね機能のルーティングを追加
+  resources :likes, only: %i[create destroy]
 
   root to: 'tops#index'
 

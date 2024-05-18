@@ -1,0 +1,7 @@
+<div class='ms-auto'>
+  <% if current_user.like?(make) %>
+    <%= render 'unlike', { make: make } %>
+  <% else %>
+    <%= render 'like', { make: make } %>
+  <% end %>
+</div>

@@ -42,6 +42,8 @@
             <% end %>
           </div>
 
+          <%= render 'like_buttons', { make: make } %>
+
           <div class="mt-4 flex justify-center space-x-4">
             <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
             <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
