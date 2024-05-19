@@ -1,8 +1,10 @@
 <!-- app/views/fetch_ais/show.html.erb -->
-<div class="flex justify-center items-start pt-8">
-  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
-    <h1 class="text-3xl font-bold mb-4 text-center"><%= t('fetch_ais.show.title') %></h1>
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="w-2/3 bg-base-100 shadow-xl text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.show.title') %></h1>
+    
     <div class="card-body">
+      <br>
       <!-- AI response -->
       <% if @fetch_ai.response.present? %>
         <% quote = @fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
@@ -10,7 +12,7 @@
         
         <% if quote %>
           <div class="chat chat-start flex justify-start mb-4">
-            <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: bold;">
+            <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-2xl text-black" style="text-align: left; font-weight: bold;">
               <%= quote %>
             </div>
           </div>
@@ -18,20 +20,18 @@
 
         <% if info %>
           <div class="chat chat-start flex justify-start mb-4">
-            <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md" style="text-align: left; font-weight: normal;">
+            <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-xs text-black" style="text-align: left; font-weight: normal; font-size: 0.75rem;">
               <%= info %>
             </div>
           </div>
         <% end %>
       <% end %>
-      <!-- share -->
-      <div class="chat chat-end flex justify-end">
+
+      <!-- do -->
+      <div class="chat chat-end flex justify-end mt-4">
         <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md">
-          <div class="mt-4">
-            <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=名言の海を探索したら、この方の言葉を見つけたよ！%0a%0a#{quote}", target: '_blank', class: "btn btn-primary flex items-center justify-center gap-2" do %>
-              <i class="fa-brands fa-x-twitter"></i>
-              <span><%= t('fetch_ais.show.share') %></span>
-            <% end %>
+          <div>
+            <%= render 'shared/x_buttons', quote: quote %>
             <br>
             <%= link_to '名言一覧に戻る', fetch_ais_path, class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
             <br>

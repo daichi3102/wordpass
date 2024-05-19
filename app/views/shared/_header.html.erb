@@ -22,7 +22,7 @@
           <%= link_to t('header.profile'), profile_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
         </li>
         <li>
-          <%= link_to t('header.ai'), root_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          <%= link_to t('header.ai'), new_fetch_ai_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
         </li>
         <li>
           <%= link_to t('header.ai_index'), fetch_ais_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
@@ -31,7 +31,7 @@
           <%= link_to t('header.makes'), makes_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
         </li>
         <li>
-          <a href="#" class="btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800"><%= t('header.likes') %></a>
+          <%= link_to t('header.likes'), likes_makes_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
         </li>
       </ul>
     </div>

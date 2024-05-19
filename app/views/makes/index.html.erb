@@ -1,57 +1,65 @@
+<!-- app/views/makes/index.html.erb -->
 <% if user_signed_in? %>
   <div class="flex justify-center items-start min-h-screen pt-8">
-    <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
-    <h1 class="text-3xl font-bold mb-4 text-center"><%= t('makes.index.title') %></h1>
-    <br>
-    <%= link_to t('makes.index.create'), new_make_path, class: 'btn btn-primary mb-4' %>
-    <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
-    <%= link_to t('makes.index.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
+    <div class="w-2/3 text-center">
+      <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.index.title') %></h1>
+      <br>
+      <div class="flex flex-col items-center space-y-4 mb-4">
+        <%= link_to t('makes.index.create'), new_make_path, class: 'btn btn-primary' %>
+        <br>
+        <div class="flex space-x-4">
+          <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
+          <%= link_to t('makes.index.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
 
-    <% @makes.each do |make| %>
-      <div class="card bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
-        <div class="card-body">
-          <h2 class="text-xl font-semibold mb-2 text-center">
-            <%= make.first_part&.content || '' %> <%= make.second_part&.content || '' %>
-          </h2>
+      <% @makes.each do |make| %>
+        <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+          <div class="card-body">
+            <h2 class="text-3xl font-semibold mb-2 text-center">
+              <div><%= make.first_part&.content || '' %></div>
+              <div><%= make.second_part&.content || '' %></div>
+            </h2>
 
-          <div class="user-info flex items-center justify-center mt-4 space-x-4">
-            <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
-              <div class="avatar">
-                <div class="rounded-full w-10 h-10">
-                  <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
-                </div>
-              </div>
-              <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
-            <% else %>
-              <% if make.first_part %>
+            <div class="user-info flex items-center justify-center mt-4 space-x-4">
+              <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
                 <div class="avatar">
                   <div class="rounded-full w-10 h-10">
                     <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
                   </div>
                 </div>
-                <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
-              <% end %>
-              <% if make.second_part %>
-                <div class="avatar">
-                  <div class="rounded-full w-10 h-10">
-                    <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
+                <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
+              <% else %>
+                <% if make.first_part %>
+                  <div class="avatar">
+                    <div class="rounded-full w-10 h-10">
+                      <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
+                    </div>
                   </div>
-                </div>
-                <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
+                  <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
+                <% end %>
+                <% if make.second_part %>
+                  <div class="avatar">
+                    <div class="rounded-full w-10 h-10">
+                      <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
+                    </div>
+                  </div>
+                  <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
 
-          <%= render 'like_buttons', { make: make } %>
-
-          <div class="mt-4 flex justify-center space-x-4">
-            <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
-            <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
-            <%= link_to t('makes.index.add_second_part'), new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+            <div class="mt-4 flex justify-center items-center space-x-4">
+              <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
+              <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
+              <%= link_to t('makes.index.add_second_part'), new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+              <!-- Like buttons partial added here -->
+              <%= render 'like_buttons', { make: make } %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% else %>
   <p>サインインしてください。</p>

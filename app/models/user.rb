@@ -74,6 +74,10 @@ class User < ApplicationRecord
     end
   end
 
+  def own?(object)
+    id == object&.user_id
+  end
+
   def like(make)
     like_makes << make
   end

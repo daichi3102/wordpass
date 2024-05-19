@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   resources :fetch_ais
 
-  resources :makes do
+  resources :makes, only: %i[index new create show edit update destroy] do
     resource :first_part, only: %i[new create edit update]
     resource :second_part, only: %i[new create edit update]
     # makeにネストしたいいね機能のルーティングを追加
     collection do
-      get :makes
+      get :likes
     end
   end
 
