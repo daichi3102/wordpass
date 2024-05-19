@@ -23,7 +23,6 @@
         <div class="mb-3 text-center">
           <%= form.label :schedule, class: "form-label block mb-2 text-sm font-bold" %>
           <%= form.select :schedule, options_for_select(["仕事", "学習", "健康の事", "家庭の事", "趣味", "自己に関わること"], @fetch_ai.schedule), {}, {class: "select select-bordered w-full max-w-xs"} %>
-        </div>
         <div class="mb-3 text-center">
           <%= form.label :how, class: "form-label block mb-2 text-sm font-bold" %>
           <%= form.select :how, options_for_select(["心に刺さる名言", "心に寄り添う名言", "クスっと笑ってしまう名言", "厳しい名言"], @fetch_ai.how), {}, {class: "select select-bordered w-full max-w-xs"} %>
