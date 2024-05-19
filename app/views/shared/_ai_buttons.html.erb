@@ -41,14 +41,14 @@
       <% end %>
     </div>
   </dialog>
-  <!-- yuriraccoモーダル -->
-  <dialog id="loading_modal" class="modal">
-    <div class="modal-box text-center">
-      <figure class="px-10 pt-10">
-        <img src="/20240514_164506.GIF" alt="Shoes" class="rounded-xl w-48 h-48" />
-      </figure>
-    </div>
-  </dialog>
+<!-- yuriraccoモーダル -->
+<dialog id="loading_modal" class="modal flex items-center justify-center">
+  <div class="modal-box text-center flex flex-col items-center justify-center">
+    <figure class="flex items-center justify-center">
+      <img src="/20240514_151628.GIF" alt="Shoes" class="rounded-xl w-48 h-48" />
+    </figure>
+  </div>
+</dialog>
 <% else %>
   <div class="card-actions justify-center">
     <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4 w-full max-w-xs" %>
