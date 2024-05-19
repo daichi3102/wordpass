@@ -1,41 +1,44 @@
+<!-- app/views/profiles/show.html.erb -->
 <div class="flex justify-center items-start min-h-screen pt-8">
-  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
-  <h1 class="text-3xl font-bold mb-4 text-center"><%= t('profiles.show.title') %></h1>
+  <div class="w-2/3 bg-base-100 shadow-xl text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('profiles.show.title') %></h1>
+
     <div class="card-body">
+      <br>
       <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
         <!-- Name Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
             <%= f.label :name, class: "form-label" %>
           </div>
         </div>
         <!-- Name -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
             <%= current_user.name %>
           </div>
         </div>
         <!-- Email Address Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
             <%= f.label :email, class: "form-label" %>
           </div>
         </div>
         <!-- Email Address -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
             <%= current_user.email %>
           </div>
         </div>
         <!-- Avatar Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-neutral text-white p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
             <%= f.label :avatar, class: "form-label" %>
           </div>
         </div>
         <!-- Avatar Image -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg w-full">
+          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
             <%= image_tag current_user.avatar_url, class: 'rounded-circle', size: '100x100' %>
           </div>
         </div>

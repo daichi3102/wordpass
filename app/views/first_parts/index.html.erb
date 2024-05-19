@@ -1,30 +1,34 @@
-<div class="flex justify-center items-start min-h-screen pt-8">
-  <div class="card card-compact w-96 bg-base-100 shadow-xl text-center">
-  <h1 class="text-3xl font-bold mb-4 text-center">First Parts</h1>
+<!-- app/views/first_parts/index.html.erb -->
+<div class="flex justify-center items-start pt-8">
+  <div class="w-2/3 text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;">上の句</h1>
 
-  <% @first_parts.each do |first_part| %>
-    <div class="card bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
-      <div class="card-body">
-        <h2 class="text-xl font-semibold mb-2 text-center">
-          <%= first_part.content %>
-        </h2>
+    <br><br>
+    <% @first_parts.each do |first_part| %>
+      <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+        <div class="card-body">
+          <h2 class="text-3xl font-semibold mb-2 text-center">
+            <%= first_part.content %>
+          </h2>
 
-        <div class="user-info flex items-center justify-center mt-4 space-x-4">
-          <div class="avatar">
-            <div class="rounded-full w-10 h-10">
-              <%= image_tag first_part.user.avatar.url, class: "rounded-full" %>
+          <div class="user-info flex items-center justify-center mt-4 space-x-4">
+            <div class="avatar">
+              <div class="rounded-full w-10 h-10">
+                <%= image_tag first_part.user.avatar.url, class: "rounded-full" %>
+              </div>
             </div>
+            <span class="text-sm font-bold"><%= first_part.user.name %></span>
           </div>
-          <span class="text-sm font-bold"><%= first_part.user.name %></span>
-        </div>
 
-        <div class="mt-4 flex justify-center space-x-4">
-          <%= link_to '下の句を作る', make_path(first_part.make), class: 'btn btn-primary' %>
-        </div>
-        <div class="mt-4">
-          <%= link_to '戻る', makes_path, class: 'btn btn-secondary' %>
+          <br>
+          <div class="mt-4 flex justify-center space-x-4">
+            <%= link_to '下の句を作る', make_path(first_part.make), class: 'btn btn-primary' %>
+          </div>
+          <div class="mt-4">
+            <%= link_to '戻る', makes_path, class: 'btn btn-secondary' %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
