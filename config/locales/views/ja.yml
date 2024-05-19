@@ -46,7 +46,7 @@ ja:
     signout: サインアウト
     profile: プロフィール
     ai: AIから受け取る
-    ai_index: 受け取った名言一覧
+    ai_index: 受け取った名言
     makes: 名言を作る
     likes: いいねした名言
   footer:
@@ -91,5 +91,8 @@ ja:
       title: 名言作成
       create: 作成
       back: 一覧に戻る
+      first_parts: 上の句
+      second_parts: 下の句
+    edit:
       first_parts: 上の句
       second_parts: 下の句

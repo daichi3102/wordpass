@@ -1,39 +1,41 @@
 <!-- app/views/makes/edit.html.erb -->
 <br>
-<h1 class="text-3xl font-bold mb-4 text-center"><%= t('makes.edit.title') %></h1>
-<div class="flex justify-center items-center">
-  <div class="card card-compact w-full max-w-lg bg-base-100 shadow-xl p-8">
-    <h1 class="text-2xl font-bold mb-4">Edit Make #<%= @make.id %></h1>
+<h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;">名言編集</h1>
+<div class="flex justify-center items-center pt-8">
+  <div class="w-2/3 text-center">
+    <div class="card-body bg-base-100 shadow-xl p-8">
 
-    <%= form_with(model: @make, local: true) do |form| %>
-      <div class="mb-4">
-        <%= form.fields_for :first_part do |fp_form| %>
-          <div class="form-control">
-            <%= fp_form.label :content, t('makes.edit.first_parts'), class: "label" %>
-            <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full", value: @make.first_part&.content %>
-          </div>
-        <% end %>
+      <%= form_with(model: @make, local: true) do |form| %>
+        <div class="mb-4">
+          <%= form.fields_for :first_part do |fp_form| %>
+            <div class="form-control">
+              <%= fp_form.label :content, t('makes.edit.first_parts'), class: "label" %>
+              <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full", value: @make.first_part&.content %>
+            </div>
+          <% end %>
+        </div>
+
+        <br>
+        <div class="mb-4">
+          <%= form.fields_for :second_part do |sp_form| %>
+            <div class="form-control">
+              <%= sp_form.label :content, t('makes.edit.second_parts'), class: "label" %>
+              <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full", value: @make.second_part&.content %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "更新", class: 'btn btn-primary w-full' %>
+        </div>
+      <% end %>
+
+      <div class="mt-4">
+        <%= link_to "戻る", make_path(@make), class: 'btn btn-secondary w-full' %>
       </div>
-
-      <div class="mb-4">
-        <%= form.fields_for :second_part do |sp_form| %>
-          <div class="form-control">
-            <%= sp_form.label :content, t('makes.edit.second_parts'), class: "label" %>
-            <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full", value: @make.second_part&.content %>
-          </div>
-        <% end %>
+      <div class="mt-4">
+        <%= button_to "削除", make_path(@make), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info w-full' %>
       </div>
-
-      <div class="actions">
-        <%= form.submit "更新", class: 'btn btn-primary w-full' %>
-      </div>
-    <% end %>
-
-    <div class="mt-4">
-      <%= link_to "戻る", make_path(@make), class: 'btn btn-secondary w-full' %>
-    </div>
-    <div class="mt-4">
-      <%= button_to "削除", make_path(@make), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-info w-full' %>
     </div>
   </div>
 </div>

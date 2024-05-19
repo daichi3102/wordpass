@@ -1,6 +1,8 @@
 <!-- app/views/tops/index.html.erb -->
 <div class="relative min-h-screen">
-  <img src="/Motop.PNG" alt="Shoes" class="mb-4" />
+  <figure class="mb-4">
+    <img src="/Motop.PNG" alt="Shoes" />
+  </figure>
 
   <div class="relative flex flex-col justify-center items-center min-h-screen pt-8 z-10 text-center">
     <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('tops.subtitle') %></h2>
@@ -13,16 +15,17 @@
     </p>
     <%= render 'shared/ai_buttons', fetch_ai: @fetch_ai %>
     <br><br><br><br><br><br><br><br>
-    <h2 class="text-2xl font-bold mb-4">名言おった？</h2>
+    <h2 class="text-2xl font-bold mb-4" style="color: #00BFFF;">名言おった？</h2>
     <br><br>
     <figure class="w-48 h-48 mb-8">
       <img src="/IMG_4982.JPG" alt="Shoes" class="rounded-xl w-full h-full object-cover" />
     </figure>
     <br><br><br><br>
     <% if user_signed_in? %>
-      <h1 class="text-2xl font-bold mb-4">名言の海へようこそ！</h1>
+      <h1 class="text-2xl font-bold mb-4" style="color: #00BFFF;">名言の海へようこそ！</h1>
       <br><br><br><br>
-      <h2 class="text-xl font-bold mb-4">あなたに合った名言を見つけよう！</h2>
+      <h2 class="text-xl font-bold mb-4" style="color: #00BFFF;">あなたに合った名言を見つけよう！</h2>
+      <br>
       <p class="mb-4">プルダウン式の項目から<br>
         気分、予定、どんな名言か<br>
         メジャーなのかマイナーな作品なのか<br>
@@ -30,10 +33,11 @@
         自分で選択できるよ！
       </p>
       <div class="mb-8">
-        <%= link_to '名言の海に行く', fetch_ais_path, class: "btn btn-primary mt-4" %>
+        <%= link_to '受け取った名言たち', fetch_ais_path, class: "btn btn-primary mt-4" %>
       </div>
       <br><br><br><br>
-      <h2 class="text-xl font-bold mb-4">名言投稿をしよう！</h2>
+      <h2 class="text-xl font-bold mb-4" style="color: #00BFFF;">名言投稿をしよう！</h2>
+      <br>
       <p class="mb-4">自分の好きな名言の共有<br>
         誰かと協力しての作成<br>
         みんなで名言を共有しよう！
@@ -45,7 +49,8 @@
     <% else %>
       <h1 class="text-2xl font-bold mb-4">サインインすると...</h1>
       <br><br><br><br>
-      <h2 class="text-xl font-bold mb-4">今の自分に合った名言がもらえる！</h2>
+      <h2 class="text-xl font-bold mb-4" style="color: #00BFFF;">今の自分に合った名言がもらえる！</h2>
+      <br>
       <p class="mb-4">プルダウン式の項目から<br>
         気分、予定、どんな名言か<br>
         メジャーなのかマイナーな作品なのか<br>
@@ -56,7 +61,8 @@
         <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
       </div>
       <br><br><br><br>
-      <h2 class="text-xl font-bold mb-4">名言投稿をしよう！</h2>
+      <h2 class="text-xl font-bold mb-4" style="color: #00BFFF;">名言投稿をしよう！</h2>
+      <br>
       <p class="mb-4">自分の好きな名言の共有<br>
         誰かと協力しての作成<br>
         みんなで名言を共有しよう！
