@@ -1,2 +1,16 @@
-<h1>FetchAis#new</h1>
-<p>Find me in app/views/fetch_ais/new.html.erb</p>
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="w-2/3 text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.new.title') %></h1>
+    
+    <br><br>
+    
+    <%= render 'shared/ai_buttons', fetch_ai: @fetch_ai %>
+    
+    <br><br>
+
+    <div class="mb-8">
+      <%= link_to '名言一覧', fetch_ais_path, class: "btn btn-secondary mt-4" %>
+    </div>
+    
+  </div>
+</div>

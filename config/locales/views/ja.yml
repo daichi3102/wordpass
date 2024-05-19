@@ -76,6 +76,8 @@ ja:
       share: シェア
     edit:
       title: 受け取った名言を編集
+    new:
+      title: AIから名言を受け取る
   makes:
     index:
       title: 名言を作ろう！
