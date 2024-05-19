@@ -1,16 +1,19 @@
-<h2><%= t('.forgot_your_password') %></h2>
+<div class="flex flex-col items-center">
+  <h2 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('.forgot_your_password') %></h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "w-full max-w-xs" }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field form-control">
+      <%= f.label :email, class: "label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered input-primary w-full" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit t('.send_me_reset_password_instructions') %>
-  </div>
-<% end %>
+    <div class="actions mt-4 flex justify-center">
+      <%= f.submit t('.send_me_reset_password_instructions'), class: "btn btn-primary w-auto" %>
+    </div>
+  <% end %>
 
-<%= render "users/shared/links" %>
+  <br>
+  <%= render "users/shared/links" %>
+</div>
