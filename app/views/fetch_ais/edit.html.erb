@@ -29,7 +29,7 @@
                 <div class="chat chat-end flex justify-end">
                   <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md text-left">
                     <div class="mt-4">
-                      <%= link_to '詳細', fetch_ai_path(@fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
+                      <%= link_to '戻る', fetch_ai_path(@fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
                       <br>
                       <%= button_to '削除', fetch_ai_path(@fetch_ai), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-info" %>
                     </div>
