@@ -48,7 +48,7 @@ class FetchAisController < ApplicationController
                  quote_type = params[:fetch_ai][:quote_type]
                  <<~PROMPT
                    今は#{mood}な気分で、今日は#{schedule}をして過ごす予定です。
-                   #{how}を、#{popularity}な#{quote_type}から1つ引用してください。
+                   #{how}を、#{popularity}、#{quote_type}から1つ引用してください。
                    偉人や有名人の場合は、名前を記載してください。
                    書籍、映画、漫画、アニメの場合には引用作品名と、作者か登場人物名を記載してください。
                    対話型の返答は省き、引用情報のみの日本語、名言を<quote></quote>で括り、その他の情報を<info></info>で括ってください。
