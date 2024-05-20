@@ -5,17 +5,18 @@
   </figure>
 
   <div class="relative flex flex-col justify-center items-center min-h-screen pt-8 z-10 text-center">
-    <h1 class="text-5xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('tops.subtitle') %></h2>
     <br>
-    <p class="mb-4">AIが名言を提供するよ？<br>
-      偉人、有名人、名著、映画、漫画、アニメなど<br>
-      様々な作品からの名言や格言を受け取ろう！<br>
-      日々の生活において必要な刺激となる言葉を通じて<br>
-      心のエネルギーを蓄えよう！
+    <h1 class="text-5xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('tops.subtitle') %></h2>
+    <br><br><br>
+    <p class="mb-4">AIが名言を提供するよ？<br><br>
+    偉人、有名人、名著、映画、漫画、アニメなど<br>
+    様々な作品からの名言や格言を受け取ろう！<br>
+    日々の生活において必要な刺激となる言葉を通じて<br>
+    心のエネルギーを蓄えよう！
     </p>
     <%= render 'shared/ai_buttons', fetch_ai: @fetch_ai %>
     <br><br><br><br><br><br><br><br>
-    
+
     <h2 class="text-2xl font-bold mb-4" style="color: #00BFFF;">名言おった?</h2>
     <br><br>
     <figure class="w-70 h-70 mb-8">
@@ -23,15 +24,15 @@
     </figure>
     <br><br><br><br>
     <% if user_signed_in? %>
-      <h1 class="text-4xl font-bold mb-4" style="color: #00BFFF;">名言の海へようこそ！</h1>
+      <h1 class="text-4xl font-bold mb-4" style="color: #00BFFF;">今すぐ、名言の海に飛び込もう！！</h1>
       <br><br><br><br>
       <h2 class="text-2xl font-bold mb-4" style="color: #00BFFF;">あなたに合った名言を見つけよう！</h2>
       <br>
-      <p class="mb-4">プルダウン式の項目から<br>
-        気分、予定、どんな名言か<br>
-        メジャーなのかマイナーな作品なのか<br>
-        偉人、有名人、名著、映画、漫画、アニメなのか<br>
-        自分で選択できるよ！
+      <p class="mb-4">時間のない時にはすぐに取得ボタン！<br>
+      少しでもあれば、パーソナライズして取得しよう！<br><br>
+      メジャーなのかマイナーな作品なのか<br>
+      偉人、有名人、名著、映画、漫画、アニメなのか<br>
+      自分で選択できるよ！
       </p>
       <div class="mb-8">
         <%= link_to '受け取った名言たち', fetch_ais_path, class: "btn btn-primary mt-4" %>
@@ -40,8 +41,8 @@
       <h2 class="text-2xl font-bold mb-4" style="color: #00BFFF;">名言投稿をしよう！</h2>
       <br>
       <p class="mb-4">自分の好きな名言の共有<br>
-        誰かと協力しての作成<br>
-        みんなで名言を共有しよう！
+      誰かと協力しての作成<br><br>
+      みんなで名言を共有しよう！
       </p>
       <div class="mb-8">
         <%= link_to '名言を作成する', makes_path, class: "btn btn-primary mt-4" %>
@@ -52,11 +53,11 @@
       <br><br><br><br>
       <h2 class="text-2xl font-bold mb-4" style="color: #00BFFF;">今の自分に合った名言がもらえる！</h2>
       <br>
-      <p class="mb-4">プルダウン式の項目から<br>
-        気分、予定、どんな名言か<br>
-        メジャーなのかマイナーな作品なのか<br>
-        偉人、有名人、名著、映画、漫画、アニメなのか<br>
-        自分で選択できるよ！
+      <p class="mb-4">時間のない時にはすぐに取得ボタン！<br>
+      少しでもあれば、パーソナライズして取得しよう！<br><br>
+      メジャーなのかマイナーな作品なのか<br>
+      偉人、有名人、名著、映画、漫画、アニメなのか<br>
+      自分で選択できるよ！
       </p>
       <div class="mb-8">
         <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
@@ -65,8 +66,8 @@
       <h2 class="text-2xl font-bold mb-4" style="color: #00BFFF;">名言投稿をしよう！</h2>
       <br>
       <p class="mb-4">自分の好きな名言の共有<br>
-        誰かと協力しての作成<br>
-        みんなで名言を共有しよう！
+      誰かと協力しての名言作成<br><br>
+      みんなで名言を共有しよう！
       </p>
       <div class="mb-8">
         <%= link_to t('tops.signup'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>

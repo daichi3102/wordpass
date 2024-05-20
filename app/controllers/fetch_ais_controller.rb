@@ -1,5 +1,5 @@
 class FetchAisController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new create edit update destroy]
+  before_action :authenticate_user!, only: %i[index new edit update destroy]
   before_action :set_fetch_ai, only: %i[show edit update destroy]
 
   def index
