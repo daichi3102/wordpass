@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[show edit update destroy]
   before_action :authorize_user!, only: %i[edit update destroy]
 

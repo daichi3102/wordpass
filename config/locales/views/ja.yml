@@ -58,7 +58,7 @@ ja:
     title: MeigenOtter
     subtitle: 言葉は、１番のエネルギー！！
     get: すぐに受け取る
-    personalize_get: パーソナライズして受け取る
+    custom_get: 条件を指定して受け取る
     receive: 受け取る
     signup: サインアップ
   profiles:

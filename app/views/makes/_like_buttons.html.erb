@@ -1,5 +1,5 @@
 <div class='ms-auto'>
-  <% if current_user.like?(make) %>
+  <% if user_signed_in? && current_user.like?(make) %>
     <%= render 'unlike', { make: make } %>
   <% else %>
     <%= render 'like', { make: make } %>
