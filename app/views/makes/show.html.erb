@@ -6,7 +6,8 @@
     <div class="card-body bg-base-100 shadow-xl p-8">
 
       <h2 class="text-3xl font-semibold mb-2">
-        <%= @make.first_part&.content || '' %> <%= @make.second_part&.content || '' %>
+        <div><%= @make.first_part&.content || '' %></div>
+        <div><%= @make.second_part&.content || '' %></div>
       </h2>
 
       <div class="user-info flex flex-col items-center mt-4 space-x-4">
