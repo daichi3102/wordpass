@@ -4,4 +4,7 @@
   <% else %>
     <%= render 'like', { make: make } %>
   <% end %>
+  <div id="like-count-for-make-<%= make.id %>">
+    <%= make.likes.count %>
+  </div>
 </div>
