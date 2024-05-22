@@ -1,13 +1,17 @@
 class MakesController < ApplicationController
+  # except: [:index]でindexアクションのみログインしていなくてもアクセスできる
   before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[show edit update destroy]
   before_action :authorize_user!, only: %i[edit update destroy]
 
   def index
-    @makes = Make.order(created_at: :desc)
+    @makes = Make.includes(:likes).order(created_at: :desc)
   end
 
   def show
+    @make = Make.find_by(id: params[:id])
+    @user = @make.user
+    @likes_count = Like.where(make_id: @make.id).count
   end
 
   def new
@@ -29,7 +33,7 @@ class MakesController < ApplicationController
     end
 
     if @make.save
-      redirect_to @make, notice: 'Make was successfully created.'
+      redirect_to @make, notice: '名言を作成しました'
     else
       render :new
     end
@@ -40,7 +44,7 @@ class MakesController < ApplicationController
 
   def update
     if @make.update(make_params)
-      redirect_to @make, notice: 'Make was successfully updated.'
+      redirect_to @make, notice: '名言を作成できませんでした'
     else
       render :edit
     end
@@ -48,7 +52,7 @@ class MakesController < ApplicationController
 
   def destroy
     @make.destroy
-    redirect_to makes_path, notice: 'Make was successfully destroyed.'
+    redirect_to makes_path, notice: '名言を削除しました'
   end
 
   def likes

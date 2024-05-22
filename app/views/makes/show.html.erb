@@ -46,6 +46,7 @@
       </div>
 
       <div class="actions mt-4">
+        <%= render 'like_buttons', { make: @make } %>
         <%= link_to '上の句を作る', new_make_first_part_path(@make), class: 'btn btn-primary w-full mt-4' if @make.first_part.nil? %>
         <%= link_to '下の句を作る', new_make_second_part_path(@make), class: 'btn btn-primary w-full mt-4' if @make.second_part.nil? %>
         <br><br>

@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <div class="flex justify-center items-start min-h-screen pt-8">
     <div class="w-2/3 text-center">
-      <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.index.title') %></h1>
+      <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.likes.title') %></h1>
       <br>
       <div class="flex flex-col items-center space-y-4 mb-4">
         <%= link_to t('makes.index.create'), new_make_path, class: 'btn btn-primary' %>
@@ -51,12 +51,11 @@
                     <% end %>
                   </div>
 
-                  <%= render 'like_buttons', { make: make } %>
-
-                  <div class="mt-4 flex justify-center space-x-4">
+                  <div class="mt-4 flex justify-center items-center space-x-4">
                     <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
                     <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
                     <%= link_to t('makes.index.add_second_part'), new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+                    <%= render 'like_buttons', { make: make } %>
                   </div>
                 </div>
               </div>

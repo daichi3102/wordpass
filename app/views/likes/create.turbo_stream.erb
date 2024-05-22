@@ -1,3 +1,8 @@
 <%= turbo_stream.replace "like-button-for-make-#{@make.id}" do %>
   <%= render 'makes/unlike', make: @make %>
 <% end %>
+<%= turbo_stream.replace "like-count-for-make-#{@make.id}" do %>
+  <div id="like-count-for-make-<%= @make.id %>">
+    <%= @make.likes.count %>
+  </div>
+<% end %>
