@@ -1,221 +1,221 @@
 <% if user_signed_in? %>
-  <div class="flex justify-center items-start min-h-screen pt-8">
-    <div class="w-2/3 text-center">
-      <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;">マイページ</h1>
-      <br>
+<div class="flex justify-center items-start min-h-screen pt-8">
+  <div class="w-2/3 text-center">
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;">マイページ</h1>
+    <br>
 
-      <div role="tablist" class="tabs tabs-bordered">
-        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="プロフィール" checked />
-        <div role="tabpanel" class="tab-content p-10">
-          <!-- プロフィール -->
-          <div class="card-body flex flex-col items-center">
-            <br>
-            <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
-              <!-- Name Label -->
-              <div class="chat chat-start flex justify-start">
-                <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
-                  <%= f.label :name, class: "form-label" %>
-                </div>
+    <div role="tablist" class="tabs tabs-bordered">
+      <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="プロフィール" checked />
+      <div role="tabpanel" class="tab-content p-10">
+        <!-- プロフィール -->
+        <div class="card-body flex flex-col items-center">
+          <br>
+          <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
+            <!-- Name Label -->
+            <div class="chat chat-start flex justify-start">
+              <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
+                <%= f.label :name, class: "form-label" %>
               </div>
-              <!-- Name -->
-              <div class="chat chat-end flex justify-end">
-                <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
-                  <%= current_user.name %>
-                </div>
+            </div>
+            <!-- Name -->
+            <div class="chat chat-end flex justify-end">
+              <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
+                <%= current_user.name %>
               </div>
-              <!-- Email Address Label -->
-              <div class="chat chat-start flex justify-start">
-                <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
-                  <%= f.label :email, class: "form-label" %>
-                </div>
+            </div>
+            <!-- Email Address Label -->
+            <div class="chat chat-start flex justify-start">
+              <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
+                <%= f.label :email, class: "form-label" %>
               </div>
-              <!-- Email Address -->
-              <div class="chat chat-end flex justify-end">
-                <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
-                  <%= current_user.email %>
-                </div>
+            </div>
+            <!-- Email Address -->
+            <div class="chat chat-end flex justify-end">
+              <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
+                <%= current_user.email %>
               </div>
-              <!-- Avatar Label -->
-              <div class="chat chat-start flex justify-start">
-                <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
-                  <%= f.label :avatar, class: "form-label" %>
-                </div>
+            </div>
+            <!-- Avatar Label -->
+            <div class="chat chat-start flex justify-start">
+              <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
+                <%= f.label :avatar, class: "form-label" %>
               </div>
-              <!-- Avatar Image -->
-              <div class="chat chat-end flex justify-end">
-                <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
-                  <%= image_tag current_user.avatar_url, class: 'rounded-circle', size: '100x100' %>
-                </div>
+            </div>
+            <!-- Avatar Image -->
+            <div class="chat chat-end flex justify-end">
+              <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
+                <%= image_tag current_user.avatar_url, class: 'rounded-circle', size: '100x100' %>
               </div>
-              <!-- Submit Button -->
-              <div class="flex justify-end w-full">
-                <%= link_to t('profiles.show.edit'), edit_profile_path, class: "btn btn-primary mt-4" %>
-              </div>
-            <% end %>
-          </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="flex justify-end w-full">
+              <%= link_to t('profiles.show.edit'), edit_profile_path, class: "btn btn-primary mt-4" %>
+            </div>
+          <% end %>
         </div>
+      </div>
 
-        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="AIから" />
-        <div role="tabpanel" class="tab-content p-10">
-          <!-- AIから受け取ったもの -->
-          <% if @fetch_ais.present? %>
-            <div class="row">
-              <% @fetch_ais.each do |fetch_ai| %>
-                <% if fetch_ai.response.present? %>
-                  <div class="col-sm-12 col-lg-4 mb-3">
-                    <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
-                      <div class="card-body">
-                        <% quote = fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
-                        <% info = fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
-                        <% if quote %>
-                          <div class="chat chat-start flex justify-start mb-4">
-                            <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-2xl" style="text-align: left; font-weight: bold;">
-                              <%= quote %>
-                            </div>
+      <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="AIから" />
+      <div role="tabpanel" class="tab-content p-10">
+        <!-- AIから受け取ったもの -->
+        <% if @fetch_ais.present? %>
+          <div class="row">
+            <% @fetch_ais.each do |fetch_ai| %>
+              <% if fetch_ai.response.present? %>
+                <div class="col-sm-12 col-lg-4 mb-3">
+                  <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+                    <div class="card-body">
+                      <% quote = fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
+                      <% info = fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
+                      <% if quote %>
+                        <div class="chat chat-start flex justify-start mb-4">
+                          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-2xl" style="text-align: left; font-weight: bold;">
+                            <%= quote %>
                           </div>
-                        <% end %>
-                        <% if info %>
-                          <div class="chat chat-start flex justify-start mb-4">
-                            <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-xs" style="text-align: left; font-weight: normal; font-size: 0.75rem;">
-                              <%= info %>
-                            </div>
+                        </div>
+                      <% end %>
+                      <% if info %>
+                        <div class="chat chat-start flex justify-start mb-4">
+                          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-xs" style="text-align: left; font-weight: normal; font-size: 0.75rem;">
+                            <%= info %>
                           </div>
-                        <% end %>
-                        <div class="chat chat-end flex justify-end">
-                          <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md text-left">
-                            <div class="mt-4">
-                              <%= render 'shared/x_buttons', quote: quote %>
-                              <br>
-                              <%= link_to '詳細', fetch_ai_path(fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
-                            </div>
+                        </div>
+                      <% end %>
+                      <div class="chat chat-end flex justify-end">
+                        <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md text-left">
+                          <div class="mt-4">
+                            <%= render 'shared/x_buttons', quote: quote %>
+                            <br>
+                            <%= link_to '詳細', fetch_ai_path(fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                <% end %>
+                </div>
               <% end %>
-            </div>
-          <% else %>
-            <p>まだAIから受け取ったものがありません</p>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>まだAIから受け取ったものがありません</p>
+        <% end %>
+      </div>
 
-        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="作成" />
-        <div role="tabpanel" class="tab-content p-10">
-          <!-- 作成したもの -->
-          <% if @makes.present? %>
-            <div class="row">
-              <% @makes.each do |make| %>
-                <div class="col-sm-12 col-lg-4 mb-3">
-                  <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
-                    <div class="card-body">
-                      <h2 class="text-3xl font-semibold mb-2 text-center">
-                        <div><%= make.first_part&.content || '' %></div>
-                        <div><%= make.second_part&.content || '' %></div>
-                      </h2>
-                      <div class="user-info flex items-center justify-center mt-4 space-x-4">
-                        <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
+      <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="作成" />
+      <div role="tabpanel" class="tab-content p-10">
+        <!-- 作成したもの -->
+        <% if @makes.present? %>
+          <div class="row">
+            <% @makes.each do |make| %>
+              <div class="col-sm-12 col-lg-4 mb-3">
+                <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+                  <div class="card-body">
+                    <h2 class="text-3xl font-semibold mb-2 text-center">
+                      <div><%= make.first_part&.content || '' %></div>
+                      <div><%= make.second_part&.content || '' %></div>
+                    </h2>
+                    <div class="user-info flex items-center justify-center mt-4 space-x-4">
+                      <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
+                        <div class="avatar">
+                          <div class="rounded-full w-10 h-10">
+                            <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
+                          </div>
+                        </div>
+                        <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
+                      <% else %>
+                        <% if make.first_part %>
                           <div class="avatar">
                             <div class="rounded-full w-10 h-10">
                               <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
                             </div>
                           </div>
-                          <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
-                        <% else %>
-                          <% if make.first_part %>
-                            <div class="avatar">
-                              <div class="rounded-full w-10 h-10">
-                                <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
-                              </div>
-                            </div>
-                            <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
-                          <% end %>
-                          <% if make.second_part %>
-                            <div class="avatar">
-                              <div class="rounded-full w-10 h-10">
-                                <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
-                              </div>
-                            </div>
-                            <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
-                          <% end %>
+                          <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
                         <% end %>
-                      </div>
-                      <div class="mt-4 flex justify-center items-center space-x-4">
-                        <%= link_to '詳細', make_path(make), class: 'btn btn-secondary' %>
-                        <%= link_to '最初の部分を追加', new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
-                        <%= link_to '次の部分を追加', new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
-                        <%= render 'makes/like_buttons', { make: make } %>
-                      </div>
+                        <% if make.second_part %>
+                          <div class="avatar">
+                            <div class="rounded-full w-10 h-10">
+                              <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
+                            </div>
+                          </div>
+                          <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="mt-4 flex justify-center items-center space-x-4">
+                      <%= link_to '詳細', make_path(make), class: 'btn btn-secondary' %>
+                      <%= link_to '最初の部分を追加', new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
+                      <%= link_to '次の部分を追加', new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+                      <%= render 'makes/like_buttons', { make: make } %>
                     </div>
                   </div>
                 </div>
-              <% end %>
-            </div>
-          <% else %>
-            <p>まだ作成したものがありません</p>
-          <% end %>
-        </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>まだ作成したものがありません</p>
+        <% end %>
+      </div>
 
-        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="いいね" />
-        <div role="tabpanel" class="tab-content p-10">
-          <!-- いいねしているもの -->
-          <% if @likes.present? %>
-            <div class="row">
-              <% @likes.each do |like| %>
-                <% make = like.make %> <!-- Get the make associated with the like -->
-                <div class="col-sm-12 col-lg-4 mb-3">
-                  <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
-                    <div class="card-body">
-                      <h2 class="text-3xl font-semibold mb-2 text-center">
-                        <div><%= make.first_part&.content || '' %></div>
-                        <div><%= make.second_part&.content || '' %></div>
-                      </h2>
-                      <div class="user-info flex items-center justify-center mt-4 space-x-4">
-                        <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
+      <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="いいね" />
+      <div role="tabpanel" class="tab-content p-10">
+        <!-- いいねしているもの -->
+        <% if @like_makes.present? %>
+          <div class="row">
+            <% @like_makes.each do |make| %>
+              <div class="col-sm-12 col-lg-4 mb-3">
+                <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+                  <div class="card-body">
+                    <h2 class="text-3xl font-semibold mb-2 text-center">
+                      <div><%= make.first_part&.content || '' %></div>
+                      <div><%= make.second_part&.content || '' %></div>
+                    </h2>
+                    <div class="user-info flex items-center justify-center mt-4 space-x-4">
+                      <% if make.first_part && make.second_part && make.first_part.user == make.second_part.user %>
+                        <div class="avatar">
+                          <div class="rounded-full w-10 h-10">
+                            <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
+                          </div>
+                        </div>
+                        <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
+                      <% else %>
+                        <% if make.first_part %>
                           <div class="avatar">
                             <div class="rounded-full w-10 h-10">
                               <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
                             </div>
                           </div>
-                          <span class="text-sm font-bold"><%= make.first_part.user.name %></span>
-                        <% else %>
-                          <% if make.first_part %>
-                            <div class="avatar">
-                              <div class="rounded-full w-10 h-10">
-                                <%= image_tag make.first_part.user.avatar.url, class: "rounded-full" %>
-                              </div>
-                            </div>
-                            <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
-                          <% end %>
-                          <% if make.second_part %>
-                            <div class="avatar">
-                              <div class="rounded-full w-10 h-10">
-                                <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
-                              </div>
-                            </div>
-                            <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
-                          <% end %>
+                          <span class="text-sm font-bold mr-4"><%= make.first_part.user.name %></span>
                         <% end %>
-                      </div>
-                      <div class="mt-4 flex justify-center items-center space-x-4">
-                        <%= link_to '詳細', make_path(make), class: 'btn btn-secondary' %>
-                        <%= link_to '最初の部分を追加', new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
-                        <%= link_to '次の部分を追加', new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
-                        <%= render 'makes/like_buttons', { make: make } %>
-                      </div>
+                        <% if make.second_part %>
+                          <div class="avatar">
+                            <div class="rounded-full w-10 h-10">
+                              <%= image_tag make.second_part.user.avatar.url, class: "rounded-full" %>
+                            </div>
+                          </div>
+                          <span class="text-sm font-bold"><%= make.second_part.user.name %></span>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="mt-4 flex justify-center items-center space-x-4">
+                      <%= link_to '詳細', make_path(make), class: 'btn btn-secondary' %>
+                      <%= link_to '最初の部分を追加', new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
+                      <%= link_to '次の部分を追加', new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+                      <%= render 'makes/like_buttons', { make: make } %>
                     </div>
                   </div>
                 </div>
-              <% end %>
-            </div>
-          <% else %>
-            <p>まだいいねしているものがありません</p>
-          <% end %>
-        </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>まだいいねしているものがありません</p>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 <% else %>
-  <p>サインインしてください。</p>
+<p>サインインしてください。</p>
 <% end %>
+
