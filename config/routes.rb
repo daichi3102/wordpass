@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   }
   resource :profile, only: %i[show edit update]
 
+  get 'mypage', to: 'mypages#index'
+
   resources :fetch_ais
 
   resources :makes, only: %i[index new create show edit update destroy] do

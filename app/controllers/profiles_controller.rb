@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, notice: t('defaults.flash_message.updated', item: t('profiles.show.title'))
+      redirect_to mypage_path, notice: t('defaults.flash_message.updated', item: t('profiles.show.title'))
     else
       flash.now[:alert] = t('defaults.flash_message.not_updated', item: t('profiles.show.title'))
       render :edit, status: :unprocessable_entity

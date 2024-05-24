@@ -44,11 +44,9 @@ ja:
     signup: サインアップ
     signin: サインイン
     signout: サインアウト
-    profile: プロフィール
-    ai: AIから受け取る
-    ai_index: 受け取った名言
-    makes: 名言を作る
-    likes: いいねした名言
+    mypage: マイページ
+    ai: AIから名言を受け取る
+    makes: 名言を作成する
   footer:
     about: このサイトについて
     terms: 利用規約
@@ -56,7 +54,7 @@ ja:
     contact: お問い合わせ
   tops:
     title: MeigenOtter
-    subtitle: 言葉は、１番のエネルギー！！
+    subtitle: 今すぐ、名言の海に飛び込もう！
     get: すぐに受け取る
     custom_get: 条件を指定して受け取る
     receive: 受け取る
