@@ -1,8 +1,8 @@
 <div class='ms-auto'>
   <% if user_signed_in? && current_user.like?(make) %>
-    <%= render 'unlike', { make: make } %>
+    <%= render 'makes/unlike', { make: make } %>
   <% else %>
-    <%= render 'like', { make: make } %>
+    <%= render 'makes/like', { make: make } %>
   <% end %>
   <div id="like-count-for-make-<%= make.id %>">
     <%= make.likes.count %>
