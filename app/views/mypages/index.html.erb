@@ -84,7 +84,7 @@
                       <div class="chat chat-end flex justify-end">
                         <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md text-left">
                           <div class="mt-4">
-                            <%= render 'shared/x_buttons', quote: quote %>
+                            <%= render 'shared/x_button', quote: quote %>
                             <br>
                             <%= link_to '詳細', fetch_ai_path(fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
                           </div>
@@ -145,6 +145,7 @@
                       <%= link_to '詳細', make_path(make), class: 'btn btn-secondary' %>
                       <%= link_to '最初の部分を追加', new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
                       <%= link_to '次の部分を追加', new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+                      <%= render 'shared/x_button2', make: @make %>
                       <%= render 'makes/like_buttons', { make: make } %>
                     </div>
                   </div>
