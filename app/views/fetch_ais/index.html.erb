@@ -5,7 +5,7 @@
       <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.index.title') %></h1>
 
       <br><br>
-      <%= render 'shared/ai_buttons', fetch_ai: @fetch_ai %>
+      <%= render 'shared/ai_button', fetch_ai: @fetch_ai %>
       <br><br>
 
       <div class="card-body">
@@ -17,7 +17,6 @@
                 <!-- AI response -->
                 <% quote = fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
                 <% info = fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
-                
                 <% if quote %>
                   <div class="chat chat-start flex justify-start mb-4">
                     <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-2xl" style="text-align: left; font-weight: bold;">
