@@ -60,6 +60,9 @@
             <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
             <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
             <%= link_to t('makes.index.add_second_part'), new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+            <% if make.first_part && make.second_part %>
+              <%= render 'shared/x_button2', { make: make } %>
+            <% end %>
             <!-- Like buttons partial added here -->
             <%= render 'like_buttons', { make: make } %>
           </div>
