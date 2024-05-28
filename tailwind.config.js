@@ -5,6 +5,15 @@ module.exports = {
     './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
+  theme: {
+    fontFamily: {
+      body: [
+        'ヒラギノ丸ゴ ProN',
+        'Hiragino Maru Gothic ProN',
+        'sans-serif'
+      ]
+    }
+  },
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
