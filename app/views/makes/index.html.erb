@@ -1,4 +1,3 @@
-<!-- app/views/makes/index.html.erb -->
 <div class="flex justify-center items-start pt-8">
   <div class="w-2/3 text-center">
     <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.index.title') %></h1>
@@ -10,7 +9,6 @@
     <br><br>
 
     <div class="flex flex-col items-center space-y-4 mb-4">
-      <!-- ボタンをモーダルを開くように変更 -->
       <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.index.create') %></button>
       <br>
       <div class="flex space-x-4">
@@ -58,61 +56,26 @@
 
           <br>
           <div class="mt-4 flex justify-center items-center space-x-4">
-            <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
-            <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
-            <%= link_to t('makes.index.add_second_part'), new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+            <% if user_signed_in? && (make.first_part&.user == current_user || make.second_part&.user == current_user) %>
+              <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
+            <% end %>
+            <% if make.first_part.nil? %>
+              <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_first_part') %></button>
+            <% end %>
+            <% if make.second_part.nil? %>
+              <button class="btn btn-primary" onclick="document.getElementById('second_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_second_part') %></button>
+            <% end %>
             <% if make.first_part && make.second_part %>
               <%= render 'shared/x_button2', { make: make } %>
             <% end %>
-            <!-- Like buttons partial added here -->
             <%= render 'like_buttons', { make: make } %>
           </div>
         </div>
       </div>
+      <%= render 'first_parts/modal', make: make %>
+      <%= render 'second_parts/modal', make: make %>
     <% end %>
   </div>
 </div>
 
-<!-- モーダル追加 -->
-<dialog id="make_modal" class="modal">
-  <div class="modal-box w-full max-w-xl p-6 text-center">
-    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="document.getElementById('make_modal').close()">✕</button>
-    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= t('makes.new.title') %></h1>
-    <div class="pt-8">
-      <div class="text-center">
-        <%= form_with(model: @make, scope: :make, local: true) do |form| %>
-          <div class="mb-4">
-            <%= form.fields_for :first_part, @make.first_part do |fp_form| %>
-              <div class="form-control">
-                <%= fp_form.label :content, t('makes.new.first_parts'), class: "label" %>
-                <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
-                <%= fp_form.hidden_field :user_id, value: current_user.id %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="mb-4">
-            <%= form.fields_for :second_part, @make.second_part do |sp_form| %>
-              <div class="form-control">
-                <%= sp_form.label :content, t('makes.new.second_parts'), class: "label" %>
-                <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
-                <%= sp_form.hidden_field :user_id, value: current_user.id %>
-              </div>
-              <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
-              <br>※ひとりで投稿する場合は、両方使って投稿しよう！
-              </small>
-            <% end %>
-          </div>
-
-          <div class="actions">
-            <%= form.submit t('makes.new.create'), class: 'btn btn-primary w-full' %>
-          </div>
-        <% end %>
-
-        <div class="mt-4">
-          <%= link_to t('makes.new.back'), makes_path, class: 'btn btn-secondary w-full' %>
-        </div>
-      </div>
-    </div>
-  </div>
-</dialog>
+<%= render 'makes/new_modal' %>

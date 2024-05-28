@@ -46,7 +46,7 @@ ja:
     signout: サインアウト
     mypage: マイページ
     ai: AIから名言を受け取る
-    makes: 名言を作成する
+    makes_index: 名言作成ページ
   footer:
     about: このサイトについて
     terms: 利用規約
@@ -68,9 +68,9 @@ ja:
       update: 更新
   fetch_ais:
     index:
-      title: 受け取った名言一覧
+      title: AIから受け取った名言一覧
     show:
-      title: 受け取った名言
+      title: AIから受け取った名言
       share: シェア
     edit:
       title: 受け取った名言を編集
@@ -79,7 +79,7 @@ ja:
   makes:
     index:
       title: 名言を作ろう！
-      create: 作る
+      create: 名言を作る
       first_parts: 未完成の上の句
       second_parts: 未完成の下の句
       detail: 詳細
@@ -88,7 +88,7 @@ ja:
     new:
       title: 名言作成
       create: 作成
-      back: 一覧に戻る
+      back: 作成された名言一覧に戻る
       first_parts: 上の句
       second_parts: 下の句
     edit:

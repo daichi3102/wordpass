@@ -14,7 +14,7 @@
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
-      <h3 class="font-bold text-lg">パーソナライズ</h3>
+      <h3 class="font-bold text-lg">条件を決めよう</h3>
       <p class="py-4">セレクトボックスから適当なものを選んでください</p>
       <%= form_with model: @fetch_ai, local: true, id: "personalize_form" do |form| %>
         <%= form.hidden_field :prompt_type, value: 'personalized' %>
