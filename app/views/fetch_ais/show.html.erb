@@ -2,14 +2,14 @@
 <div class="flex justify-center items-start min-h-screen pt-8">
   <div class="w-2/3 bg-base-100 shadow-xl text-center">
     <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.show.title') %></h1>
-    
+
     <div class="card-body">
       <br>
       <!-- AI response -->
       <% if @fetch_ai.response.present? %>
         <% quote = @fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
         <% info = @fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
-        
+
         <% if quote %>
           <div class="chat chat-start flex justify-start mb-4">
             <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-3xl text-black" style="text-align: left; font-weight: bold;">
@@ -31,7 +31,7 @@
       <div class="chat chat-end flex justify-end mt-4">
         <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md">
           <div>
-            <%= render 'shared/x_buttons', quote: quote %>
+            <%= render 'shared/x_button', quote: quote %>
             <br>
             <%= link_to '名言一覧に戻る', fetch_ais_path, class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
             <br>
