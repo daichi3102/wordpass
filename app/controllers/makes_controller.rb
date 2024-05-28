@@ -6,6 +6,9 @@ class MakesController < ApplicationController
 
   def index
     @makes = Make.includes(:likes).order(created_at: :desc)
+    @make = Make.new
+    @make.build_first_part
+    @make.build_second_part
   end
 
   def show

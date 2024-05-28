@@ -1,4 +1,3 @@
-<!-- app/views/makes/index.html.erb -->
 <div class="flex justify-center items-start pt-8">
   <div class="w-2/3 text-center">
     <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.index.title') %></h1>
@@ -10,7 +9,7 @@
     <br><br>
 
     <div class="flex flex-col items-center space-y-4 mb-4">
-      <%= link_to t('makes.index.create'), new_make_path, class: 'btn btn-primary' %>
+      <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.index.create') %></button>
       <br>
       <div class="flex space-x-4">
         <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
@@ -57,17 +56,26 @@
 
           <br>
           <div class="mt-4 flex justify-center items-center space-x-4">
-            <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
-            <%= link_to t('makes.index.add_first_part'), new_make_first_part_path(make), class: 'btn btn-primary' if make.first_part.nil? %>
-            <%= link_to t('makes.index.add_second_part'), new_make_second_part_path(make), class: 'btn btn-primary' if make.second_part.nil? %>
+            <% if user_signed_in? && (make.first_part&.user == current_user || make.second_part&.user == current_user) %>
+              <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
+            <% end %>
+            <% if make.first_part.nil? %>
+              <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_first_part') %></button>
+            <% end %>
+            <% if make.second_part.nil? %>
+              <button class="btn btn-primary" onclick="document.getElementById('second_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_second_part') %></button>
+            <% end %>
             <% if make.first_part && make.second_part %>
               <%= render 'shared/x_button2', { make: make } %>
             <% end %>
-            <!-- Like buttons partial added here -->
             <%= render 'like_buttons', { make: make } %>
           </div>
         </div>
       </div>
+      <%= render 'first_parts/modal', make: make %>
+      <%= render 'second_parts/modal', make: make %>
     <% end %>
   </div>
 </div>
+
+<%= render 'makes/new_modal' %>

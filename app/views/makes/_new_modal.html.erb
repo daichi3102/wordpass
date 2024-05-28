@@ -1,0 +1,46 @@
+<dialog id="make_modal" class="modal">
+  <div class="modal-box w-full max-w-xl p-6 text-center">
+    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="document.getElementById('make_modal').close()">✕</button>
+    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= t('makes.new.title') %></h1>
+    <div class="pt-8">
+      <div class="text-center">
+        <%= form_with(model: @make, scope: :make, local: true) do |form| %>
+          <div class="mb-4">
+            <%= form.fields_for :first_part, @make.first_part do |fp_form| %>
+              <div class="form-control">
+                <%= fp_form.label :content, '本文', class: "label" %>
+                <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
+                <% if user_signed_in? %>
+                  <%= fp_form.hidden_field :user_id, value: current_user.id %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="mb-4">
+            <%= form.fields_for :second_part, @make.second_part do |sp_form| %>
+              <div class="form-control">
+                <%= sp_form.label :content, '本文', class: "label" %>
+                <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
+                <% if user_signed_in? %>
+                  <%= form.hidden_field :user_id, value: current_user.id %> <!-- サインインしている場合のみ表示 -->
+                <% end %>
+              </div>
+              <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
+              <br>※ひとりで投稿する場合は、両方使って投稿しよう！
+              </small>
+            <% end %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit t('makes.new.create'), class: 'btn btn-primary w-full' %>
+          </div>
+        <% end %>
+
+        <div class="mt-4">
+          <button class="btn btn-secondary w-full" onclick="document.getElementById('make_modal').close()">閉じる</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>

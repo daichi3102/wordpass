@@ -1,4 +1,3 @@
-<!-- app/views/first_parts/index.html.erb -->
 <div class="flex justify-center items-start pt-8">
   <div class="w-2/3 text-center">
     <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;">上の句</h1>
@@ -22,13 +21,15 @@
 
           <br>
           <div class="mt-4 flex justify-center space-x-4">
-            <%= link_to '下の句を作る', make_path(first_part.make), class: 'btn btn-primary' %>
+            <button class="btn btn-primary" onclick="document.getElementById('second_part_modal_<%= first_part.make.id %>').showModal()">下の句を作る</button>
           </div>
           <div class="mt-4">
             <%= link_to '戻る', makes_path, class: 'btn btn-secondary' %>
           </div>
         </div>
       </div>
+      <!-- モーダルをレンダリング -->
+      <%= render 'second_parts/modal', make: first_part.make %>
     <% end %>
   </div>
 </div>
