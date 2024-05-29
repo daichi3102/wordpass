@@ -8,7 +8,7 @@
           <div class="mb-4">
             <%= form.fields_for :first_part, @make.first_part do |fp_form| %>
               <div class="form-control">
-                <%= fp_form.label :content, '本文', class: "label" %>
+                <%= fp_form.label :content, '上の句', class: "label" %>
                 <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
                 <% if user_signed_in? %>
                   <%= fp_form.hidden_field :user_id, value: current_user.id %>
@@ -20,7 +20,7 @@
           <div class="mb-4">
             <%= form.fields_for :second_part, @make.second_part do |sp_form| %>
               <div class="form-control">
-                <%= sp_form.label :content, '本文', class: "label" %>
+                <%= sp_form.label :content, '下の句', class: "label" %>
                 <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
                 <% if user_signed_in? %>
                   <%= form.hidden_field :user_id, value: current_user.id %> <!-- サインインしている場合のみ表示 -->
