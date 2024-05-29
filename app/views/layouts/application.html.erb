@@ -19,7 +19,7 @@
     <% else %>
       <%= render 'shared/before_signin_header' %>
     <% end %>
-    <div class="flex-grow">
+    <div class="flex-grow pt-16"> <!-- ヘッダーの高さ分だけパディングを追加 -->
       <%= render 'shared/flash_message' %>
       <%= yield %>
     </div>

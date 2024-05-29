@@ -1,5 +1,5 @@
 class FetchAisController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new edit update destroy]
+  before_action :authenticate_user!, only: %i[index edit update destroy]
   before_action :set_fetch_ai, only: %i[show edit update destroy]
 
   def index
@@ -68,7 +68,7 @@ class FetchAisController < ApplicationController
       if @fetch_ai.save
         respond_to do |format|
           format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
-          format.html { redirect_to fetch_ai_path(@fetch_ai) }
+          format.html { redirect_to fetch_ai_path(@fetch_ai), notice: 'AIから名言を受け取りました' }
         end
       else
         respond_to do |format|

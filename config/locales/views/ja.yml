@@ -46,7 +46,9 @@ ja:
     signout: サインアウト
     mypage: マイページ
     ai: AIから名言を受け取る
-    makes_index: 名言作成ページ
+    ais_index: AIから受け取った名言一覧
+    make: 名言を作る
+    makes_index: みんなの名言一覧
   footer:
     about: このサイトについて
     terms: 利用規約
@@ -58,7 +60,7 @@ ja:
     get: すぐに受け取る
     custom_get: 条件を指定して受け取る
     receive: 受け取る
-    signup: サインアップ
+    signin: サインイン
   profiles:
     show:
       title: プロフィール
