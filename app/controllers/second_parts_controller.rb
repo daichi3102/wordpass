@@ -1,5 +1,5 @@
 class SecondPartsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[new create]
   before_action :set_make_and_second_part, only: %i[edit update]
   before_action :authorize_user!, only: %i[edit update]

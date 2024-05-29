@@ -1,4 +1,4 @@
-<header class="w-full navbar bg-neutral h-16">
+<header class="w-full navbar bg-neutral h-16 fixed top-0 z-50">
   <div class="flex justify-between items-center w-full h-full">
     <!-- 左にロゴ -->
     <div class="h-full flex-shrink-0">
@@ -7,26 +7,61 @@
       </a>
     </div>
 
-    <!-- 右にハンバーガー -->
-    <div class="dropdown dropdown-end flex-none">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary dark:hover:bg-primary">
-        <div class="w-10 rounded-full">
-          <%= image_tag current_user.avatar_url %>
-        </div>
-      </div>
-      <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 mt-4">
+    <!-- 右にハンバーガーと追加オブジェクト -->
+    <div class="flex items-center space-x-4 h-full">
+      <ul class="menu menu-horizontal px-1 flex items-end h-full">
         <li>
-          <%= link_to t('header.signout'), destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          <details class="h-full flex items-end">
+            <summary class="btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center">
+              名言を受け取る
+            </summary>
+            <ul class="p-2 bg-base-300 rounded-t-none">
+              <li>
+                <%= link_to t('header.ai'), new_fetch_ai_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+              </li>
+              <li>
+                <%= link_to t('header.ais_index'), fetch_ais_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+              </li>
+            </ul>
+          </details>
         </li>
         <li>
-          <%= link_to t('header.mypage'), mypage_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
-        </li>
-        <li>
-          <%= link_to t('header.ai'), new_fetch_ai_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
-        </li>
-        <li>
-          <%= link_to t('header.makes_index'), makes_path, class: "btn btn-ghost hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          <details class="h-full flex items-end">
+            <summary class="btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center">
+              名言を作る
+            </summary>
+            <ul class="p-2 bg-base-300 rounded-t-none">
+              <li>
+                <%= link_to t('header.make'), new_make_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+              </li>
+              <li>
+                <%= link_to t('header.makes_index'), makes_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+              </li>
+            </ul>
+          </details>
         </li>
       </ul>
+      <div class="dropdown dropdown-end flex-none">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary dark:hover:bg-primary">
+          <div class="w-10 rounded-full">
+            <%= image_tag current_user.avatar_url %>
+          </div>
+        </div>
+        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52">
+          <li>
+            <%= link_to t('header.signout'), destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          </li>
+          <li>
+            <%= link_to t('header.mypage'), mypage_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          </li>
+          <li>
+            <%= link_to t('header.ai'), new_fetch_ai_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          </li>
+          <li>
+            <%= link_to t('header.makes_index'), makes_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:hover:bg-primary dark:focus:ring-gray-800" %>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </header>
