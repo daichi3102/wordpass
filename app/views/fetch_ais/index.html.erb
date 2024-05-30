@@ -1,17 +1,17 @@
 <!-- app/views/fetch_ais/index.html.erb -->
 <% if user_signed_in? %>
   <div class="flex justify-center items-start min-h-screen pt-8">
-    <div class="w-2/3 text-center">
-      <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.index.title') %></h1>
+    <div class="w-full md:w-2/3 text-center mx-4 sm:mx-8">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.index.title') %></h1>
 
-      <br><br>
+      <br>
       <%= render 'shared/ai_button', fetch_ai: @fetch_ai %>
       <br><br>
 
       <div class="card-body">
         <% @fetch_ais.each do |fetch_ai| %>
           <% if fetch_ai.response.present? %>
-            <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+            <div class="bg-base-100 shadow-xl w-full my-2 mx-auto" style="max-width: 640px;">
               <div class="card-body">
 
                 <!-- AI response -->
@@ -19,7 +19,7 @@
                 <% info = fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
                 <% if quote %>
                   <div class="chat chat-start flex justify-start mb-4">
-                    <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-2xl" style="text-align: left; font-weight: bold;">
+                    <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-full sm:max-w-md text-lg sm:text-2xl" style="text-align: left; font-weight: bold;">
                       <%= quote %>
                     </div>
                   </div>
@@ -27,7 +27,7 @@
 
                 <% if info %>
                   <div class="chat chat-start flex justify-start mb-4">
-                    <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-xs" style="text-align: left; font-weight: normal; font-size: 0.75rem;">
+                    <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-full sm:max-w-md text-xs sm:text-sm" style="text-align: left; font-weight: normal;">
                       <%= info %>
                     </div>
                   </div>
@@ -35,13 +35,11 @@
 
                 <!-- share and show details -->
                 <div class="chat chat-end flex justify-end">
-                  <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md text-left">
+                  <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-full sm:max-w-md text-left">
                     <div class="mt-4">
-
                       <%= render 'shared/x_button', quote: quote %>
                       <br>
                       <%= link_to '詳細', fetch_ai_path(fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
-                    
                     </div>
                   </div>
                 </div>

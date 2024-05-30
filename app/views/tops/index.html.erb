@@ -29,18 +29,18 @@
     <br><br><br>
 
     <% if user_signed_in? %>
-      <h1 class="text-4xl font-bold mb-4" style="color: #00BFFF;">言葉は、一番のエネルギー！</h1>
+      <h1 class="text-4xl font-bold mb-4" style="color: #00BFFF;">言葉は１番のパワーだ！</h1>
       <br><br>
 
-      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto">
-        <figure><img src="/MOai.gif" alt="GIF Image" class="rounded-xl w-72 h-72 object-cover" /></figure>
-        <div class="card-body flex flex-col items-center">
-          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">今の自分に合った名言がもらえる！</h2>
-          <p class="text-center mb-4">時間のない時にはすぐに取得ボタン！<br>
-          少しでもあれば、条件を指定して取得しよう！<br><br>
-          メジャーなのかマイナーな作品なのか<br>
+      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto flex flex-col sm:flex-row">
+        <figure class="w-full sm:w-72"><img src="/MOai.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" /></figure>
+        <div class="card-body flex flex-col items-center justify-center text-center sm:justify-center">
+          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">AIから自分に合った名言がもらえる！</h2>
+          <p class="text-center mb-4">時間のない時にはすぐに受け取るボタン！<br>
+          少しでもあれば、条件を指定して受け取ろう！<br><br>
+          メジャーな作品なのか、マイナーな作品なのか<br>
           偉人や有名人、書籍、映画や漫画、アニメなど<br>
-          自分で選択できるよ！
+          全５項目から自分で条件を選択しよう！
           </p>
           <div class="card-actions justify-center">
             <%= link_to 'AIから名言を受け取る', new_fetch_ai_path, class: "btn btn-primary mt-4" %>
@@ -49,30 +49,33 @@
       </div>
       <br><br>
 
-      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto">
-        <figure><img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-72 h-72 object-cover" /></figure>
-        <div class="card-body flex flex-col items-center">
-          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">名言投稿をしよう！</h2>
+      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto flex flex-col sm:flex-row">
+        <figure class="w-full sm:w-72"><img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" /></figure>
+        <div class="card-body flex flex-col items-center justify-center text-center sm:justify-center">
+          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">名言作成をしよう！</h2>
           <p class="text-center mb-4">自分の好きな名言の共有、<br>
           誰かと協力しての名言作成など<br><br>
           みんなで名言を共有しよう！
           </p>
           <div class="card-actions justify-center">
-            <%= link_to '名言を作成する', makes_path, class: "btn btn-primary mt-4" %>
+            <%= link_to '名言を作成する', new_make_path, class: "btn btn-primary mt-4" %>
+          </div>
+          <div class="card-actions justify-center">
+            <%= link_to 'みんなの名言を見る', makes_path, class: "btn btn-primary mt-4" %>
           </div>
         </div>
       </div>
       <br><br>
     <% else %>
-      <h1 class="text-4xl font-bold mb-4" style="color: #00BFFF;">サインインすると...</h1>
+      <h1 class="text-2xl sm:text-4xl font-bold mb-4" style="color: #00BFFF;">サインインすると...</h1>
       <br><br><br><br>
 
-      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto">
-        <figure><img src="/MOai.gif" alt="GIF Image" class="rounded-xl w-72 h-72 object-cover" /></figure>
-        <div class="card-body flex flex-col items-center">
-          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">今の自分に合った名言をもらえる！</h2>
-          <p class="text-center mb-4">時間のない時にはすぐに取得ボタン！<br>
-          少しでもあれば、条件を指定して取得しよう！<br><br>
+      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto flex flex-col sm:flex-row">
+        <figure class="w-full sm:w-72"><img src="/MOai.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" /></figure>
+        <div class="card-body flex flex-col items-center justify-center text-center sm:justify-center">
+          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">AIから自分に合った名言をもらえる！</h2>
+          <p class="text-center mb-4">時間のない時にはすぐに受け取るボタン！<br>
+          少しでもあれば、条件を指定して受け取ろう！<br><br>
           メジャーな作品なのか、マイナーな作品なのか<br>
           偉人や有名人、書籍、映画や漫画、アニメなど<br>
           全５項目から自分で条件を選択しよう！
@@ -82,12 +85,11 @@
           </div>
         </div>
       </div>
-      <br><br>
 
-      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto">
-        <figure><img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-72 h-72 object-cover" /></figure>
-        <div class="card-body flex flex-col items-center">
-          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">名言投稿をしよう！</h2>
+      <div class="card card-side bg-base-100 shadow-xl mb-8 w-full max-w-3xl mx-auto flex flex-col sm:flex-row">
+        <figure class="w-full sm:w-72"><img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" /></figure>
+        <div class="card-body flex flex-col items-center justify-center text-center sm:justify-center">
+          <h2 class="card-title text-2xl font-bold text-center mb-4" style="color: #00BFFF;">名言作成をしよう！</h2>
           <p class="text-center mb-4">自分の好きな名言の共有、<br>
           誰かと協力しての名言作成など<br><br>
           みんなで名言を共有しよう！
@@ -95,9 +97,13 @@
           <div class="card-actions justify-center">
             <%= link_to t('tops.signin'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
           </div>
+          <div class="card-actions justify-center">
+            <%= link_to 'みんなの名言を見る', makes_path, class: "btn btn-primary mt-4" %>
+          </div>
         </div>
       </div>
-      <br><br>
     <% end %>
   </div>
 </div>
+<br><br>
+```

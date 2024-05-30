@@ -80,7 +80,7 @@ ja:
       title: AIから名言を受け取る
   makes:
     index:
-      title: 名言を作ろう！
+      title: みんなの作成した名言一覧
       create: 名言を作る
       first_parts: 未完成の上の句
       second_parts: 未完成の下の句

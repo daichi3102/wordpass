@@ -1,41 +1,37 @@
 <!-- app/views/makes/new.html.erb -->
 <br>
-<h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.new.title') %></h1>
+<h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('makes.new.title') %></h1>
 <div class="flex justify-center items-center pt-8">
   <div class="w-2/3 text-center">
-    <div class="card-body bg-base-100 shadow-xl p-8">
-      <%= form_with(model: @make, local: true) do |form| %>
-        <div class="mb-4">
-          <%= form.fields_for :first_part do |fp_form| %>
-            <div class="form-control">
-              <%= fp_form.label :content, t('makes.new.first_parts'), class: "label" %>
-              <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
-              <%= fp_form.hidden_field :user_id, value: current_user.id %>
-            </div>
-          <% end %>
-        </div>
+    <div class="flex flex-col items-center space-y-4 mb-4">
 
-        <div class="mb-4">
-          <%= form.fields_for :second_part do |sp_form| %>
-            <div class="form-control">
-              <%= sp_form.label :content, t('makes.new.second_parts'), class: "label" %>
-              <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full" %>
-              <%= sp_form.hidden_field :user_id, value: current_user.id %>
-            </div>
-            <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
-            <br>※ひとりで投稿する場合は、両方使って投稿しよう！
-            </small>
-          <% end %>
-        </div>
+      <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
+        <br>※ひとりで投稿する場合は、両方使って投稿しよう!
+        <br>
 
-        <div class="actions">
-          <%= form.submit t('makes.new.create'), class: 'btn btn-primary w-full' %>
+        <div class="flex justify-center item-center pt-8">
+          <figure class="w-full sm:w-72">
+            <img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" />
+          </figure>
         </div>
-      <% end %>
+        <br><br>
 
-      <div class="mt-4">
-        <%= link_to t('makes.new.back'), makes_path, class: 'btn btn-secondary w-full' %>
-      </div>
+        <div class="flex flex-col items-center space-y-4 mb-4">
+          <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.index.create') %></button>
+          <br>
+          <div class="flex space-x-4">
+            <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
+            <%= link_to t('makes.index.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
+          </div>
+        </div>
     </div>
+    <br>
+
+    <div class="mt-4">
+      <%= link_to t('makes.new.back'), makes_path, class: 'btn btn-secondary' %>
+    </div>
+    <br><br><br><br>
   </div>
 </div>
+
+<%= render 'makes/new_modal' %>
