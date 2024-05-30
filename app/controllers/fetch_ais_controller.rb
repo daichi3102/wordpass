@@ -12,7 +12,11 @@ class FetchAisController < ApplicationController
   end
 
   def new
-    @fetch_ai = FetchAi.new
+    @fetch_ai = if user_signed_in? && session[:last_fetch_ai_params].present?
+                  FetchAi.new(session[:last_fetch_ai_params])
+                else
+                  FetchAi.new
+                end
   end
 
   def edit
@@ -66,6 +70,7 @@ class FetchAisController < ApplicationController
       response = ChatgptService.call(prompt)
       @fetch_ai.response = response
       if @fetch_ai.save
+        save_last_fetch_ai_params if prompt_type == 'personalized'
         respond_to do |format|
           format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
           format.html { redirect_to fetch_ai_path(@fetch_ai), notice: 'AIから名言を受け取りました' }
@@ -96,5 +101,9 @@ class FetchAisController < ApplicationController
 
   def set_fetch_ai
     @fetch_ai = FetchAi.find(params[:id])
+  end
+
+  def save_last_fetch_ai_params
+    session[:last_fetch_ai_params] = fetch_ai_params if user_signed_in?
   end
 end
