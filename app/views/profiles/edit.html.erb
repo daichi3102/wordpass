@@ -1,44 +1,44 @@
 <!-- app/views/profiles/edit.html.erb -->
 <div class="flex justify-center items-start min-h-screen pt-8">
-  <div class="w-2/3 bg-base-100 shadow-xl text-center mx-auto">
-    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('profiles.edit.title') %></h1>
+  <div class="w-full md:w-2/3 bg-base-100 shadow-xl text-center mx-4 sm:mx-8">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('profiles.edit.title') %></h1>
 
     <div class="card-body flex flex-col items-center">
       <br>
       <%= form_with model: @user, url: profile_path, local: true, class: "flex flex-col gap-4 p-4 w-full max-w-lg" do |f| %>
         <!-- Name Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
+          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-full sm:max-w-md text-black" style="text-align: left;">
             <%= f.label :name, class: "form-label" %>
           </div>
         </div>
         <!-- Name Input -->
         <div class="chat chat-end flex flex-col justify-end">
-          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-full sm:max-w-md">
             <%= f.text_field :name, class: "bg-secondary", autofocus: true, placeholder: @user.name %>
           </div>
         </div>
         <!-- Email Address Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
+          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-full sm:max-w-md text-black" style="text-align: left;">
             <%= f.label :email, class: "form-label" %>
           </div>
         </div>
         <!-- Email Address Input -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-full sm:max-w-md">
             <%= f.email_field :email, class: "bg-secondary", placeholder: "Enter your email" %>
           </div>
         </div>
         <!-- Avatar Label -->
         <div class="chat chat-start flex justify-start">
-          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-black" style="text-align: left;">
+          <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-full sm:max-w-md text-black" style="text-align: left;">
             <%= f.label :avatar, t('helpers.label.avatar'), class: "form-label" %>
           </div>
         </div>
         <!-- Avatar -->
         <div class="chat chat-end flex justify-end">
-          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-md">
+          <div class="chat-bubble bg-secondary p-4 rounded-lg max-w-full sm:max-w-md">
             <%= f.file_field :avatar, class: 'form-control mb-3', accept: 'image/*' %>
             <%= f.hidden_field :avatar_cache %>
             <div class='mt-3 mb-3'>

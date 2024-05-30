@@ -1,6 +1,7 @@
+<!-- app/views/makes/index.html.erb -->
 <div class="flex justify-center items-start pt-8">
   <div class="w-2/3 text-center">
-    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.index.title') %></h1>
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('makes.index.title') %></h1>
 
     <br><br>
     <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
@@ -59,18 +60,24 @@
           <br>
           <div class="mt-4 flex justify-center items-center space-x-4">
             <% if user_signed_in? %>
-              <% if make.first_part&.user == current_user || make.second_part&.user == current_user %>
-                <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
-              <% end %>
-              <% if make.first_part.nil? %>
-                <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_first_part') %></button>
-              <% end %>
-              <% if make.second_part.nil? %>
-                <button class="btn btn-primary" onclick="document.getElementById('second_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_second_part') %></button>
-              <% end %>
-              <%= render 'like_buttons', { make: make } %>
+              <div class="flex space-x-4">
+                <% if make.first_part&.user == current_user || make.second_part&.user == current_user %>
+                  <%= link_to t('makes.index.detail'), make_path(make), class: 'btn btn-secondary' %>
+                <% end %>
+                <% if make.first_part.nil? %>
+                  <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_first_part') %></button>
+                <% end %>
+                <% if make.second_part.nil? %>
+                  <button class="btn btn-primary" onclick="document.getElementById('second_part_modal_<%= make.id %>').showModal()"><%= t('makes.index.add_second_part') %></button>
+                <% end %>
+              </div>
             <% end %>
             <%= render 'shared/x_button2', { make: make } %>
+            <% if user_signed_in? %>
+              <div class="ml-auto">
+                <%= render 'like_buttons', { make: make } %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

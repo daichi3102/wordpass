@@ -1,18 +1,32 @@
-<div class="flex justify-center items-start min-h-screen pt-8">
+<!-- app/views/fetch_ais/new.html.erb -->
+<br>
+<h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.new.title') %></h1>
+<div class="flex justify-center items-center pt-8">
   <div class="w-2/3 text-center">
-    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.new.title') %></h1>
-    
-    <br><br>
-    
-    <%= render 'shared/ai_button', fetch_ai: @fetch_ai %>
-    
-    <br><br>
+    <div class="flex flex-col items-center space-y-4 mb-4">
+      <small class="text-gray-500 text-center mb-4">
+      時間のない時にはすぐに受け取るボタン！<br>
+      少しでもあれば、条件を指定して受け取ろう！<br><br>
+      メジャーな作品なのか、マイナーな作品なのか<br>
+      偉人や有名人、書籍、映画や漫画、アニメなど<br>
+      全５項目から自分で条件を選択しよう！
 
-    <div class="mb-8">
-      <% if user_signed_in? %>
-        <%= link_to 'AIから受け取った名言一覧', fetch_ais_path, class: "btn btn-secondary mt-4" %>
-      <% end %>
+        <div class="flex justify-center item-center pt-8">
+          <figure class="w-full sm:w-72">
+            <img src="/MOai.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" />
+          </figure>
+        </div>
+        <br>
+
+        <%= render 'shared/ai_button', fetch_ai: @fetch_ai %>
+
+        <br><br>
+
+        <div class="mb-8">
+          <% if user_signed_in? %>
+            <%= link_to 'AIから受け取った名言一覧', fetch_ais_path, class: "btn btn-secondary mt-4" %>
+          <% end %>
+        </div>
+        <br><br>
     </div>
-    
   </div>
-</div>
