@@ -12,6 +12,8 @@
     <%= display_meta_tags(default_meta_tags) %>
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body class="flex flex-col min-h-screen font-body">
     <% if user_signed_in? %>
