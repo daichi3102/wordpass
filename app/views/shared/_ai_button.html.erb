@@ -1,14 +1,17 @@
-<!-- app/views/shared/_personalized_buttons.html.erb -->
+<!-- app/views/shared/_ai_buttons.html.erb -->
 <% if user_signed_in? %>
+
   <div class="card-actions justify-center">
     <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4 w-full max-w-xs" %>
   </div>
   <p class="py-4">※ランダムに名言を提供するよ</p>
   <br>
+
   <div class="card-actions justify-center">
     <button class="btn btn-primary mt-4 w-auto" onclick="document.getElementById('my_modal_2').showModal()"><%= t('tops.custom_get') %></button>
   </div>
   <p class="py-4">※指定した条件に合った名言を提供するよ</p>
+
   <dialog id="my_modal_2" class="modal">
     <div class="modal-box text-center">
       <form method="dialog">
@@ -25,6 +28,7 @@
         <div class="mb-3 text-center">
           <%= form.label :schedule, class: "form-label block mb-2 text-sm font-bold" %>
           <%= form.select :schedule, options_for_select(["仕事", "学習", "健康の事", "家庭の事", "趣味", "自己に関わること"], @fetch_ai.schedule), {}, {class: "select select-bordered w-full max-w-xs"} %>
+        </div>
         <div class="mb-3 text-center">
           <%= form.label :how, class: "form-label block mb-2 text-sm font-bold" %>
           <%= form.select :how, options_for_select(["心に刺さる名言", "心に寄り添う名言", "クスっと笑ってしまう名言", "厳しい名言", "恋愛に関する名言", "人生に関する名言"], @fetch_ai.how), {}, {class: "select select-bordered w-full max-w-xs"} %>
@@ -43,6 +47,7 @@
       <% end %>
     </div>
   </dialog>
+
 <!-- yuriraccoモーダル -->
 <dialog id="loading_modal" class="modal flex items-center justify-center">
   <div class="modal-box text-center flex flex-col items-center justify-center">
@@ -51,6 +56,7 @@
     </figure>
   </div>
 </dialog>
+
 <% else %>
   <div class="card-actions justify-center">
     <%= button_to t('tops.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4 w-full max-w-xs" %>
