@@ -36,7 +36,7 @@ class MakesController < ApplicationController
     end
 
     if @make.save
-      redirect_to @make, notice: '名言を作成しました'
+      redirect_to @make, notice: t('defaults.flash_message.created', item: Make.model_name.human)
     else
       render :new
     end
@@ -47,7 +47,7 @@ class MakesController < ApplicationController
 
   def update
     if @make.update(make_params)
-      redirect_to @make, notice: '名言を作成できませんでした'
+      redirect_to @make, notice: t('defaults.flash_message.updated', item: Make.model_name.human)
     else
       render :edit
     end
@@ -55,7 +55,7 @@ class MakesController < ApplicationController
 
   def destroy
     @make.destroy
-    redirect_to makes_path, notice: '名言を削除しました'
+    redirect_to makes_path, notice: t('defaults.flash_message.destroy', item: Make.model_name.human)
   end
 
   def likes

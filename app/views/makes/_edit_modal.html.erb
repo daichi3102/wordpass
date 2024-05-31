@@ -1,14 +1,14 @@
 <dialog id="edit_modal_<%= @make.id %>" class="modal">
   <div class="modal-box w-full max-w-xl p-6 text-center">
     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="document.getElementById('edit_modal_<%= @make.id %>').close()">✕</button>
-    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;">名言編集</h1>
+    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= t('makes.edit') %></h1>
     <div class="pt-8">
       <div class="text-center">
         <%= form_with(model: @make, local: true) do |form| %>
           <div class="mb-4">
             <%= form.fields_for :first_part do |fp_form| %>
               <div class="form-control">
-                <%= fp_form.label :content, t('makes.edit.first_parts'), class: "label" %>
+                <%= fp_form.label :content, t('defaults.first_part'), class: "label" %>
                 <%= fp_form.text_area :content, class: "textarea textarea-bordered w-full", value: @make.first_part&.content %>
               </div>
             <% end %>
@@ -18,19 +18,19 @@
           <div class="mb-4">
             <%= form.fields_for :second_part do |sp_form| %>
               <div class="form-control">
-                <%= sp_form.label :content, t('makes.edit.second_parts'), class: "label" %>
+                <%= sp_form.label :content, t('defaults.second_part'), class: "label" %>
                 <%= sp_form.text_area :content, class: "textarea textarea-bordered w-full", value: @make.second_part&.content %>
               </div>
             <% end %>
           </div>
 
           <div class="actions">
-            <%= form.submit "更新", class: 'btn btn-primary w-full' %>
+            <%= form.submit t('defaults.update'), class: 'btn btn-primary w-full' %>
           </div>
         <% end %>
 
         <div class="mt-4">
-          <button class="btn btn-info w-full" onclick="document.getElementById('delete_modal_<%= @make.id %>').showModal()">削除</button>
+          <button class="btn btn-info w-full" onclick="document.getElementById('delete_modal_<%= @make.id %>').showModal()"><%= t('defaults.destroy') %></button>
         </div>
       </div>
     </div>

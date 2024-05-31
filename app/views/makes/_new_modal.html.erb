@@ -1,7 +1,7 @@
 <dialog id="make_modal" class="modal">
   <div class="modal-box w-full max-w-xl p-6 text-center">
     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="document.getElementById('make_modal').close()">✕</button>
-    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= t('makes.new.title') %></h1>
+    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= t('makes.new') %></h1>
     <div class="pt-8">
       <div class="text-center">
         <%= form_with(model: @make, scope: :make, local: true) do |form| %>
@@ -33,7 +33,7 @@
           </div>
 
           <div class="actions">
-            <%= form.submit t('makes.new.create'), class: 'btn btn-primary w-full' %>
+            <%= form.submit t('defaults.create'), class: 'btn btn-primary w-full' %>
           </div>
         <% end %>
 

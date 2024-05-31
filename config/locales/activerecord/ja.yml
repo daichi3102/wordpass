@@ -2,6 +2,10 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      fetch_ai: AIからの名言
+      make: 名言
+      first_part: 上の句
+      second_part: 下の句
     attributes:
       user:
         email: メールアドレス

@@ -42,7 +42,7 @@
         </li>
       </ul>
       <div class="dropdown dropdown-end flex-none">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary dark:hover:bg-primary nav-item">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary dark:hover:bg-primary nav-item blinking-border">
           <div class="w-10 rounded-full">
             <%= image_tag current_user.avatar_url %>
           </div>
@@ -53,12 +53,6 @@
           </li>
           <li>
             <%= link_to t('header.mypage'), mypage_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
-          </li>
-          <li>
-            <%= link_to t('header.ai'), new_fetch_ai_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
-          </li>
-          <li>
-            <%= link_to t('header.makes_index'), makes_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
         </ul>
       </div>
@@ -162,5 +156,19 @@
 
   .logo-img {
     max-height: 100%;
+  }
+
+  @keyframes border-blink {
+    0%, 100% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #3b82f6; /* Tailwind's primary color */
+    }
+  }
+
+  .blinking-border {
+    animation: border-blink 1s infinite;
+    border: 2px solid;
   }
 </style>

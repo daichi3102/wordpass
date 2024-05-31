@@ -17,23 +17,23 @@ class SecondPartsController < ApplicationController
     @second_part = @make.build_second_part
   end
 
-  def edit
-  end
-
-  def update
-    if @second_part.update(second_part_params)
-      redirect_to @make, notice: 'Second part was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
   def create
     @second_part = @make.build_second_part(second_part_params)
     @second_part.user = current_user
 
     if @second_part.save
-      redirect_to @make, notice: 'Second part was successfully created.'
+      redirect_to @make, notice: t('defaults.flash_message.created', item: SecondPart.model_name.human)
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @second_part.update(second_part_params)
+      redirect_to @make, notice: t('defaults.flash_message.updated', item: SecondPart.model_name.human)
     else
       render :edit
     end

@@ -8,7 +8,6 @@ class FetchAisController < ApplicationController
   end
 
   def show
-    # @fetch_ai は before_action :set_fetch_ai によって設定されます
   end
 
   def new
@@ -17,23 +16,6 @@ class FetchAisController < ApplicationController
                 else
                   FetchAi.new
                 end
-  end
-
-  def edit
-    # @fetch_ai は before_action :set_fetch_ai によって設定されます
-  end
-
-  def update
-    if @fetch_ai.update(fetch_ai_params)
-      redirect_to @fetch_ai, notice: 'FetchAi was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @fetch_ai.destroy
-    redirect_to fetch_ais_path, notice: t('defaults.flash_message.destroy_fetch_ai')
   end
 
   def create
@@ -73,23 +55,39 @@ class FetchAisController < ApplicationController
         save_last_fetch_ai_params if prompt_type == 'personalized'
         respond_to do |format|
           format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
-          format.html { redirect_to fetch_ai_path(@fetch_ai), notice: 'AIから名言を受け取りました' }
+          format.html { redirect_to fetch_ai_path(@fetch_ai), notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human) }
         end
       else
         respond_to do |format|
           format.json do
-            render json: { alert: t('defaults.flash_message.not_fetch_ai') },
+            render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
                    status: :unprocessable_entity
           end
-          format.html { redirect_to root_path, alert: t('defaults.flash_message.not_fetch_ai') }
+          format.html { redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) }
         end
       end
     rescue Net::ReadTimeout, StandardError => e
       logger.error "Failed to call OpenAI: #{e.message}"
       respond_to do |format|
-        format.json { render json: { alert: t('defaults.flash_message.not_fetch_ai') }, status: :unprocessable_entity }
-        format.html { redirect_to root_path, alert: t('defaults.flash_message.not_fetch_ai') }
+        format.json { render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) }, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) }
       end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @fetch_ai = FetchAi.find(params[:id])
+    if @fetch_ai.destroy
+      redirect_to fetch_ais_path, notice: t('defaults.flash_message.destroy', item: FetchAi.model_name.human)
+    else
+      redirect_to fetch_ai_path(@fetch_ai),
+                  alert: t('defaults.flash_message.not_destroy', item: FetchAi.model_name.human)
     end
   end
 

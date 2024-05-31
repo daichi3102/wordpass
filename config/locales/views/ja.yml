@@ -1,46 +1,50 @@
 ja:
   helpers:
-    submit:
-      create: 登録
-      submit: 保存
-      update: 更新
     label:
       name: 名前
       email: メールアドレス
       password: パスワード
       avatar: アバター
   defaults:
-    create: 作成
-    post: 投稿
-    edit: 編集
-    show: 詳細
-    delete: 削除
-    delete_confirm: 削除しますか？
-    password_reset: パスワードリセット
-    unspecified: 指定なし
+    create: 作成する
+    show: 詳細を見る
+    back: 戻る
+    edit: 編集する
+    update: 更新する
+    destroy: 削除する
+    destroy_confirm: 本当に削除する？
+    cancel: キャンセル
+    content: 内容
+    first_part: 上の句
+    second_part: 下の句
     flash_message:
-      created: "%{item}を作成しました"
-      not_created: "%{item}を作成出来ませんでした"
-      updated: "%{item}を更新しました"
-      not_updated: "%{item}を更新出来ませんでした"
-      deleted: "%{item}を削除しました"
-      require_login: ログインしてください
-      not_authorized: 権限がありません
-      fetch_ai: AIから名言を受け取りました
-      not_fetch_ai: AIから名言を受け取れませんでした
-      destroy_fetch_ai: AIから受け取った名言を削除しました
+      created: "%{item}を作成したよ"
+      not_created: "%{item}を作成出来なかった"
+      fetched: "%{item}を受け取ったよ"
+      not_fetched: "%{item}を受け取れなかったよ"
+      updated: "%{item}を更新したよ"
+      not_updated: "%{item}を更新出来なかったよ"
+      destroy: "%{item}を削除したよ"
+      not_destroy: "%{item}を削除出来なかったよ"
+      profile_updated: プロフィールを更新したよ
+      not_profile_updated: プロフィールを更新出来なかったよ
+      require_login: ログインしてね
+      not_authorized: 権限がないよ
   user_sessions:
     new:
-      title: ログイン
-      login: ログイン
+      title: サインイン
+      login: サインイン
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
   users:
     new:
       title: ユーザー登録
-      to_login_page: ログインページへ
+      to_login_page: サインインページへ
+  profiles:
+    title: プロフィール編集
   header:
     title: MeigenOtter
+    top: トップページ
     signup: サインアップ
     signin: サインイン
     signout: サインアウト
@@ -51,50 +55,31 @@ ja:
     makes_index: みんなの名言一覧
   footer:
     about: このサイトについて
+    privacy: ﾌﾟﾗｲﾊﾞｼｰﾎﾟﾘｼｰ
     terms: 利用規約
-    privacy: プライバシーポリシー
     contact: お問い合わせ
   tops:
     title: MeigenOtter
     subtitle: 今すぐ、名言の海に飛び込もう！
+    signin: サインイン
+  fetch_ais:
     get: すぐに受け取る
     custom_get: 条件を指定して受け取る
-    receive: 受け取る
-    signin: サインイン
-  profiles:
-    show:
-      title: プロフィール
-      edit: 編集
-    edit:
-      title: プロフィール編集
-      update: 更新
-  fetch_ais:
-    index:
-      title: AIから受け取った名言一覧
-    show:
-      title: AIから受け取った名言
-      share: シェア
-    edit:
-      title: 受け取った名言を編集
-    new:
-      title: AIから名言を受け取る
+    getter: 受け取る
+    index: AIから受け取った名言一覧
+    show: AIから受け取った名言
+    share: シェア
+    edit: 受け取った名言を編集
+    new: AIから名言を受け取る
+    re: もう一度受け取る
   makes:
-    index:
-      title: みんなの作成した名言一覧
-      create: 名言を作る
-      first_parts: 未完成の上の句
-      second_parts: 未完成の下の句
-      detail: 詳細
-      add_first_part: 上の句を作る
-      add_second_part: 下の句を作る
-    new:
-      title: 名言作成
-      create: 作成
-      back: 作成された名言一覧に戻る
-      first_parts: 上の句
-      second_parts: 下の句
-    edit:
-      first_parts: 上の句
-      second_parts: 下の句
-    likes:
-      title: いいねした名言一覧
+    index: みんなの作成した名言一覧
+    first_parts: 未完成の上の句
+    second_parts: 未完成の下の句
+    add_first_part: 上の句を作る
+    add_second_part: 下の句を作る
+    new: 名言作成
+    back: みんなの作成した名言一覧に戻る
+    edit: 名言を編集
+  mypages:
+    title: マイページ

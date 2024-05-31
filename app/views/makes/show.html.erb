@@ -1,5 +1,5 @@
 <br>
-<h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.new.title') %></h1>
+<h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('makes.new') %></h1>
 <div class="flex justify-center items-center pt-8">
   <div class="w-2/3 text-center">
     <div class="card-body bg-base-100 shadow-xl p-8">
@@ -47,15 +47,15 @@
       <div class="actions mt-4">
         <%= render 'like_buttons', { make: @make } %>
         <% if @make.first_part.nil? %>
-          <button class="btn btn-primary w-full mt-4" onclick="document.getElementById('first_part_modal_<%= @make.id %>').showModal()">上の句を作る</button>
+          <button class="btn btn-primary w-full mt-4" onclick="document.getElementById('first_part_modal_<%= @make.id %>').showModal()"><%= t('makes.add_first_part') %></button>
         <% end %>
         <% if @make.second_part.nil? %>
-          <button class="btn btn-primary w-full mt-4" onclick="document.getElementById('second_part_modal_<%= @make.id %>').showModal()">下の句を作る</button>
+          <button class="btn btn-primary w-full mt-4" onclick="document.getElementById('second_part_modal_<%= @make.id %>').showModal()"><%= t('makes.add_second_part') %></button>
         <% end %>
         <br><br>
         <%= link_to '作成された名言一覧に戻る', makes_path, class: 'btn btn-secondary w-full' %>
         <br><br>
-        <button class="btn btn-secondary w-full" onclick="document.getElementById('edit_modal_<%= @make.id %>').showModal()">編集する</button>
+        <button class="btn btn-secondary w-full" onclick="document.getElementById('edit_modal_<%= @make.id %>').showModal()"><%= t('defaults.edit') %></button>
         <br><br>
         <% if @make.first_part && @make.second_part %>
           <%= render 'shared/x_button2', { make: @make } %>
