@@ -1,13 +1,13 @@
 <dialog id="second_part_modal_<%= make.id %>" class="modal">
   <div class="modal-box w-full max-w-xl p-6 text-center">
     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onclick="document.getElementById('second_part_modal_<%= make.id %>').close()">✕</button>
-    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= '下の句' %></h1>
+    <h1 class="text-3xl font-bold mb-4" style="color: #1E90FF;"><%= t('defaults.second_part') %></h1>
     <div class="pt-8">
       <div class="text-center">
         <%= form_with(model: [make, SecondPart.new], url: make_second_part_path(make), local: true) do |form| %>
           <div class="mb-4">
             <div class="form-control">
-              <%= form.label :content, '本文', class: "label" %>
+              <%= form.label :content, t('defaults.content'), class: "label" %>
               <%= form.text_area :content, class: "textarea textarea-bordered w-full" %>
               <% if user_signed_in? %>
                 <%= form.hidden_field :user_id, value: current_user.id %> <!-- サインインしている場合のみ表示 -->
@@ -16,12 +16,12 @@
           </div>
 
           <div class="actions">
-            <%= form.submit t('makes.index.add_second_part'), class: 'btn btn-primary w-full' %>
+            <%= form.submit t('defaults.create'), class: 'btn btn-primary w-full' %>
           </div>
         <% end %>
 
         <div class="mt-4">
-          <button class="btn btn-secondary w-full" onclick="document.getElementById('second_part_modal_<%= make.id %>').close()">戻る</button>
+          <button class="btn btn-secondary w-full" onclick="document.getElementById('second_part_modal_<%= make.id %>').close()"><%= t('defaults.back') %></button>
         </div>
       </div>
     </div>

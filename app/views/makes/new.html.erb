@@ -1,6 +1,6 @@
 <!-- app/views/makes/new.html.erb -->
 <br>
-<h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('makes.new.title') %></h1>
+<h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('makes.new') %></h1>
 <div class="flex justify-center items-center pt-8">
   <div class="w-2/3 text-center">
     <div class="flex flex-col items-center space-y-4 mb-4">
@@ -17,18 +17,18 @@
         <br><br>
 
         <div class="flex flex-col items-center space-y-4 mb-4">
-          <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.index.create') %></button>
+          <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('defaults.create') %></button>
           <br>
           <div class="flex space-x-4">
-            <%= link_to t('makes.index.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
-            <%= link_to t('makes.index.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
+            <%= link_to t('makes.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
+            <%= link_to t('makes.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
           </div>
         </div>
     </div>
     <br>
 
     <div class="mt-4">
-      <%= link_to t('makes.new.back'), makes_path, class: 'btn btn-secondary' %>
+      <%= link_to t('makes.back'), makes_path, class: 'btn btn-secondary' %>
     </div>
     <br><br><br><br>
   </div>

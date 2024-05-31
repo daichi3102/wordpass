@@ -1,10 +1,10 @@
 <div class="flex justify-center items-start pt-8">
   <div class="w-2/3 text-center">
-    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;">下の句</h1>
+    <h1 class="text-3xl font-bold mb-4 text-center" style="color: #1E90FF;"><%= t('defaults.second_part') %></h1>
     <br>
 
     <div class="mt-4">
-      <%= link_to '戻る', makes_path, class: 'btn btn-secondary' %>
+      <%= link_to t('defaults.back'), makes_path, class: 'btn btn-secondary' %>
     </div>
     <br><br>
     <% @second_parts.each do |second_part| %>
@@ -26,7 +26,7 @@
           <br>
           <div class="mt-4 flex justify-center space-x-4">
             <% if user_signed_in? %>
-              <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= second_part.make.id %>').showModal()">上の句を作る</button>
+              <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= second_part.make.id %>').showModal()"><%= t('makes.add_first_part') %></button>
             <% end %>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <!-- app/views/fetch_ais/new.html.erb -->
 <br>
-<h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.new.title') %></h1>
+<h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.new') %></h1>
 <div class="flex justify-center items-center pt-8">
   <div class="w-2/3 text-center">
     <div class="flex flex-col items-center space-y-4 mb-4">
@@ -24,7 +24,7 @@
 
         <div class="mb-8">
           <% if user_signed_in? %>
-            <%= link_to 'AIから受け取った名言一覧', fetch_ais_path, class: "btn btn-secondary mt-4" %>
+            <%= link_to t('fetch_ais.index'), fetch_ais_path, class: "btn btn-secondary mt-4" %>
           <% end %>
         </div>
         <br><br>

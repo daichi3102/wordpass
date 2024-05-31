@@ -17,23 +17,23 @@ class FirstPartsController < ApplicationController
     @first_part = @make.build_first_part
   end
 
-  def edit
-  end
-
-  def update
-    if @first_part.update(first_part_params)
-      redirect_to @make, notice: 'First part was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
   def create
     @first_part = @make.build_first_part(first_part_params)
     @first_part.user = current_user
 
     if @first_part.save
-      redirect_to @make, notice: 'First part was successfully created.'
+      redirect_to @make, notice: t('defaults.flash_message.created', item: FirstPart.model_name.human)
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @first_part.update(first_part_params)
+      redirect_to @make, notice: t('defaults.flash_message.updated', item: FirstPart.model_name.human)
     else
       render :edit
     end
