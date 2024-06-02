@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   root to: 'tops#index'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get '/terms', to: 'tops#terms'
   get '/privacy', to: 'tops#privacy'
+  get '/terms', to: 'tops#terms'
+  get '/thanks', to: 'tops#thanks'
 
   get '*path', to: 'application#render404'
 

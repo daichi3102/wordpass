@@ -1,3 +1,4 @@
+<!-- app/views/shared/before_signin_header.html.erb -->
 <header class="w-full navbar bg-neutral fixed top-0 z-50 responsive-header">
   <div class="flex justify-between items-center w-full h-full">
     <!-- 左にロゴ -->
@@ -7,29 +8,33 @@
       </a>
     </div>
 
-    <!-- 右にナビゲーションリンク -->
-    <div class="flex items-center h-full nav-links">
-      <ul class="menu menu-horizontal px-1 flex items-end h-full space-x-2">
-        <%= link_to t('header.ai'), new_fetch_ai_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center" %>
-        <%= link_to t('header.makes_index'), makes_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center" %>
+    <!-- 右にナビゲーションリンクとアイコン -->
+    <div class="flex items-center justify-between w-full h-full">
+      <ul class="menu menu-horizontal px-1 flex items-end h-full space-x-2 nav-links">
+        <li class="flex items-end">
+          <%= link_to t('header.ai'), new_fetch_ai_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item" %>
+        </li>
+        <li class="flex items-end">
+          <%= link_to t('header.makes_index'), makes_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item" %>
+        </li>
       </ul>
-
-      <!-- ドロップダウンメニュー -->
       <div class="dropdown dropdown-end flex-none">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary dark:hover:bg-primary nav-item">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current nav-icon">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+          <div class="w-10 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current nav-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </div>
         </div>
-        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52 mt-4">
+        <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52">
           <li>
-            <%= link_to t('header.signup'), new_user_registration_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+            <%= link_to t('header.signup'), new_user_registration_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
           <li>
-            <%= link_to t('header.signin'), new_user_session_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+            <%= link_to t('header.signin'), new_user_session_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
           <li>
-            <%= link_to t('header.top'), root_path, class: "btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+            <%= link_to t('header.top'), root_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
         </ul>
       </div>
@@ -41,25 +46,23 @@
   .responsive-header {
     height: 4rem;
   }
-
-  .nav-links .nav-item {
+  .nav-links .nav-item, .nav-links .nav-link {
     font-size: 1rem;
   }
-
   .nav-links .nav-icon {
     width: 1.25rem;
     height: 1.25rem;
   }
 
   @media (max-width: 1024px) {
-    .responsive-header {
-      height: 4rem;
-    }
     .logo-img {
       height: 2.5rem;
     }
     .nav-links .nav-item {
-      font-size: 0.875rem; /* sm */
+      font-size: 0.875rem;
+    }
+    .nav-links .nav-link {
+      font-size: 0.75rem;
     }
     .nav-links .nav-icon {
       width: 1rem;
@@ -68,50 +71,76 @@
   }
 
   @media (max-width: 768px) {
-    .responsive-header {
-      height: 4rem;
-    }
     .logo-img {
       height: 2rem;
     }
     .nav-links .nav-item {
-      font-size: 0.75rem; /* xs */
+      font-size: 0.75rem;
+    }
+    .nav-links .nav-link {
+      font-size: 0.625rem;
     }
     .nav-links .nav-icon {
       width: 0.875rem;
       height: 0.875rem;
     }
+    .logo-container {
+      display: none;
+    }
   }
 
   @media (max-width: 576px) {
-    .responsive-header {
-      height: 4rem;
-    }
     .logo-img {
       height: 1.75rem;
     }
     .nav-links .nav-item {
-      font-size: 0.625rem; /* xxs */
+      font-size: 0.625rem;
+    }
+    .nav-links .nav-link {
+      font-size: 0.5rem;
     }
     .nav-links .nav-icon {
       width: 0.75rem;
       height: 0.75rem;
     }
+    .nav-links ul {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    .nav-links li {
+      margin-right: 4px;
+    }
   }
 
-  @media (max-width: 384px) {
-    .responsive-header {
-      height: 4rem;
-    }
-    .logo-container {
-      display: none;
-    }
+  @media (max-width: 390px) {
     .nav-links .nav-item {
-      font-size: 0.5rem; /* xx-small */
+      font-size: 0.5rem;
+    }
+    .nav-links .nav-link {
+      font-size: 0.375rem;
     }
     .nav-links .nav-icon {
       width: 0.625rem;
       height: 0.625rem;
+    }
+    .nav-links li {
+      margin-right: 2px;
+    }
+  }
+
+  @media (max-width: 290px) {
+    .nav-links .nav-item {
+      font-size: 0.5rem;
+    }
+    .nav-links .nav-link {
+      font-size: 0.375rem;
+    }
+    .nav-links .nav-icon {
+      width: 0.625rem;
+      height: 0.625rem;
+    }
+    .nav-links li {
+      margin-right: 2px;
     }
   }
 
