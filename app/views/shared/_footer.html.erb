@@ -1,10 +1,11 @@
 <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded responsive-footer">
-  <nav class="grid grid-flow-col gap-4 nav-links">
+  <nav class="grid gap-4 nav-links">
+    <%= link_to t('footer.thanks'), "thanks", class: "link link-hover btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none dark:focus:ring-gray-800 nav-item" %>
     <%= link_to t('footer.privacy'), "privacy", class: "link link-hover btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none dark:focus:ring-gray-800 nav-item" %>
     <%= link_to t('footer.terms'), "terms", class: "link link-hover btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none dark:focus:ring-gray-800 nav-item" %>
     <%= link_to t('footer.contact'), 'https://docs.google.com/forms/d/e/1FAIpQLSc_jJJPojl8KWO4qfvx7uIzvTkLzc5qfhx2PseONpIUF5_SLA/viewform?embedded=true', class: "link link-hover btn btn-ghost hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none dark:focus:ring-gray-800 nav-item" %>
   </nav>
-  <nav>
+  <nav class="mt-4 social-nav">
     <div class="grid grid-flow-col gap-4 social-icons">
       <a href="https://x.com/zuttodaichi" target="_blank">
         <i class="fa-brands fa-x-twitter" style="font-size: 24px;"></i>
@@ -17,7 +18,7 @@
       </a>
     </div>
   </nav>
-  <aside>
+  <aside class="mt-4">
     <p>Copyright © 2024 - MeigenOtter</p>
   </aside>
 </footer>
@@ -31,16 +32,23 @@
     font-size: 24px;
   }
 
-  @media (max-width: 1024px) {
-    .responsive-footer .nav-links .nav-item {
-      font-size: 0.875rem; /* sm */
-    }
-    .responsive-footer .social-icons i {
-      font-size: 20px;
+  @media (min-width: 769px) {
+    .responsive-footer .nav-links {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
     }
   }
 
   @media (max-width: 768px) {
+    .responsive-footer .nav-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .responsive-footer .social-nav {
+      margin-top: 8px;
+    }
     .responsive-footer .nav-links .nav-item {
       font-size: 0.75rem; /* xs */
     }
@@ -50,6 +58,11 @@
   }
 
   @media (max-width: 576px) {
+    .responsive-footer .nav-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
     .responsive-footer .nav-links .nav-item {
       font-size: 0.625rem; /* xxs */
     }
@@ -59,11 +72,30 @@
   }
 
   @media (max-width: 384px) {
+    .responsive-footer .nav-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
     .responsive-footer .nav-links .nav-item {
       font-size: 0.5rem; /* xx-small */
     }
     .responsive-footer .social-icons i {
       font-size: 14px;
+    }
+  }
+
+  @media (max-width: 290px) {
+    .responsive-footer .nav-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .responsive-footer .nav-links .nav-item {
+      font-size: 0.375rem; /* xxx-small */
+    }
+    .responsive-footer .social-icons i {
+      font-size: 12px;
     }
   }
 </style>

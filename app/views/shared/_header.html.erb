@@ -10,7 +10,7 @@
     <!-- 右にナビゲーションリンク -->
     <div class="flex items-center space-x-4 h-full nav-links">
       <ul class="menu menu-horizontal px-1 flex items-end h-full space-x-2">
-        <li>
+        <li class="flex items-end">
           <details class="h-full flex items-end">
             <summary class="btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item">
               名言を受け取る
@@ -25,7 +25,7 @@
             </ul>
           </details>
         </li>
-        <li>
+        <li class="flex items-end">
           <details class="h-full flex items-end">
             <summary class="btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item">
               名言を作る
@@ -53,6 +53,9 @@
           </li>
           <li>
             <%= link_to t('header.mypage'), mypage_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+          </li>
+          <li>
+            <%= link_to t('header.top'), root_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
         </ul>
       </div>
@@ -133,9 +136,16 @@
       width: 0.75rem;
       height: 0.75rem;
     }
+    .nav-links ul {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    .nav-links li {
+      margin-right: 4px;
+    }
   }
 
-  @media (max-width: 384px) {
+  @media (max-width: 390px) {
     .responsive-header {
       height: 4rem;
     }
@@ -152,6 +162,13 @@
       width: 0.625rem;
       height: 0.625rem;
     }
+    .nav-links ul {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    .nav-links li {
+      margin-right: 2px;
+    }
   }
 
   .logo-img {
@@ -163,7 +180,7 @@
       border-color: transparent;
     }
     50% {
-      border-color: #3b82f6; /* Tailwind's primary color */
+      border-color: #3b82f6; /* Tailwindのprimary色 */
     }
   }
 
