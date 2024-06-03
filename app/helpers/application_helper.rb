@@ -5,7 +5,7 @@ module ApplicationHelper
       title: 'AIを使った名言提供サービス',
       reverse: true,
       charset: 'utf-8',
-      description: 'MeigenOtterを使えば、漫画、映画、アニメ、書籍、偉人、有名人など、様々なジャンルからの名言をAIが提供します。',
+      description: 'MeigenOtterを使えば、偉人、有名人、書籍、映画、漫画、アニメなど、様々なジャンルの名言をAIが提供します。',
       keywords: '名言,言葉,生成AI',
       canonical: request.original_url,
       separator: '|',
