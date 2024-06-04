@@ -32,17 +32,14 @@
           <div>
             <%= render 'shared/x_button', quote: quote %>
             <br>
-            <%= link_to t('mypages.title'), mypage_path, class: 'btn btn-neutral btn-wide flex items-center justify-center gap-2 mt-2' %>
+            <%= link_to t('fetch_ais.index'), fetch_ais_path, class: 'btn btn-info flex items-center justify-center gap-2 mt-2' %>            
             <br>
-            <%= link_to t('fetch_ais.re'), new_fetch_ai_path, class: 'btn btn-neutral btn-wide flex items-center justify-center gap-2 mt-2' %>
+            <%= link_to t('fetch_ais.new'), new_fetch_ai_path, class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>            
             <br>
-            <button class="btn btn-info btn-wide flex items-center justify-center gap-2 mt-2" onclick="document.getElementById('delete_modal_<%= @fetch_ai.id %>').showModal()"><%= t('defaults.destroy') %></button>
+            <%= link_to t('mypages.title'), mypage_path, class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- 削除確認モーダルをレンダリング -->
-<%= render 'delete_modal', fetch_ai: @fetch_ai %>

@@ -2,7 +2,7 @@
   <div class="modal-box w-full max-w-md p-6 text-center">
     <h2 class="text-2xl font-bold mb-4"><%= t('defaults.destroy_confirm') %></h2>
     <div class="flex justify-center mt-4 space-x-4">
-      <%= button_to t('defaults.destroy'), fetch_ai_path(fetch_ai), method: :delete, class: 'btn btn-danger' %>
+      <%= button_to t('defaults.destroy'), fetch_ai_path(fetch_ai, redirect_to: request.original_url), method: :delete, class: 'btn btn-danger' %>
       <button class="btn btn-secondary" onclick="document.getElementById('delete_modal_<%= fetch_ai.id %>').close()"><%= t('defaults.cancel') %></button>
     </div>
   </div>

@@ -87,13 +87,15 @@
                           <div class="mt-4">
                             <%= render 'shared/x_button', quote: quote %>
                             <br>
-                            <%= link_to t('defaults.show'), fetch_ai_path(fetch_ai), class: 'btn btn-neutral flex items-center justify-center gap-2 mt-2' %>
+                            <button class="btn btn-info flex items-center justify-center gap-2 mt-2" onclick="document.getElementById('delete_modal_<%= fetch_ai.id %>').showModal()"><%= t('defaults.destroy') %></button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!-- 削除確認モーダルをレンダリング -->
+                <%= render 'fetch_ais/delete_modal', fetch_ai: fetch_ai %>                
               <% end %>
             <% end %>
           </div>
