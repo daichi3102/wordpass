@@ -55,7 +55,10 @@ class FetchAisController < ApplicationController
         save_last_fetch_ai_params if prompt_type == 'personalized'
         respond_to do |format|
           format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
-          format.html { redirect_to fetch_ai_path(@fetch_ai), notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human) }
+          format.html do
+            redirect_to fetch_ai_path(@fetch_ai),
+                        notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
+          end
         end
       else
         respond_to do |format|
@@ -63,14 +66,21 @@ class FetchAisController < ApplicationController
             render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
                    status: :unprocessable_entity
           end
-          format.html { redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) }
+          format.html do
+            redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human)
+          end
         end
       end
     rescue Net::ReadTimeout, StandardError => e
       logger.error "Failed to call OpenAI: #{e.message}"
       respond_to do |format|
-        format.json { render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) }, status: :unprocessable_entity }
-        format.html { redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) }
+        format.json do
+          render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
+                 status: :unprocessable_entity
+        end
+        format.html do
+          redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human)
+        end
       end
     end
   end
@@ -84,7 +94,8 @@ class FetchAisController < ApplicationController
   def destroy
     @fetch_ai = FetchAi.find(params[:id])
     if @fetch_ai.destroy
-      redirect_to fetch_ais_path, notice: t('defaults.flash_message.destroy', item: FetchAi.model_name.human)
+      redirect_to request.referer || fetch_ais_url,
+                  notice: t('defaults.flash_message.destroy', item: FetchAi.model_name.human)
     else
       redirect_to fetch_ai_path(@fetch_ai),
                   alert: t('defaults.flash_message.not_destroy', item: FetchAi.model_name.human)
