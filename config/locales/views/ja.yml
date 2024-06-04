@@ -49,10 +49,10 @@ ja:
     signin: サインイン
     signout: サインアウト
     mypage: マイページ
-    ai: AIから名言を受け取る
-    ais_index: AIから受け取った名言一覧
-    make: 名言を作る
-    makes_index: みんなの名言一覧
+    ai: 名言の自動生成
+    ais_index: 自動生成された名言一覧
+    make: 自分で名言を作る
+    makes_ndex: みんなの名言
   footer:
     about: このサイトについて
     thanks: Special Thanks
