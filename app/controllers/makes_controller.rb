@@ -2,10 +2,10 @@ class MakesController < ApplicationController
   # except: [:index]でindexアクションのみログインしていなくてもアクセスできる
   before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[show edit update destroy]
-  before_action :authorize_user!, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[show edit update]
 
   def index
-    @makes = Make.includes(:likes).order(created_at: :desc)
+    @makes = Make.includes(:likes).order(created_at: :desc).page(params[:page])
     @make = Make.new
     @make.build_first_part
     @make.build_second_part

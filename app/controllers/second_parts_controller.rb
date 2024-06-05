@@ -2,7 +2,7 @@ class SecondPartsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[new create]
   before_action :set_make_and_second_part, only: %i[edit update]
-  before_action :authorize_user!, only: %i[show edit update destroy]
+  before_action :authorize_user!, only: %i[edit update]
 
   # first_partsが存在しないmakeのみを取得
   def index
@@ -11,6 +11,7 @@ class SecondPartsController < ApplicationController
                                                   .where(first_parts: { id: nil })
                                                   .select(:id) })
                               .order(created_at: :desc)
+                              .page(params[:page])
   end
 
   def new

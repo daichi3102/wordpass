@@ -29,6 +29,7 @@
               <button class="btn btn-primary" onclick="document.getElementById('first_part_modal_<%= second_part.make.id %>').showModal()"><%= t('makes.add_first_part') %></button>
             <% end %>
           </div>
+          <%= paginate @second_parts%>
         </div>
       </div>
       <!-- モーダルをレンダリング -->
