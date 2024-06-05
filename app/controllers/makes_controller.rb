@@ -2,7 +2,7 @@ class MakesController < ApplicationController
   # except: [:index]でindexアクションのみログインしていなくてもアクセスできる
   before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[show edit update destroy]
-  before_action :authorize_user!, only: %i[edit update destroy]
+  before_action :authorize_user!, only: %i[show edit update destroy]
 
   def index
     @makes = Make.includes(:likes).order(created_at: :desc)
@@ -70,7 +70,7 @@ class MakesController < ApplicationController
 
   def authorize_user!
     unless current_user == @make.user || current_user == @make.first_part&.user || current_user == @make.second_part&.user
-      redirect_to makes_path, alert: 'You are not authorized to perform this action.'
+      redirect_to makes_path, alert: t('defaults.flash_message.not_authorized')
     end
   end
 
