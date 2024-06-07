@@ -1,9 +1,9 @@
-<!-- app/views/sgared/_header.html.erb -->
+<!-- app/views/shared/_header.html.erb -->
 <header class="w-full navbar bg-neutral fixed top-0 z-50 responsive-header">
   <div class="flex justify-between items-center w-full h-full">
     <!-- 左にロゴ -->
     <div class="h-full flex-shrink-0 logo-container">
-      <a href="<%= root_path %>" class="btn btn-ghost h-full flex items-center hover:bg-primary dark:hover:bg-primary">
+      <a href="<%= root_path %>" class="btn btn-ghost h-full flex items-center hover:bg-primary focus:bg-primary dark:hover:bg-primary">
         <%= image_tag '/MOlogo.PNG', alt: 'logo', class: 'logo-img' %>
       </a>
     </div>
@@ -11,52 +11,52 @@
     <!-- 右にナビゲーションリンクとアイコン -->
     <div class="flex items-center justify-between w-full h-full">
       <ul class="menu menu-horizontal px-1 flex items-end h-full space-x-2 nav-links">
-        <li class="flex items-end">
+        <li class="flex items-end relative">
           <details class="h-full flex items-end">
-            <summary class="btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item">
+            <summary class="btn btn-ghost hover:bg-primary focus:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item">
               AIの力を借りる
             </summary>
-            <ul class="p-2 bg-base-300 rounded-t-none">
-              <li>
-                <%= link_to t('header.ai'), new_fetch_ai_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:hover:bg-primary dark:focus:ring-gray-800" %>
+            <ul class="p-2 bg-base-300 rounded-t-none absolute top-full left-0 w-40">
+              <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+                <%= link_to t('header.ai'), new_fetch_ai_path, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:focus:ring-gray-800" %>
               </li>
-              <li>
-                <%= link_to t('header.ais_index'), fetch_ais_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:hover:bg-primary dark:focus:ring-gray-800" %>
+              <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+                <%= link_to t('header.ais_index'), fetch_ais_path, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:focus:ring-gray-800" %>
               </li>
             </ul>
           </details>
         </li>
-        <li class="flex items-end">
+        <li class="flex items-end relative">
           <details class="h-full flex items-end">
-            <summary class="btn btn-ghost hover:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item">
+            <summary class="btn btn-ghost hover:bg-primary focus:bg-primary dark:hover:bg-primary text-black h-full flex items-center nav-item">
               みんなの力を借りる
             </summary>
-            <ul class="p-2 bg-base-300 rounded-t-none">
-              <li>
-                <%= link_to t('header.make'), new_make_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:hover:bg-primary dark:focus:ring-gray-800" %>
+            <ul class="p-2 bg-base-300 rounded-t-none absolute top-full left-0 w-40">
+              <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+                <%= link_to t('header.make'), new_make_path, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:focus:ring-gray-800" %>
               </li>
-              <li>
-                <%= link_to t('header.makes_index'), makes_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:hover:bg-primary dark:focus:ring-gray-800" %>
+              <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+                <%= link_to t('header.makes_index'), makes_path, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs nav-link dark:focus:ring-gray-800" %>
               </li>
             </ul>
           </details>
         </li>
       </ul>
       <div class="dropdown dropdown-end flex-none">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary dark:hover:bg-primary nav-item blinking-border">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar h-full flex items-center hover:bg-primary focus:bg-primary dark:hover:bg-primary nav-item blinking-border">
           <div class="w-10 rounded-full">
             <%= image_tag current_user.avatar_url %>
           </div>
         </div>
         <ul tabindex="0" class="menu dropdown-content z-[1] p-2 shadow bg-base-300 rounded-box w-52">
-          <li>
-            <%= link_to t('header.signout'), destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+          <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+            <%= link_to t('header.signout'), destroy_user_session_path, method: :delete, data: { turbo_method: "delete" }, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
-          <li>
-            <%= link_to t('header.mypage'), mypage_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+          <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+            <%= link_to t('header.mypage'), mypage_path, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
-          <li>
-            <%= link_to t('header.top'), root_path, class: "hover:bg-primary focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
+          <li class="hover:bg-primary focus:bg-primary dark:hover:bg-primary">
+            <%= link_to t('header.top'), root_path, class: "focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-xs px-4 lg:px-5 py-2 lg:py-2.5 mr-2 nav-link dark:focus:ring-gray-800" %>
           </li>
         </ul>
       </div>
@@ -168,6 +168,10 @@
 
   .logo-img {
     max-height: 100%;
+  }
+
+  .dropdown-menu {
+    display: block;
   }
 
   @keyframes border-blink {

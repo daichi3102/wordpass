@@ -7,3 +7,8 @@
 body {
   @apply font-body;
 }
+
+/* タブのスタイルを追加 */
+.tab-active {
+  background-color: #00ffff;
+}

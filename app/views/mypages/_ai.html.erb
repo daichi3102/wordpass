@@ -1,0 +1,44 @@
+<!-- AIから受け取ったもの -->
+<% if @fetch_ais.present? %>
+  <div class="row">
+    <% @fetch_ais.each do |fetch_ai| %>
+      <% if fetch_ai.response.present? %>
+        <div class="col-sm-12 col-lg-4 mb-3">
+          <div class="bg-base-100 shadow-xl w-auto my-2 mx-auto" style="width: 100%; max-width: 640px;">
+            <div class="card-body">
+              <% quote = fetch_ai.response.match(/<quote>(.*?)<\/quote>/m)[1].strip rescue nil %>
+              <% info = fetch_ai.response.match(/<info>(.*?)<\/info>/m)[1].strip rescue nil %>
+              <% if quote %>
+                <div class="chat chat-start flex justify-start mb-4">
+                  <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-2xl" style="text-align: left; font-weight: bold;">
+                    <%= quote %>
+                  </div>
+                </div>
+              <% end %>
+              <% if info %>
+                <div class="chat chat-start flex justify-start mb-4">
+                  <div class="chat-bubble bg-neutral p-4 rounded-lg max-w-md text-xs" style="text-align: left; font-weight: normal; font-size: 0.75rem;">
+                    <%= info %>
+                  </div>
+                </div>
+              <% end %>
+              <div class="chat chat-end flex justify-end">
+                <div class="chat-bubble bg-secondary text-white p-4 rounded-lg max-w-md text-left">
+                  <div class="mt-4">
+                    <%= render 'shared/x_button', quote: quote %>
+                    <br>
+                    <button class="btn btn-info flex items-center justify-center gap-2 mt-2" onclick="document.getElementById('delete_modal_<%= fetch_ai.id %>').showModal()"><%= t('defaults.destroy') %></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 削除確認モーダルをレンダリング -->
+        <%= render 'fetch_ais/delete_modal', fetch_ai: fetch_ai %>                
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>まだAIから受け取ったものがありません</p>
+<% end %>
