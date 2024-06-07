@@ -1,10 +1,26 @@
-# app/controllers/mypages_controller.rb
 class MypagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @like_makes = current_user.likes.includes(:make).order(created_at: :desc).map(&:make)
-    @makes = current_user.makes.order(created_at: :desc)
-    @fetch_ais = current_user.fetch_ais.order(created_at: :desc)
+  end
+
+  def profile
+    @user = current_user
+    render partial: 'mypages/profile'
+  end
+
+  def ai
+    @fetch_ais = current_user.fetch_ais
+    render partial: 'mypages/ai'
+  end
+
+  def makes
+    @makes = current_user.makes
+    render partial: 'mypages/makes'
+  end
+
+  def likes
+    @like_makes = current_user.like_makes
+    render partial: 'mypages/likes'
   end
 end

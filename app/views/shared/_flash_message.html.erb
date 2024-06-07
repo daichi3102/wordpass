@@ -1,17 +1,17 @@
 <% flash.each do |message_type, message| %>
   <% if message_type.to_s == 'notice' %>
     <div role="alert" class="alert bg-primary flex items-center justify-center sm:h-12 md:h-16 lg:h-20">
-      <video src="/MOlf.mov" alt="Success" class="h-full mr-2" style="height: 100%; width: auto;" autoplay loop muted></video>
+      <video src="/MOlf.mov" alt="Success" class="hidden sm:block h-full mr-2" autoplay loop muted></video>
       <div class="flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <span><%= message %></span>
       </div>
-      <video src="/MOrf.mov" alt="Success" class="h-full ml-2" style="height: 100%; width: auto;" autoplay loop muted></video>
+      <video src="/MOrf.mov" alt="Success" class="hidden sm:block h-full ml-2" autoplay loop muted></video>
     </div>
   <% elsif message_type.to_s == 'alert' %>
-    <div role="alert" class="alert alert-error flex items-center justify-center sm:h-12 md:h-16 lg:h-20">
+    <div role="alert" class="alert alert-error flex items-center justify-center sm:h-12 md:h-16 lg:h-20 max-w-md mx-auto">
       <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -19,4 +19,3 @@
     </div>
   <% end %>
 <% end %>
-
