@@ -17,6 +17,7 @@ ja:
     content: 内容
     first_part: 上の句
     second_part: 下の句
+    search: 検索
     flash_message:
       created: "%{item}を作成したよ"
       not_created: "%{item}を作成出来なかった"

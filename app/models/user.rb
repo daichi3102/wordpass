@@ -89,4 +89,12 @@ class User < ApplicationRecord
   def like?(make)
     like_makes.include?(make)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id name email created_at updated_at]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[makes second_parts first_parts]
+  end
 end
