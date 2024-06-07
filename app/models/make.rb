@@ -13,17 +13,6 @@ class Make < ApplicationRecord
   # 少なくとも一つのパートが存在する必要あり
   validate :at_least_one_part_present
 
-  # ransackerを使ってカスタム
-  ransacker :first_part_content_or_second_part_content_or_user_name_cont, formatter: proc { |value|
-    first_part_ids = Make.joins(first_part: :user).where('first_parts.content ILIKE ? OR users.name ILIKE ?', "%#{value}%", "%#{value}%").pluck(:id)
-    second_part_ids = Make.joins(second_part: :user).where('second_parts.content ILIKE ? OR users.name ILIKE ?', "%#{value}%", "%#{value}%").pluck(:id)
-    # 上記の2つの配列を結合して重複を削除
-    ids = first_part_ids | second_part_ids
-    ids.present? ? ids : nil
-  } do |parent|
-    parent.table[:id]
-  end
-
   # ransackで検索可能な属性を定義
   def self.ransackable_attributes(auth_object = nil)
     %w[created_at id user_id first_part_content_or_second_part_content_or_user_name_cont]
