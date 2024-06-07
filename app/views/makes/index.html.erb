@@ -18,6 +18,8 @@
         <%= link_to t('makes.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
         <%= link_to t('makes.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
       </div>
+      <br>
+      <%= render 'search_form', q: @q, url: makes_path %>
     </div>
 
     <br><br>

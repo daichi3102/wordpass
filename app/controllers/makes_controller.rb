@@ -5,7 +5,8 @@ class MakesController < ApplicationController
   before_action :authorize_user!, only: %i[show edit update]
 
   def index
-    @makes = Make.includes(:likes).order(created_at: :desc).page(params[:page])
+    @q = Make.ransack(params[:q])
+    @makes = @q.result(distinct: true).includes(:first_part, :second_part, :likes).order(created_at: :desc).page(params[:page])
     @make = Make.new
     @make.build_first_part
     @make.build_second_part
