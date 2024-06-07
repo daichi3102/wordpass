@@ -3,7 +3,7 @@ class FetchAisController < ApplicationController
   before_action :set_fetch_ai, only: %i[show edit update destroy]
 
   def index
-    @fetch_ais = current_user.fetch_ais.order(created_at: :desc)
+    @fetch_ais = FetchAi.order(created_at: :desc)
     @fetch_ai = FetchAi.new
   end
 

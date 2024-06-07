@@ -15,7 +15,7 @@ class Make < ApplicationRecord
 
   # ransackで検索可能な属性を定義
   def self.ransackable_attributes(auth_object = nil)
-    %w[created_at id user_id first_part_content_or_second_part_content_or_user_name_cont]
+    %w[created_at id user_id]
   end
 
   # ransackで検索可能な関連を定義
