@@ -86,8 +86,8 @@
       <%= render 'first_parts/modal', make: make %>
       <%= render 'second_parts/modal', make: make %>
     <% end %>
+    <%= paginate @makes%>
   </div>
-  <%= paginate @makes%>
 </div>
 
 <%= render 'makes/new_modal' %>
