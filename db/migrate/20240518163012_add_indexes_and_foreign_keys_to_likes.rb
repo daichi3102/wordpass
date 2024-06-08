@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIndexesAndForeignKeysToLikes < ActiveRecord::Migration[7.1]
   def change
     # 外部キー制約を追加

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSecondParts < ActiveRecord::Migration[7.1]
   def change
     create_table :second_parts do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MakesController < ApplicationController
   # except: [:index]でindexアクションのみログインしていなくてもアクセスできる
   before_action :authenticate_user!, except: [:index]
@@ -6,7 +8,8 @@ class MakesController < ApplicationController
 
   def index
     @q = Make.ransack(params[:q])
-    @makes = @q.result(distinct: true).includes(:first_part, :second_part, :likes).order(created_at: :desc).page(params[:page])
+    @makes = @q.result(distinct: true).includes(:first_part, :second_part,
+                                                :likes).order(created_at: :desc).page(params[:page])
     @make = Make.new
     @make.build_first_part
     @make.build_second_part
@@ -43,8 +46,7 @@ class MakesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @make.update(make_params)

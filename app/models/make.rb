@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Make < ApplicationRecord
   belongs_to :user
   has_one :first_part, dependent: :destroy
@@ -14,12 +16,12 @@ class Make < ApplicationRecord
   validate :at_least_one_part_present
 
   # ransackで検索可能な属性を定義
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[created_at id user_id]
   end
 
   # ransackで検索可能な関連を定義
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[first_part second_part user]
   end
 

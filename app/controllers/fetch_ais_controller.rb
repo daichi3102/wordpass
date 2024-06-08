@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FetchAisController < ApplicationController
   before_action :authenticate_user!, only: %i[index edit update destroy]
   before_action :set_fetch_ai, only: %i[show edit update destroy]
@@ -7,8 +9,7 @@ class FetchAisController < ApplicationController
     @fetch_ai = FetchAi.new
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @fetch_ai = if user_signed_in? && session[:last_fetch_ai_params].present?
@@ -85,11 +86,9 @@ class FetchAisController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @fetch_ai = FetchAi.find(params[:id])

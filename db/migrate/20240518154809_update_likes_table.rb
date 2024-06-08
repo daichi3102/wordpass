@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UpdateLikesTable < ActiveRecord::Migration[7.1]
   def change
     add_index :likes, :make_id, name: 'index_likes_on_make_id'

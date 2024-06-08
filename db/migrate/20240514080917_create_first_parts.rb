@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFirstParts < ActiveRecord::Migration[7.1]
   def change
     create_table :first_parts do |t|
