@@ -1,13 +1,7 @@
 <!-- app/views/tops/index.html.erb -->
 <div class="relative min-h-screen">
   <figure class="w-70 h-70 mb-8">
-    <iframe
-      src="path_to_video/MOtop.mp4"
-      class="rounded-xl w-full h-full object-cover"
-      frameborder="0"
-      allow="autoplay; loop; muted"
-      allowfullscreen
-    ></iframe>
+    <%= video_tag 'MOtop.mp4', autoplay: true, loop: true, muted: true, class: 'rounded-xl w-full h-full object-cover' %>
   </figure>
 
   <div class="relative flex flex-col justify-center items-center min-h-screen pt-8 z-10 text-center">
@@ -43,7 +37,7 @@
           時間があれば、条件を指定して受け取ろう！<br><br>
           偉人、有名人、書籍、映画、漫画、アニメ<br>
           メジャー or マイナーな作品など<br>
-          全５項目から条件を選択しよう！
+          その他全５項目から条件を選択しよう！
           </p>
           <div class="card-actions justify-center">
             <%= link_to 'AIから名言を受け取る', new_fetch_ai_path, class: "btn btn-primary mt-4" %>
@@ -81,7 +75,7 @@
           時間があれば、条件を指定して受け取ろう！<br><br>
           偉人、有名人、書籍、映画、漫画、アニメ<br>
           メジャー or マイナーな作品など<br>
-          全５項目から条件を選択しよう！
+          その他全５項目から条件を選択しよう！
           </p>
           <div class="card-actions justify-center">
             <%= link_to t('tops.signin'), new_user_session_path, method: :post, class: "btn btn-primary mt-4" %>
