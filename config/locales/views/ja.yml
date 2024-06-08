@@ -50,8 +50,8 @@ ja:
     signin: サインイン
     signout: サインアウト
     mypage: マイページ
-    ai: 名言の自動生成をする
-    ais_index: 自動生成された全ての名言
+    ai: 名言の自動生成
+    ais_index: 自動生成された全名言
     make: 自分で名言を作る
     makes_index: みんなの作った名言
   footer:

@@ -39,7 +39,9 @@
                     <div class="mt-4">
                       <%= render 'shared/x_button', quote: quote %>
                       <br>
-                      <button class="btn btn-info flex items-center justify-center gap-2 mt-2" onclick="document.getElementById('delete_modal_<%= fetch_ai.id %>').showModal()"><%= t('defaults.destroy') %></button>
+                      <% if fetch_ai.user == current_user %>
+                        <button class="btn btn-info flex items-center justify-center gap-2 mt-2" onclick="document.getElementById('delete_modal_<%= fetch_ai.id %>').showModal()"><%= t('defaults.destroy') %></button>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -50,7 +52,7 @@
           <% end %>
         <% end %>
       </div>
-      <%= paginate @fetch_ais%>
+      <%= paginate @fetch_ais %>
     </div>
   </div>
 
