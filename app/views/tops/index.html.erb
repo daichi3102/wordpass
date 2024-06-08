@@ -1,17 +1,10 @@
 <!-- app/views/tops/index.html.erb -->
 <div class="relative min-h-screen">
-  <style>
-    .mobile-image {
-      display: none;
-    }
-  </style>
-
   <figure class="w-70 h-70 mb-8">
-    <video id="background-video" loop muted class="rounded-xl w-full h-full object-cover">
+    <video autoplay loop muted class="rounded-xl w-full h-full object-cover">
       <source src="/MOtop.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <img id="background-image" src="/MOtop.PNG" alt="GIF Image" class="rounded-xl w-full h-full object-cover" />
   </figure>
 
   <div class="relative flex flex-col justify-center items-center min-h-screen pt-8 z-10 text-center">
@@ -114,26 +107,3 @@
 </div>
 <br><br>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var video = document.getElementById('background-video');
-    var image = document.getElementById('background-image');
-    var mediaQuery = window.matchMedia('(min-width: 1025px)');
-
-    function handleMediaQueryChange(mediaQuery) {
-      if (mediaQuery.matches) {
-        video.style.display = 'block';
-        image.style.display = 'none';
-        video.play();
-      } else {
-        video.style.display = 'none';
-        image.style.display = 'block';
-        video.pause();
-        video.currentTime = 0;
-      }
-    }
-
-    mediaQuery.addListener(handleMediaQueryChange);
-    handleMediaQueryChange(mediaQuery);  // 初期状態をチェック
-  });
-</script>
