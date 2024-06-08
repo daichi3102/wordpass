@@ -1,10 +1,31 @@
 <!-- app/views/tops/index.html.erb -->
 <div class="relative min-h-screen">
+  <style>
+    @media (max-width: 1024px) {
+      .desktop-video {
+        display: none;
+      }
+      .mobile-image {
+        display: block;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .desktop-video {
+        display: block;
+      }
+      .mobile-image {
+        display: none;
+      }
+    }
+  </style>
+
   <figure class="w-70 h-70 mb-8">
-    <video id="intro-video" loop muted class="rounded-xl w-full h-full object-cover">
+    <video autoplay loop muted class="rounded-xl w-full h-full object-cover desktop-video">
       <source src="/MOtop.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+    <img src="/MOtop.PNG" alt="GIF Image" class="rounded-xl w-full h-full object-cover mobile-image" />
   </figure>
 
   <div class="relative flex flex-col justify-center items-center min-h-screen pt-8 z-10 text-center">
@@ -106,14 +127,3 @@
   </div>
 </div>
 <br><br>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var video = document.getElementById('intro-video');
-    if (window.innerWidth < 640) {  // Tailwind CSSのsmスクリーンサイズ（640px未満）
-      video.removeAttribute('autoplay');
-    } else {
-      video.setAttribute('autoplay', true);
-    }
-  });
-</script>
