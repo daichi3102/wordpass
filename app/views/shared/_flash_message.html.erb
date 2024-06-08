@@ -1,14 +1,14 @@
 <% flash.each do |message_type, message| %>
   <% if message_type.to_s == 'notice' %>
     <div role="alert" class="alert bg-primary flex items-center justify-center sm:h-12 md:h-16 lg:h-20">
-      <video src="/MOlf.mov" alt="Success" class="hidden sm:block h-full mr-2" autoplay loop muted></video>
+      <video id="flash-left-video" src="/MOlf.mov" alt="Success" class="hidden sm:block h-full mr-2" loop muted></video>
       <div class="flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <span><%= message %></span>
       </div>
-      <video src="/MOrf.mov" alt="Success" class="hidden sm:block h-full ml-2" autoplay loop muted></video>
+      <video id="flash-right-video" src="/MOrf.mov" alt="Success" class="hidden sm:block h-full ml-2" loop muted></video>
     </div>
   <% elsif message_type.to_s == 'alert' %>
     <div role="alert" class="alert alert-error flex items-center justify-center sm:h-12 md:h-16 lg:h-20 max-w-md mx-auto">
@@ -19,3 +19,40 @@
     </div>
   <% end %>
 <% end %>
+
+<%= yield %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var flashLeftVideo = document.getElementById('flash-left-video');
+    var flashRightVideo = document.getElementById('flash-right-video');
+    var mediaQuery = window.matchMedia('(min-width: 640px)');
+
+    function handleMediaQueryChange(mediaQuery) {
+      if (mediaQuery.matches) {
+        if (flashLeftVideo) {
+          flashLeftVideo.style.display = 'block';
+          flashLeftVideo.play();
+        }
+        if (flashRightVideo) {
+          flashRightVideo.style.display = 'block';
+          flashRightVideo.play();
+        }
+      } else {
+        if (flashLeftVideo) {
+          flashLeftVideo.style.display = 'none';
+          flashLeftVideo.pause();
+          flashLeftVideo.currentTime = 0;
+        }
+        if (flashRightVideo) {
+          flashRightVideo.style.display = 'none';
+          flashRightVideo.pause();
+          flashRightVideo.currentTime = 0;
+        }
+      }
+    }
+
+    mediaQuery.addListener(handleMediaQueryChange);
+    handleMediaQueryChange(mediaQuery);  // 初期状態をチェック
+  });
+</script>
