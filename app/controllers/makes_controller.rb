@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MakesController < ApplicationController
   # except: [:index]でindexアクションのみログインしていなくてもアクセスできる
   before_action :authenticate_user!, except: [:index]
@@ -6,7 +8,8 @@ class MakesController < ApplicationController
 
   def index
     @q = Make.ransack(params[:q])
-    @makes = @q.result(distinct: true).includes(:first_part, :second_part, :likes).order(created_at: :desc).page(params[:page])
+    @makes = @q.result(distinct: true).includes(:first_part, :second_part,
+                                                :likes).order(created_at: :desc).page(params[:page])
     @make = Make.new
     @make.build_first_part
     @make.build_second_part
@@ -28,13 +31,9 @@ class MakesController < ApplicationController
     @make = Make.new(make_params)
     @make.user = current_user
 
-    if params[:make][:first_part_attributes][:content].present?
-      @make.build_first_part(content: params[:make][:first_part_attributes][:content], user: current_user)
-    end
+    @make.build_first_part(content: params[:make][:first_part_attributes][:content], user: current_user) if params[:make][:first_part_attributes][:content].present?
 
-    if params[:make][:second_part_attributes][:content].present?
-      @make.build_second_part(content: params[:make][:second_part_attributes][:content], user: current_user)
-    end
+    @make.build_second_part(content: params[:make][:second_part_attributes][:content], user: current_user) if params[:make][:second_part_attributes][:content].present?
 
     if @make.save
       redirect_to @make, notice: t('defaults.flash_message.created', item: Make.model_name.human)
@@ -43,8 +42,7 @@ class MakesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @make.update(make_params)
@@ -70,9 +68,9 @@ class MakesController < ApplicationController
   end
 
   def authorize_user!
-    unless current_user == @make.user || current_user == @make.first_part&.user || current_user == @make.second_part&.user
-      redirect_to makes_path, alert: t('defaults.flash_message.not_authorized')
-    end
+    return if current_user == @make.user || current_user == @make.first_part&.user || current_user == @make.second_part&.user
+
+    redirect_to makes_path, alert: t('defaults.flash_message.not_authorized')
   end
 
   def make_params

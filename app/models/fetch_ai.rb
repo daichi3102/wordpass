@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FetchAi < ApplicationRecord
   attr_accessor :prompt_type
 

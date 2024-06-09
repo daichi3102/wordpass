@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFetchAis < ActiveRecord::Migration[7.1]
   def change
     create_table :fetch_ais do |t|

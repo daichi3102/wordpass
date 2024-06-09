@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeUserIdAndMakeIdInLikesToBigint < ActiveRecord::Migration[6.0]
   def change
     change_column :likes, :user_id, :bigint

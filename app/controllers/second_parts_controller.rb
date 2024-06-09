@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SecondPartsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_make, only: %i[new create]
@@ -29,8 +31,7 @@ class SecondPartsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @second_part.update(second_part_params)

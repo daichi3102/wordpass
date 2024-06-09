@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FetchAisController < ApplicationController
   before_action :authenticate_user!, only: %i[index edit update destroy]
   before_action :set_fetch_ai, only: %i[show edit update destroy]
@@ -7,8 +9,7 @@ class FetchAisController < ApplicationController
     @fetch_ai = FetchAi.new
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @fetch_ai = if user_signed_in? && session[:last_fetch_ai_params].present?
@@ -48,31 +49,18 @@ class FetchAisController < ApplicationController
                PROMPT
              end
 
-    begin
-      response = ChatgptService.call(prompt)
-      @fetch_ai.response = response
-      if @fetch_ai.save
-        save_last_fetch_ai_params if prompt_type == 'personalized'
-        respond_to do |format|
-          format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
-          format.html do
-            redirect_to fetch_ai_path(@fetch_ai),
-                        notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
-          end
-        end
-      else
-        respond_to do |format|
-          format.json do
-            render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
-                   status: :unprocessable_entity
-          end
-          format.html do
-            redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human)
-          end
+    response = ChatgptService.call(prompt)
+    @fetch_ai.response = response
+    if @fetch_ai.save
+      save_last_fetch_ai_params if prompt_type == 'personalized'
+      respond_to do |format|
+        format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
+        format.html do
+          redirect_to fetch_ai_path(@fetch_ai),
+                      notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
         end
       end
-    rescue Net::ReadTimeout, StandardError => e
-      logger.error "Failed to call OpenAI: #{e.message}"
+    else
       respond_to do |format|
         format.json do
           render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
@@ -83,13 +71,13 @@ class FetchAisController < ApplicationController
         end
       end
     end
+  rescue StandardError => e
+    logger.error "Failed to call OpenAI: #{e.message}"
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @fetch_ai = FetchAi.find(params[:id])

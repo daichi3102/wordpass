@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -18,7 +20,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: true
 
-  class << self # ここからクラスメソッドで、メソッドの最初につける'self.'を省略できる
+  # ここからクラスメソッドで、メソッドの最初につける'self.'を省略できる
+  class << self
     # SnsCredentialsテーブルにデータがないときの処理
     def without_sns_data(auth)
       user = User.where(email: auth.info.email).first
@@ -90,11 +93,11 @@ class User < ApplicationRecord
     like_makes.include?(make)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[id name email created_at updated_at]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[makes second_parts first_parts]
   end
 end

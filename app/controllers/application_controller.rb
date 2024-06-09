@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # rescue_from StandardError, with: :render500                # 二番目に動作
   # rescue_from ActiveRecord::RecordNotFound, with: :render404 # 一番目に動作
@@ -15,7 +17,7 @@ class ApplicationController < ActionController::Base
   # end
   #
   protected
-  
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password password_confirmation])
   end
