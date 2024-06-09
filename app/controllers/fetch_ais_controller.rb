@@ -49,31 +49,18 @@ class FetchAisController < ApplicationController
                PROMPT
              end
 
-    begin
-      response = ChatgptService.call(prompt)
-      @fetch_ai.response = response
-      if @fetch_ai.save
-        save_last_fetch_ai_params if prompt_type == 'personalized'
-        respond_to do |format|
-          format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
-          format.html do
-            redirect_to fetch_ai_path(@fetch_ai),
-                        notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
-          end
-        end
-      else
-        respond_to do |format|
-          format.json do
-            render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
-                   status: :unprocessable_entity
-          end
-          format.html do
-            redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human)
-          end
+    response = ChatgptService.call(prompt)
+    @fetch_ai.response = response
+    if @fetch_ai.save
+      save_last_fetch_ai_params if prompt_type == 'personalized'
+      respond_to do |format|
+        format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
+        format.html do
+          redirect_to fetch_ai_path(@fetch_ai),
+                      notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
         end
       end
-    rescue Net::ReadTimeout, StandardError => e
-      logger.error "Failed to call OpenAI: #{e.message}"
+    else
       respond_to do |format|
         format.json do
           render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
@@ -84,6 +71,8 @@ class FetchAisController < ApplicationController
         end
       end
     end
+  rescue StandardError => e
+    logger.error "Failed to call OpenAI: #{e.message}"
   end
 
   def edit; end

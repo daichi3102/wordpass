@@ -1,0 +1,38 @@
+# RuboCop configuration
+
+# サイクロマティック複雑度（Cyclomatic Complexity）のチェックを無効
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+# ABCサイズ（Assignment, Branch, Conditionの複雑度）のチェックが無効
+Metrics/AbcSize:
+  Enabled: false
+
+# メソッドの長さのチェックが無効
+Metrics/MethodLength:
+  Enabled: false
+
+# クラスやモジュールのトップのドキュメントコメントのチェックが無効
+Style/Documentation:
+  Enabled: false
+
+# 認知複雑度（Perceived Complexity）の最大値を10
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# 行の長さの設定
+Layout/LineLength:
+  Max: 200
+  Exclude:
+    - 'bin/bundle'
+    - 'spec/concerns/**/*'
+
+# 手動で作成しない特定のファイルをチェックから除外
+AllCops:
+  Exclude:
+    - 'db/migrate/*'
+    - 'bin/*'
+    - 'spec/**/*'
