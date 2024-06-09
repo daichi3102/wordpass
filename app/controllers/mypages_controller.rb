@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class MypagesController < ApplicationController
   before_action :authenticate_user!
 
@@ -11,17 +9,17 @@ class MypagesController < ApplicationController
   end
 
   def ai
-    @fetch_ais = current_user.fetch_ais
+    @fetch_ais = current_user.fetch_ais.order(created_at: :desc)
     render partial: 'mypages/ai'
   end
 
   def makes
-    @makes = current_user.makes
+    @makes = current_user.makes.order(created_at: :desc)
     render partial: 'mypages/makes'
   end
 
   def likes
-    @like_makes = current_user.like_makes
+    @like_makes = current_user.like_makes.order(created_at: :desc)
     render partial: 'mypages/likes'
   end
 end
