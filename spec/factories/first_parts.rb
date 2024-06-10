@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :first_part do
-    content { 'MyText' }
-    user { nil }
-    make { nil }
+    content { '本番環境で見てみようか' }
+    association :user
+    association :make
   end
 end
