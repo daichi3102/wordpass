@@ -20,13 +20,13 @@ ja:
     search: 検索
     flash_message:
       created: "%{item}を作成したよ"
-      not_created: "%{item}を作成出来なかった"
+      not_created: "%{item}を作成できなかったよ"
       fetched: "%{item}を受け取ったよ"
       not_fetched: "%{item}を受け取れなかったよ"
       updated: "%{item}を更新したよ"
-      not_updated: "%{item}を更新出来なかったよ"
+      not_updated: "%{item}を更新できなかったよ"
       destroy: "%{item}を削除したよ"
-      not_destroy: "%{item}を削除出来なかったよ"
+      not_destroy: "%{item}を削除できなかったよ"
       profile_updated: プロフィールを更新したよ
       not_profile_updated: プロフィールを更新出来なかったよ
       require_login: ログインしてね

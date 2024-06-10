@@ -120,8 +120,8 @@ ja:
       already_signed_out: 既にサインアウト済みです。
       new:
         sign_in: サインイン
-      signed_in: サインインしました。
-      signed_out: サインアウトしました。
+      signed_in: サインインしたよ
+      signed_out: サインアウトしたよ
     shared:
       links:
         back: 戻る

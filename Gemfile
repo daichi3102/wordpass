@@ -102,4 +102,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'webdrivers'
+  # %測るやつ
+  gem 'simplecov', require: false
 end
