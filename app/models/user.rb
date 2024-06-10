@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :like_makes, through: :likes, source: :make
 
   validates :name, presence: true
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
   # ここからクラスメソッドで、メソッドの最初につける'self.'を省略できる
   class << self

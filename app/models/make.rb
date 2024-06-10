@@ -30,6 +30,6 @@ class Make < ApplicationRecord
   def at_least_one_part_present
     return unless first_part.nil? && second_part.nil?
 
-    errors.add(:base, 'At least one part (first or second) must be present')
+    errors.add(:base, 'どちらかの句（上の句または下の句）が存在する必要があります')
   end
 end

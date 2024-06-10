@@ -2,7 +2,7 @@
 <% if make.first_part && make.second_part %>
   <% quote = "#{make.first_part.content} #{make.second_part.content}" %>
   <% encoded_quote = ERB::Util.url_encode("名言の海を探索したら、こんな言葉を見つけたよ！\n\n#{quote}") %>
-  <%= link_to "https://twitter.com/share?url=https://wordpass-ldtw.onrender.com&text=#{encoded_quote}", target: '_blank', class: "btn btn-primary flex items-center justify-center gap-2" do %>
+  <%= link_to "https://x.com/intent/tweet?url=https://wordpass-ldtw.onrender.com&text=#{encoded_quote}", target: '_blank', class: "btn btn-primary flex items-center justify-center gap-2" do %>
     <i class="fa-brands fa-x-twitter"></i>
     <span>シェア</span>
   <% end %>

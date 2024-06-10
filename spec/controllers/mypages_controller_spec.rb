@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe MypageController, type: :controller do
+RSpec.describe MypagesController, type: :controller do
   describe 'GET #index' do
     it 'returns http success' do
       get :index
