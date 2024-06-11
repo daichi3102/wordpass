@@ -3,19 +3,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="loading"
 export default class extends Controller {
-  static targets = ["modal", "submit"];
+  static targets = ["modal", "submit", "customsubmit"]
 
   connect() {
-    if (this.hasSubmitTarget) {
-      this.submitTarget.addEventListener('click',this.show.bind(this));
+    if (this.hasCustomsubmitTarget) {
+      this.customsubmitTarget.addEventListener('click', this.show.bind(this))
     }
-
-    document.addEventListener("turbolinks:load", () => {
-      const flashSuccess = document.getElementById("flash-message");
-      if (flashSuccess) {
-        this.hide();
-      }
-    });
+    if (this.hasSubmitTarget) {
+      this.submitTarget.addEventListener('click', this.show.bind(this))
+    }
   }
 
   show() {

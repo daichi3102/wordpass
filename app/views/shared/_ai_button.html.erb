@@ -1,11 +1,11 @@
 <!-- app/views/shared/_ai_buttons.html.erb -->
 <% if user_signed_in? %>
-  <div class="card-actions justify-center">
+  <div class="card-actions justify-center" data-loading-target="submit">
     <%= button_to t('fetch_ais.get'), fetch_ais_path, method: :post, remote: true, class: "btn btn-primary mt-4 w-full max-w-xs" %>
   </div>
   <p class="py-4">※ランダムに名言を提供するよ</p>
   <br>
-  <div class="card-actions justify-center" data-loading-target="submit">
+  <div class="card-actions justify-center">
     <button class="btn btn-primary mt-4 w-auto" onclick="document.getElementById('my_modal_2').showModal()"><%= t('fetch_ais.custom_get') %></button>
   </div>
   <p class="py-4">※指定した条件に合った名言を提供するよ</p>
@@ -39,7 +39,7 @@
           <%= form.label :quote_type, class: "form-label block mb-2 text-sm font-bold" %>
           <%= form.select :quote_type, options_for_select(["漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], @fetch_ai.quote_type), {}, {class: "select select-bordered w-full max-w-xs"} %>
         </div>
-        <div class="modal-action justify-center">
+        <div class="modal-action justify-center" data-loading-target="customsubmit">
           <%= form.submit t('fetch_ais.getter'), class: "btn btn-primary mt-4 w-full max-w-xs" %>
         </div>
       <% end %>
@@ -55,7 +55,7 @@
     </div>
   </dialog>
 <% else %>
-  <div class="card-actions justify-center">
+  <div class="card-actions justify-center" data-loading-target="submit">
     <%= button_to t('fetch_ais.get'), fetch_ais_path, method: :post, class: "btn btn-primary mt-4 w-full max-w-xs" %>
   </div>
 <% end %>
