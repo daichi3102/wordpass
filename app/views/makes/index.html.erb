@@ -2,23 +2,22 @@
 <div class="flex justify-center items-start pt-8">
   <div class="w-full md:w-2/3 text-center mx-4 sm:mx-8">
     <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('makes.index') %></h1>
-
-    <br><br>
-    <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
-      <br>※みんなが作った未完成な名言を完成させよう！
-    </small>
-    <br><br>
+    <br>
 
     <div class="flex flex-col items-center space-y-4 mb-4">
       <% if user_signed_in? %>
         <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.new') %></button>
       <% end %>
-      <br>
+      <p class="py-4">※上の句か下の句のみ、両方、どれでも投稿できるよ！<br>
+      ※ひとりで投稿する場合は、両方使って投稿しよう！</p>
+
+      <p class="py-4">※みんなが作った未完成な名言を完成させよう！</p>
       <div class="flex space-x-4">
         <%= link_to t('makes.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
         <%= link_to t('makes.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
       </div>
-      <br>
+      <br><br>
+
       <%= render 'search_form', q: @q, url: makes_path %>
     </div>
 
