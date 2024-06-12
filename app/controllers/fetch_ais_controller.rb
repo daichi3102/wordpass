@@ -5,7 +5,8 @@ class FetchAisController < ApplicationController
   before_action :set_fetch_ai, only: %i[show edit update destroy]
 
   def index
-    @fetch_ais = FetchAi.order(created_at: :desc).page(params[:page])
+    @q = FetchAi.ransack(params[:q])
+    @fetch_ais = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
     @fetch_ai = FetchAi.new
   end
 

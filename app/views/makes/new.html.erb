@@ -1,36 +1,35 @@
 <!-- app/views/makes/new.html.erb -->
 <br>
 <h1 class="text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('makes.new') %></h1>
-<div class="flex justify-center items-center pt-8">
-  <div class="w-2/3 text-center">
-    <div class="flex flex-col items-center space-y-4 mb-4">
-
-      <small class="text-gray-500">※上の句のみ、下の句のみ、両方、どれでも投稿できるよ！
-        <br>※ひとりで投稿する場合は、両方使って投稿しよう!
+<div class="relative flex justify-center items-center pt-8">
+  <div class="card card-side bg-base-100 shadow-xl w-full max-w-3xl mx-auto flex flex-col lg:flex-row">
+    <figure class="w-full lg:w-1/2">
+      <img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-full h-full object-cover" style="object-fit: contain;" />
+    </figure>
+    <div class="card-body flex flex-col items-center justify-center text-center sm:justify-center">
+      <small class="text-center text-gray-500 mb-4">
+        ※上の句か下の句のみ、両方、どれでも投稿できるよ！
         <br>
-
-        <div class="flex justify-center item-center pt-8">
-          <figure class="w-full sm:w-72">
-            <img src="/MOmake.gif" alt="GIF Image" class="rounded-xl w-full h-72 object-cover" />
-          </figure>
-        </div>
+        ※ひとりで投稿する場合は、両方使って投稿しよう!
         <br><br>
-
-        <div class="flex flex-col items-center space-y-4 mb-4">
-          <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.new') %></button>
-          <br>
-          <div class="flex space-x-4">
-            <%= link_to t('makes.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
-            <%= link_to t('makes.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
-          </div>
+        ※自分の好きな名言、格言、言葉、座右の銘、なんでも投稿してね！
+        <br><br>
+      </small>
+      <div class="w-full text-center sm:justify-center">
+        <button class="btn btn-primary" onclick="document.getElementById('make_modal').showModal()"><%= t('makes.new') %></button>
+      </div>
+      <br>
+      <div class="card-actions justify-center sm:justify-center mt-4">
+        <div class="flex space-x-4">
+          <%= link_to t('makes.first_parts'), first_parts_path, class: 'btn btn-secondary' %>
+          <%= link_to t('makes.second_parts'), second_parts_path, class: 'btn btn-secondary' %>
         </div>
+      </div>
+      <br>
+      <div class="card-actions justify-center sm:justify-center mt-4">
+        <%= link_to t('makes.back'), makes_path, class: 'btn btn-secondary' %>
+      </div>
     </div>
-    <br>
-
-    <div class="mt-4">
-      <%= link_to t('makes.back'), makes_path, class: 'btn btn-secondary' %>
-    </div>
-    <br><br><br><br>
   </div>
 </div>
 
