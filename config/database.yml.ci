@@ -1,7 +1,0 @@
-test:
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: postgres
-  host: localhost
-  database: wordpass_test
