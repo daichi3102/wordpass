@@ -8,7 +8,10 @@
       <div data-controller="loading"> 
       <%= render 'shared/ai_button', fetch_ai: @fetch_ai %>
       </div>
-      <br><br>
+      <br>
+
+      <%= render 'search_form', q: @q, url: fetch_ais_path %> 
+      <br>
 
       <div class="card-body">
         <% @fetch_ais.each do |fetch_ai| %>

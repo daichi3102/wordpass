@@ -21,23 +21,23 @@
         <%= form.hidden_field :prompt_type, value: 'personalized' %>
         <div class="mb-3 text-center">
           <%= form.label :mood, class: "form-label block mb-2 text-sm font-bold" %>
-          <%= form.select :mood, options_for_select(["普通", "楽しい", "元気", "落ち気味", "悲しい", "イライラ"], @fetch_ai.mood), {}, {class: "select select-bordered w-full max-w-xs"} %>
+          <%= form.select :mood, options_for_select(["普通", "楽しい", "元気", "落ち気味", "悲しい", "イライラ"], @fetch_ai.mood), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
         </div>
         <div class="mb-3 text-center">
           <%= form.label :schedule, class: "form-label block mb-2 text-sm font-bold" %>
-          <%= form.select :schedule, options_for_select(["仕事", "学習", "健康の事", "家庭の事", "趣味", "自己に関わること"], @fetch_ai.schedule), {}, {class: "select select-bordered w-full max-w-xs"} %>
+          <%= form.select :schedule, options_for_select(["仕事", "学習", "健康の事", "家庭の事", "趣味", "自己に関わること"], @fetch_ai.schedule), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
         </div>
         <div class="mb-3 text-center">
           <%= form.label :how, class: "form-label block mb-2 text-sm font-bold" %>
-          <%= form.select :how, options_for_select(["心に刺さる名言", "心に寄り添う名言", "クスっと笑ってしまう名言", "厳しい名言", "恋愛に関する名言", "人生に関する名言"], @fetch_ai.how), {}, {class: "select select-bordered w-full max-w-xs"} %>
+          <%= form.select :how, options_for_select(["心に刺さる名言", "心に寄り添う名言", "クスっと笑ってしまう名言", "厳しい名言", "恋愛に関する名言", "人生に関する名言"], @fetch_ai.how), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
         </div>
         <div class="mb-3 text-center">
           <%= form.label :popularity, class: "form-label block mb-2 text-sm font-bold" %>
-          <%= form.select :popularity, options_for_select(["メジャーな", "マイナーな", "メジャーでもマイナーでもないような"], @fetch_ai.popularity), {}, {class: "select select-bordered w-full max-w-xs"} %>
+          <%= form.select :popularity, options_for_select(["メジャーな", "マイナーな", "メジャーでもマイナーでもないような"], @fetch_ai.popularity), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
         </div>
         <div class="mb-3 text-center">
           <%= form.label :quote_type, class: "form-label block mb-2 text-sm font-bold" %>
-          <%= form.select :quote_type, options_for_select(["漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], @fetch_ai.quote_type), {}, {class: "select select-bordered w-full max-w-xs"} %>
+          <%= form.select :quote_type, options_for_select(["漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], @fetch_ai.quote_type), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
         </div>
         <div class="modal-action justify-center" data-loading-target="customsubmit">
           <%= form.submit t('fetch_ais.getter'), class: "btn btn-primary mt-4 w-full max-w-xs" %>

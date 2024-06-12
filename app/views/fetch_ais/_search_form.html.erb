@@ -1,0 +1,18 @@
+<!-- app/views/fetch_ais/_search_form.html.erb -->
+<%= search_form_for @q, url: fetch_ais_path, method: :get, html: {class: 'form-inline flex flex-wrap justify-center gap-4'} do |f| %>
+  <div class="mb-3 text-center">
+    <%= f.label :mood_eq, "Mood", class: "form-label block mb-2 text-sm font-bold" %>
+    <%= f.select :mood_eq, options_for_select([["選ばない", nil], "普通", "楽しい", "元気", "落ち気味", "悲しい", "イライラ"], params.dig(:q, :mood_eq)), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
+  </div>
+  <div class="mb-3 text-center">
+    <%= f.label :quote_type_eq, "Quote Type", class: "form-label block mb-2 text-sm font-bold" %>
+    <%= f.select :quote_type_eq, options_for_select([["選ばない", nil], "漫画", "映画", "アニメ", "書籍", "偉人", "有名人"], params.dig(:q, :quote_type_eq)), {}, {class: "select select-bordered select-primary w-full max-w-xs"} %>
+  </div>
+  <div class="mb-3 text-center">
+    <%= f.label :response_cont, "Freeword", class: "form-label block mb-2 text-sm font-bold" %>
+    <%= f.text_field :response_cont, value: params.dig(:q, :response_cont), class: "input input-bordered input-primary w-full max-w-xs"%>
+  </div>
+  <div class="mb-3 text-center self-end">
+    <%= f.submit t('defaults.search'), class: "btn btn-primary" %>
+  </div>
+<% end %>
