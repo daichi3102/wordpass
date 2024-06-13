@@ -34,19 +34,17 @@ jobs:
           gem install bundler
           bundle install
 
-      - name: Database create and migrate # データベースの作成とマイグレーションを実行します。
+      - name: Database create and migrate
         run: |
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
 
-      - name: Set up AWS credentials
+      - name: Run RSpec
+        run: bundle exec rspec
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Run RSpec
-        run: bundle exec rspec
 
       - name: Run Rubocop
         run: bundle exec rubocop
