@@ -44,6 +44,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
 
+      - name: Precompile assets
+        run: |
+          RAILS_ENV=test bundle exec rails assets:precompile
+
       - name: Run rspec
         run: bundle exec rspec
 
