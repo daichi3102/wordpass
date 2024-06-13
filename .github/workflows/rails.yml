@@ -1,0 +1,75 @@
+name: Continuous Integration # ワークフローの名前を定義しています。
+
+on:
+  push: # GitHubにpushされた時にワークフローを起動します。
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest # 実行環境として最新のUbuntuを選択します。
+    defaults:
+      run:
+        working-directory: . # 作業ディレクトリを指定します。
+    services:
+      postgres:
+        image: postgres:16 # 使用するPostgreSQLのイメージを指定します。
+        ports:
+          - 5432:5432 # ポート番号を指定します。
+        env:
+          POSTGRES_USER: postgres # PostgreSQLのユーザーを設定します。
+          POSTGRES_PASSWORD: postgres # PostgreSQLのパスワードを設定します。
+          POSTGRES_DB: wordpass_test # テスト用データベース名を設定します。
+          
+    steps:
+      - name: Checkout code # GitHubのリポジトリからコードをチェックアウトします。
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby # Rubyのセットアップを行います。
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3 # 使用するRubyのバージョンを指定します。
+          bundler-cache: true # Bundlerのキャッシュを有効にします。
+
+      - name: Cache node modules # Nodeモジュールをキャッシュします。
+        uses: actions/cache@v3
+        with:
+          path: node_modules # キャッシュするディレクトリを指定します。
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }} # キャッシュのキーを指定します。
+          restore-keys: |
+            ${{ runner.os }}-node-  # 部分一致する最新のキャッシュを探します。
+
+      - name: Bundler and gem install # Bundlerとgemのインストールを行います。
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Database create and migrate # データベースの作成とマイグレーションを実行します。
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: Run rspec # RSpecを実行します。
+        run: bundle exec rspec
+        
+  rubocop:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3
+          bundler-cache: true
+
+      - name: Bundler and gem install
+        run: |
+          gem install bundler
+          bundle install 
+
+      - name: Run rubocop # Rubocopを実行します。
+        run: bundle exec rubocop
