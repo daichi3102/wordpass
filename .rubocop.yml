@@ -29,6 +29,8 @@ Layout/LineLength:
   Exclude:
     - 'bin/bundle'
     - 'spec/concerns/**/*'
+inherit_gem:
+  panolint: rubocop.yml
 
 # 手動で作成しない特定のファイルをチェックから除外
 AllCops:
