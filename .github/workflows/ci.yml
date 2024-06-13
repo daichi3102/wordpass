@@ -4,56 +4,18 @@ on:
   push:
 
 jobs:
-  test:
+  rspec:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: . # 作業ディレクトリを指定します。
     services:
       postgres:
         image: postgres:16
         ports:
           - 5432:5432
         env:
-          POSTGRES_ALLOW_EMPTY_PASSWORD: yes # 環境変数を設定します。ここではパスワードなしでアクセスできるようにしています。
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: wordpass_test
           
-    steps:
-      - name: Checkout code # GitHubのリポジトリからコードをチェックアウトします。
-        uses: actions/checkout@v3
-
-      - name: Set up Ruby # Rubyのセットアップを行います。
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2.3 # 使用するRubyのバージョンを指定します。
-          bundler-cache: true # Bundlerのキャッシュを有効にします。
-
-      - name: Cache node modules # Nodeモジュールをキャッシュします。
-        uses: actions/cache@v3
-        with:
-          path: node_modules # キャッシュするディレクトリを指定します。
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }} # キャッシュのキーを指定します。
-          restore-keys: |
-            ${{ runner.os }}-node-  # 部分一致する最新のキャッシュを探します。
-
-      - name: Bundler and gem install # Bundlerとgemのインストールを行います。
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Database create and migrate # データベースの作成とマイグレーションを実行します。
-        run: |
-          cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
-
-      - name: Run rspec # RSpecを実行します。
-        run: bundle exec rspec
-
-  rubocop:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -64,10 +26,36 @@ jobs:
           ruby-version: 3.2.3
           bundler-cache: true
 
-      - name: Bundler and gem install
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Setup database
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: Run rspec
+        run: bundle exec rspec
+
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3
+          bundler-cache: true
+
+      - name: Install dependencies
         run: |
           gem install bundler
           bundle install 
 
-      - name: Run rubocop # Rubocopを実行します。
+      - name: Run rubocop
         run: bundle exec rubocop
