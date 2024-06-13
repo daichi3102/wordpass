@@ -1,8 +1,7 @@
 test:
   adapter: postgresql
   encoding: unicode
-  database: wordpass_test
-  pool: 5
   username: postgres
   password: postgres
   host: localhost
+  database: wordpass_test
