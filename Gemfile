@@ -105,4 +105,5 @@ group :test do
   gem 'webdrivers'
   # %測るやつ
   gem 'simplecov', require: false
+  gem 'panolint'
 end
