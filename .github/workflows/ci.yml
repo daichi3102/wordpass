@@ -1,69 +1,27 @@
-name: Continuous Integration # ワークフローの名前を定義しています。
+name: CI
 
 on:
-  push: # GitHubにpushされた時にワークフローを起動します。
+  push:
+    branches:
+      - main
 
 jobs:
-  rspec:
-    runs-on: ubuntu-latest # 実行環境として最新のUbuntuを選択します。
-    defaults:
-      run:
-        working-directory: . # 作業ディレクトリを指定します。
+  test:
+    runs-on: ubuntu-latest
+
     services:
       postgres:
-        image: postgres:16 # 使用するPostgreSQLのイメージを指定します。
+        image: postgres:16
         ports:
-          - 5432:5432 # ポート番号を指定します。
+          - 5432:5432
         env:
-          POSTGRES_USER: postgres # PostgreSQLのユーザーを設定します。
-          POSTGRES_PASSWORD: postgres # PostgreSQLのパスワードを設定します。
-          POSTGRES_DB: wordpass_test # テスト用データベース名を設定します。
-          
-    steps:
-      - name: Checkout code # GitHubのリポジトリからコードをチェックアウトします。
-        uses: actions/checkout@v2
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: wordpass_test
 
-      - name: Set up Ruby # Rubyのセットアップを行います。
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2.3 # 使用するRubyのバージョンを指定します。
-          bundler-cache: true # Bundlerのキャッシュを有効にします。
-
-      - name: Cache node modules # Nodeモジュールをキャッシュします。
-        uses: actions/cache@v3
-        with:
-          path: node_modules # キャッシュするディレクトリを指定します。
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }} # キャッシュのキーを指定します。
-          restore-keys: |
-            ${{ runner.os }}-node-  # 部分一致する最新のキャッシュを探します。
-
-      - name: Bundler and gem install # Bundlerとgemのインストールを行います。
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Database create and migrate # データベースの作成とマイグレーションを実行します。
-        run: |
-          cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
-
-      - name: Set up AWS credentials
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Run rspec # RSpecを実行します。
-        run: bundle exec rspec
-        
-  rubocop:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -71,10 +29,29 @@ jobs:
           ruby-version: 3.2.3
           bundler-cache: true
 
-      - name: Bundler and gem install
+      - name: Install dependencies
         run: |
           gem install bundler
-          bundle install 
+          bundle install
 
-      - name: Run rubocop # Rubocopを実行します。
+      - name: Create database configuration
+        run: |
+          echo "test:
+  adapter: postgresql
+  encoding: unicode
+  database: wordpass_test
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost" > config/database.yml
+
+      - name: Database create and migrate
+        run: |
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: Run RSpec
+        run: bundle exec rspec
+
+      - name: Run Rubocop
         run: bundle exec rubocop
