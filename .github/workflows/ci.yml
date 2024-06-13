@@ -6,16 +6,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: . # 作業ディレクトリを指定します。
     services:
       postgres:
         image: postgres:16
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: wordpass_test
+          POSTGRES_ALLOW_EMPTY_PASSWORD: yes # 環境変数を設定します。ここではパスワードなしでアクセスできるようにしています。
           
     steps:
       - name: Checkout code # GitHubのリポジトリからコードをチェックアウトします。
@@ -48,3 +48,26 @@ jobs:
 
       - name: Run rspec # RSpecを実行します。
         run: bundle exec rspec
+
+    rubocop:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: .
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Set up Ruby
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: 3.2.3
+            bundler-cache: true
+
+        - name: Bundler and gem install
+          run: |
+            gem install bundler
+            bundle install 
+
+        - name: Run rubocop # Rubocopを実行します。
+          run: bundle exec rubocop
