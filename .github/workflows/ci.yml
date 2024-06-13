@@ -34,17 +34,6 @@ jobs:
           gem install bundler
           bundle install
 
-      - name: Create database configuration
-        run: |
-          echo "test:
-  adapter: postgresql
-  encoding: unicode
-  database: wordpass_test
-  pool: 5
-  username: postgres
-  password: postgres
-  host: localhost" > config/database.yml
-
       - name: Database create and migrate
         run: |
           bundle exec rails db:create RAILS_ENV=test
