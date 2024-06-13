@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "FetchAis", type: :system do
+RSpec.describe "FetchAis", type: :system, js: true do
   let(:user) { create(:user, name: 'ラッコ', email: 'meigenotter@example.com', password: 'password') }
 
   before do
