@@ -36,3 +36,4 @@ AllCops:
     - 'db/migrate/*'
     - 'bin/*'
     - 'spec/**/*'
+  NewCops: disable
