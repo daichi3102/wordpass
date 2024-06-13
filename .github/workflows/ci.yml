@@ -70,4 +70,4 @@ jobs:
           bundle install 
 
       - name: Run rubocop # Rubocopを実行します。
-        run: bundle exec rubocop --config ./.rubocop.yml
+        run: bundle exec rubocop --config .rubocop.yml
