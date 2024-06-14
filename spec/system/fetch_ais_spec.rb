@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "FetchAis", type: :system, js: true do
+RSpec.describe "FetchAis", type: :system do
   let(:user) { create(:user, name: 'ラッコ', email: 'meigenotter@example.com', password: 'password') }
 
   before do
@@ -13,6 +13,7 @@ RSpec.describe "FetchAis", type: :system, js: true do
     context "サインインしている場合" do
       before do
         login_as(user)
+        allow(ChatgptService).to receive(:call).and_return("AIからの名言")
       end
 
       it "AIが新しい名言を生成し、その詳細ページにリダイレクトされる" do
@@ -30,9 +31,8 @@ RSpec.describe "FetchAis", type: :system, js: true do
 
         expect(page).to have_content 'AIからの名言を受け取ったよ'
 
-        # FetchAiオブジェクトのresponseが空でないことを確認する
         fetch_ai = FetchAi.last
-        expect(fetch_ai.response).to be_present
+        expect(fetch_ai.response).to eq("AIからの名言")
       end
 
       it "すぐに受け取るボタンをクリックしてAIが名言を自動生成する" do
@@ -41,9 +41,8 @@ RSpec.describe "FetchAis", type: :system, js: true do
 
         expect(page).to have_content 'AIからの名言を受け取ったよ'
 
-        # FetchAiオブジェクトのresponseが空でないことを確認する
         fetch_ai = FetchAi.last
-        expect(fetch_ai.response).to be_present
+        expect(fetch_ai.response).to eq("AIからの名言")
       end
     end
 
@@ -54,14 +53,15 @@ RSpec.describe "FetchAis", type: :system, js: true do
       end
 
       it "すぐに受け取るボタンをクリックしてAIが名言を自動生成する" do
+        allow(ChatgptService).to receive(:call).and_return("AIからの名言")
+
         visit root_path
         click_button 'すぐに受け取る' # すぐに受け取るボタンのテキスト
 
         expect(page).to have_content 'AIからの名言を受け取ったよ'
 
-        # FetchAiオブジェクトのresponseが空でないことを確認する
         fetch_ai = FetchAi.last
-        expect(fetch_ai.response).to be_present
+        expect(fetch_ai.response).to eq("AIからの名言")
       end
     end
   end
