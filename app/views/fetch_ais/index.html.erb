@@ -5,12 +5,12 @@
       <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('fetch_ais.index') %></h1>
 
       <br>
-      <div data-controller="loading"> 
+      <div data-controller="loading">
       <%= render 'shared/ai_button', fetch_ai: @fetch_ai %>
       </div>
       <br><br>
 
-      <%= render 'search_form', q: @q, url: fetch_ais_path %> 
+      <%= render 'search_form', q: @q, url: fetch_ais_path %>
       <br>
 
       <div class="card-body">

@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   # そもそものいいね機能のルーティングを追加
   resources :likes, only: %i[create destroy]
 
+  resources :informations, only: :index
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/privacy', to: 'tops#privacy'
   get '/terms', to: 'tops#terms'

@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :second_parts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_makes, through: :likes, source: :make
+  has_many :active_informations, class_name: 'Information', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_informations, class_name: 'Information', foreign_key: 'visited_id', dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
