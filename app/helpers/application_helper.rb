@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  # OGP
   def default_meta_tags
     {
       site: 'MeigenOtter',
@@ -27,5 +28,9 @@ module ApplicationHelper
         image: image_url('MOogp.PNG') # 配置するパスやファイル名によって変更すること
       }
     }
+  end
+
+  def unchecked_informations
+    current_user.passive_informations.where(checked: false)
   end
 end
