@@ -88,3 +88,16 @@ ja:
     ai: AI
     makes: 作成
     likes: いいね
+  informations:
+    title: お知らせ一覧
+    sanga: さんが
+    sanno: さんの
+    quote: 名言に
+    like: いいね
+    first_part: 上の句
+    second_part: 下の句
+    did: したよ
+    add: を追加したよ
+    nothing: 通知はないよ
+    
+

@@ -25,6 +25,8 @@ class SecondPartsController < ApplicationController
     @second_part.user = current_user
 
     if @second_part.save
+      # 通知作成メソッドの呼び出し
+      @make.create_information_second_part!(current_user)
       redirect_to @make, notice: t('defaults.flash_message.created', item: SecondPart.model_name.human)
     else
       render :new
