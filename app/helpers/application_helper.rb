@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  # OGP
   def default_meta_tags
     {
       site: 'MeigenOtter',
@@ -28,4 +29,8 @@ module ApplicationHelper
       }
     }
   end
-end
+
+  def unchecked_informations
+    current_user.passive_informations.where(checked: false)
+  end
+end 
