@@ -13,15 +13,50 @@
       },
       "/wordpass/spec/controllers/informations_controller_spec.rb": {
         "lines": [
-          1,
+
+        ]
+      },
+      "/wordpass/spec/controllers/likes_controller_spec.rb": {
+        "lines": [
+
+        ]
+      },
+      "/wordpass/spec/controllers/makes_controller_spec.rb": {
+        "lines": [
+
+        ]
+      },
+      "/wordpass/spec/controllers/mypages_controller_spec.rb": {
+        "lines": [
+
+        ]
+      },
+      "/wordpass/spec/controllers/profiles_controller_spec.rb": {
+        "lines": [
+
+        ]
+      },
+      "/wordpass/spec/controllers/second_parts_controller_spec.rb": {
+        "lines": [
+
+        ]
+      },
+      "/wordpass/spec/models/fetch_ai_spec.rb": {
+        "lines": [
+          null,
           null,
           1,
           null,
           1,
           1,
-          0,
-          0,
+          1,
+          1,
+          1,
           null,
+          null,
+          1,
+          1,
+          1,
           null,
           null,
           null
@@ -1033,6 +1068,18 @@
           null
         ]
       },
+      "/wordpass/app/helpers/informations_helper.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
       "/wordpass/spec/factories/fetch_ais.rb": {
         "lines": [
           null,
@@ -1066,12 +1113,12 @@
         "lines": [
           1,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
           null,
           null
         ]
@@ -1156,94 +1203,6 @@
           null
         ]
       },
-      "/wordpass/app/controllers/informations_controller.rb": {
-        "lines": [
-          1,
-          1,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/wordpass/app/controllers/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          18,
-          null,
-          null
-        ]
-      },
-      "/wordpass/spec/controllers/likes_controller_spec.rb": {
-        "lines": [
-
-        ]
-      },
-      "/wordpass/spec/controllers/makes_controller_spec.rb": {
-        "lines": [
-
-        ]
-      },
-      "/wordpass/spec/controllers/mypages_controller_spec.rb": {
-        "lines": [
-
-        ]
-      },
-      "/wordpass/spec/controllers/profiles_controller_spec.rb": {
-        "lines": [
-
-        ]
-      },
-      "/wordpass/spec/controllers/second_parts_controller_spec.rb": {
-        "lines": [
-
-        ]
-      },
-      "/wordpass/spec/models/fetch_ai_spec.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
       "/wordpass/app/models/fetch_ai.rb": {
         "lines": [
           null,
@@ -1316,17 +1275,55 @@
       },
       "/wordpass/spec/models/information_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
       "/wordpass/app/models/information.rb": {
         "lines": [
+          null,
+          null,
           1,
-          1,
+          2,
           1,
           1,
           1,
@@ -1338,6 +1335,8 @@
       },
       "/wordpass/spec/models/like_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -1464,17 +1463,15 @@
           0,
           null,
           0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
           null,
           0,
           null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
           null,
           null,
           1,
@@ -1482,17 +1479,15 @@
           0,
           null,
           0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
           null,
           0,
           null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
           null,
           null,
           1,
@@ -1500,17 +1495,15 @@
           0,
           null,
           0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          0,
           null,
           0,
           null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
           null,
           null,
           1,
@@ -1803,6 +1796,34 @@
           null
         ]
       },
+      "/wordpass/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          18,
+          null,
+          null
+        ]
+      },
       "/wordpass/app/controllers/tops_controller.rb": {
         "lines": [
           null,
@@ -2060,6 +2081,6 @@
         ]
       }
     },
-    "timestamp": 1718535926
+    "timestamp": 1718599693
   }
 }

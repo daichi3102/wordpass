@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/helpers/informations_helper.rb
 module InformationsHelper
   def unchecked_informations

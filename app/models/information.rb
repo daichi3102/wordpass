@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Information < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   belongs_to :make, optional: true

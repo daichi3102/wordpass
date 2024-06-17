@@ -30,54 +30,48 @@ class Make < ApplicationRecord
     # すでにいいねしているか確認
     temp = Information.where(['visitor_id = ? and visited_id = ? and make_id = ? and action = ? ', current_user.id, user_id, id, 'like'])
     # いいねしていない場合のみ、通知を作成
-    if temp.blank?
-      information = current_user.active_informations.new(
-        make_id: id,
-        visited_id: user_id,
-        action: 'like'
-      )
-      # 自分のmakeに対するいいねの場合は通知を作成しない
-      if information.visitor_id == information.visited_id
-        information.checked = true
-      end
-      information.save if information.valid?
-    end
+    return unless temp.blank?
+
+    information = current_user.active_informations.new(
+      make_id: id,
+      visited_id: user_id,
+      action: 'like'
+    )
+    # 自分のmakeに対するいいねの場合は通知を作成しない
+    information.checked = true if information.visitor_id == information.visited_id
+    information.save if information.valid?
   end
 
   def create_information_first_part!(current_user)
     # すでに上の句を作成しているか確認
     temp = Information.where(['visitor_id = ? and visited_id = ? and make_id = ? and action = ? ', current_user.id, user_id, id, 'first_part'])
     # 上の句を作成していない場合のみ、通知を作成
-    if temp.blank?
-      information = current_user.active_informations.new(
-        make_id: id,
-        visited_id: user_id,
-        action: 'first_part'
-      )
-      # 自分のmakeに対する上の句の場合は通知を作成しない
-      if information.visitor_id == information.visited_id
-        information.checked = true
-      end
-      information.save if information.valid?
-    end
+    return unless temp.blank?
+
+    information = current_user.active_informations.new(
+      make_id: id,
+      visited_id: user_id,
+      action: 'first_part'
+    )
+    # 自分のmakeに対する上の句の場合は通知を作成しない
+    information.checked = true if information.visitor_id == information.visited_id
+    information.save if information.valid?
   end
 
   def create_information_second_part!(current_user)
     # すでに下の句を作成しているか確認
     temp = Information.where(['visitor_id = ? and visited_id = ? and make_id = ? and action = ? ', current_user.id, user_id, id, 'second_part'])
     # 下の句を作成していない場合のみ、通知を作成
-    if temp.blank?
-      information = current_user.active_informations.new(
-        make_id: id,
-        visited_id: user_id,
-        action: 'second_part'
-      )
-      # 自分のmakeに対する下の句の場合は通知を作成しない
-      if information.visitor_id == information.visited_id
-        information.checked = true
-      end
-      information.save if information.valid?
-    end
+    return unless temp.blank?
+
+    information = current_user.active_informations.new(
+      make_id: id,
+      visited_id: user_id,
+      action: 'second_part'
+    )
+    # 自分のmakeに対する下の句の場合は通知を作成しない
+    information.checked = true if information.visitor_id == information.visited_id
+    information.save if information.valid?
   end
 
   private
