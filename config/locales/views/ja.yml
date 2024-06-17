@@ -90,10 +90,14 @@ ja:
     likes: いいね
   informations:
     title: お知らせ一覧
-    quote: 名言
-    san: さんが
-    likes: にいいねしました
-    first_part: に上の句を追加しました
-    second_part: に下の句を追加しました
-    not: 通知はありません
+    sanga: さんが
+    sanno: さんの
+    quote: 名言に
+    like: いいね
+    first_part: 上の句
+    second_part: 下の句
+    did: したよ
+    add: を追加したよ
+    nothing: 通知はないよ
+    
 

@@ -2,7 +2,6 @@
 <div class="flex justify-center items-start min-h-screen pt-8">
   <div class="w-full md:w-2/3 bg-base-100 shadow-xl mx-4 sm:mx-8">
     <h1 class="text-2xl sm:text-3xl font-bold mb-4 text-center" style="color: #00BFFF;"><%= t('informations.title') %></h1>
-
     <div class="card-body flex flex-col items-center w-full">
       <br>
       <% informations = @informations.where.not(visitor_id: current_user.id) %>
@@ -17,7 +16,7 @@
                   <%= image_tag visitor.avatar.url, class: "rounded-full" %>
                 </div>
               </div>
-              <span class="text-sm font-bold"><%= visitor.name %> さんが</span>
+              <span class="text-sm font-bold"><%= visitor.name %><%= t('informations.sanga') %></span>
               <% case information.action %>
               <% when "like" %>
                 <div class="avatar mx-2">
@@ -25,40 +24,50 @@
                     <%= image_tag visited.avatar.url, class: "rounded-full" %>
                   </div>
                 </div>
-                <span class="text-sm font-bold ml-1"><%= visited.name %> さんの</span>
-                <%= link_to '名言', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
-                <span>にいいねしました</span>
+                <span class="text-sm font-bold ml-1"><%= visited.name %><%= t('informations.sanno') %></span>
+                <span class="text-black font-bold"><%= t('informations.quote') %></span>
+                <span class="text-secondary font-bold"><%= t('informations.like') %></span>
+                <span class="text-black font-bold"><%= t('informations.did') %></span>
+                <!-- 既存のfirst_partとsecond_partの表示 -->
+                <p class="text-gray-500 text-sm mt-1 w-full">
+                  <%= truncate(information.make.first_part.content, length: 50) if information.make.first_part %>
+                </p>
+                <p class="text-gray-500 text-sm mt-1 w-full">
+                  <%= truncate(information.make.second_part.content, length: 50) if information.make.second_part %>
+                </p>
               <% when "first_part" %>
-                <% if information.make.user == visited.id %>
-                  <%= link_to 'あなたの名言', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
-                <% else %>
+                <% if information.make.user != visited.id %>
                   <div class="avatar mx-1">
                     <div class="rounded-full w-8 h-8">
                       <%= image_tag information.make.user.avatar.url, class: "rounded-full" %>
                     </div>
                   </div>
-                  <span class="text-sm font-bold"><%= information.make.user.name %> さんの</span>
-                  <%= link_to '名言', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
+                  <span class="text-sm font-bold"><%= information.make.user.name %><%= t('informations.sanno') %></span>
+                  <span class="text-black font-bold"><%= t('informations.quote') %></span>
+                  <span class="text-secondary font-bold"><%= t('informations.first_part') %></span>
+                  <span class="text-black font-bold"><%= t('informations.add') %></span>
                 <% end %>
-                <span>に上の句を追加しました</span>
-                <p class="text-gray-300 text-sm mt-1 w-full">
-                  <%= FirstPart.find_by(id: information.first_part_id)&.content %>
+                <!-- 既に存在する下の句のプレビュー -->
+                <p class="text-gray-500 text-sm mt-1 w-full">
+                  <%= truncate(information.make.second_part.content, length: 50) %>...
+                  <%= link_to '追加された句を見る', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
                 </p>
               <% when "second_part" %>
-                <% if information.make.user == visited.id %>
-                  <%= link_to 'あなたの名言', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
-                <% else %>
+                <% if information.make.user != visited.id %>
                   <div class="avatar mx-1">
                     <div class="rounded-full w-8 h-8">
                       <%= image_tag information.make.user.avatar.url, class: "rounded-full" %>
                     </div>
                   </div>
-                  <span class="text-sm font-bold"><%= information.make.user.name %> さんの</span>
-                  <%= link_to '名言', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
+                  <span class="text-sm font-bold"><%= information.make.user.name %><%= t('informations.sanno') %></span>
+                  <span class="text-black font-bold"><%= t('informations.quote') %></span>
+                  <span class="text-secondary font-bold"><%= t('informations.second_part') %></span>
+                  <span class="text-black font-bold"><%= t('informations.add') %></span>
                 <% end %>
-                <span>に下の句を追加しました</span>
-                <p class="text-gray-300 text-sm mt-1 w-full">
-                  <%= SecondPart.find_by(id: information.second_part_id)&.content %>
+                <!-- 既に存在する上の句のプレビュー -->
+                <p class="text-gray-500 text-sm mt-1 w-full">
+                  <%= truncate(information.make.first_part.content, length: 50) %>...
+                  <%= link_to '追加された句を見る', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
                 </p>
               <% end %>
             </div>
@@ -70,7 +79,7 @@
         <% end %>
         <%= paginate informations %>
       <% else %>
-        <p>通知はありません</p>
+        <p><%= t('informations.nothing') %></p>
       <% end %>
     </div>
   </div>
