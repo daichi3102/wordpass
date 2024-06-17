@@ -18,7 +18,12 @@
             <span class="text-sm font-bold"><%= visitor.name %> さんが</span>
             <% case information.action %>
             <% when "like" %>
-              <span class="text-sm font-bold ml-1"><%= visitor.name %> さんの</span>
+              <div class="avatar mx-2">
+                <div class="rounded-full w-8 h-8">
+                  <%= image_tag visited.avatar.url, class: "rounded-full" %>
+                </div>
+              </div>
+              <span class="text-sm font-bold ml-1"><%= visited.name %> さんの</span>
               <%= link_to '名言', "/makes/#{information.make.id}", class: "btn btn-xs btn-primary font-bold text-black mx-1" %>
               <span>にいいねしました</span>
             <% when "first_part" %>
@@ -35,7 +40,7 @@
               <% end %>
               <span>に上の句を追加しました</span>
               <p class="text-gray-300 text-sm mt-1 w-full">
-              <%= FirstPart.find_by(id: information.first_part_id)&.content %>
+                <%= FirstPart.find_by(id: information.first_part_id)&.content %>
               </p>
             <% when "second_part" %>
               <% if information.make.user == visited.id %>
@@ -51,7 +56,7 @@
               <% end %>
               <span>に下の句を追加しました</span>
               <p class="text-gray-300 text-sm mt-1 w-full">
-              <%= SecondPart.find_by(id: information.second_part_id)&.content %>
+                <%= SecondPart.find_by(id: information.second_part_id)&.content %>
               </p>
             <% end %>
           </div>
@@ -64,4 +69,3 @@
     </div>
   </div>
 </div>
-

@@ -1,10 +1,11 @@
 class InformationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @informations = current_user.passive_informations.page(params[:page])
-    # 未確認の通知に関しては、確認済みに更新する
-    @informations.where(checked: false).each do |information|
-      # 通知のcheckedカラムをtrueに更新
-      information.update_attributes(checked: true)
-    end
+    @informations = Information.where("visited_id = ? OR visitor_id = ?", current_user.id, current_user.id)
+                               .order(created_at: :desc)
+                               .page(params[:page])
+    # 未確認の通知が存在する場合のみ、確認済みに更新する
+    @informations.where(checked: false).update_all(checked: true)
   end
 end
