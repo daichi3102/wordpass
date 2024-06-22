@@ -16,6 +16,8 @@ class Make < ApplicationRecord
   # 少なくとも一つのパートが存在する必要あり
   validate :at_least_one_part_present
 
+  default_scope { order(created_at: :desc) }
+
   # ransackで検索可能な属性を定義
   def self.ransackable_attributes(_auth_object = nil)
     %w[created_at id user_id]
