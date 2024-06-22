@@ -1,4 +1,4 @@
-![MeigenOtter](./public/MOtop.PNG)
+![MeigenOtter](./public/MOtop.mp4)
 ## ■サービス名
 ### [MeigenOtter](https://meigenotter.com/)
 
@@ -24,7 +24,7 @@ AIを使った名言提供サービスです。
 - 1回の取得に約10秒ほどしかかからないため、手軽に名言を取得できます。
   
 ## ■機能一覧
-|AIによる名言取得機能|AIによる名言検索機能|
+|生成AIによる名言取得機能|生成AIによる名言検索機能|
 |:-------------|:-------------|
 |[![AIによる名言取得機能](https://i.gyazo.com/2c7b29d57e06a0f4071503a8dddd2d5a.gif)](https://gyazo.com/2c7b29d57e06a0f4071503a8dddd2d5a)|[![AIによる名言検索機能](https://i.gyazo.com/1215c95b1d6d30f5fc031a9b3d033934.gif)](https://gyazo.com/https://gyazo.com/1215c95b1d6d30f5fc031a9b3d033934)|
 |当アプリのメイン機能になります。全5項目から条件を選択し、条件に合った名言を生成AIが提供します。|他のユーザーを含め、生成AIによって提供されたすべての名言から、条件を選択して検索できます。|
