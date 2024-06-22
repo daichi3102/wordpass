@@ -9,7 +9,7 @@ class MakesController < ApplicationController
   def index
     @q = Make.ransack(params[:q])
     @makes = @q.result(distinct: true).includes(:first_part, :second_part,
-                                                :likes).order(created_at: :desc).page(params[:page])
+                                                :likes).page(params[:page])
     @make = Make.new
     @make.build_first_part
     @make.build_second_part

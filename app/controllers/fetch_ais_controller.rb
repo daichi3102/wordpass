@@ -6,7 +6,7 @@ class FetchAisController < ApplicationController
 
   def index
     @q = FetchAi.ransack(params[:q])
-    @fetch_ais = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    @fetch_ais = @q.result(distinct: true).page(params[:page])
     @fetch_ai = FetchAi.new
   end
 
