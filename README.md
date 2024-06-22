@@ -1,4 +1,4 @@
-![MeigenOtter](./public/MOtop.mp4)
+![MeigenOtter](./public/MOtop.PNG)
 ## ■サービス名
 ### [MeigenOtter](https://meigenotter.com/)
 
