@@ -8,6 +8,15 @@ class SecondPart < ApplicationRecord
   validates :user_id, uniqueness: { scope: :make_id, message: 'You can only contribute one part to a make' }
   has_many :informations, dependent: :destroy
 
+  default_scope { order(created_at: :desc) }
+
+  scope :without_first_part, -> {
+    joins(:make)
+      .where(makes: { id: Make.left_outer_joins(:first_part)
+      .where(first_parts: { id: nil })
+      .select(:id) })
+  }
+
   def self.ransackable_attributes(_auth_object = nil)
     %w[content]
   end
