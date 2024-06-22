@@ -58,14 +58,14 @@ class FetchAisController < ApplicationController
         format.json { render json: { redirect_url: fetch_ai_path(@fetch_ai) } }
         format.html do
           redirect_to fetch_ai_path(@fetch_ai),
-            notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
+                      notice: t('defaults.flash_message.fetched', item: FetchAi.model_name.human)
         end
       end
     else
       respond_to do |format|
         format.json do
           render json: { alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human) },
-            status: :unprocessable_entity
+                 status: :unprocessable_entity
         end
         format.html do
           redirect_to root_path, alert: t('defaults.flash_message.not_fetched', item: FetchAi.model_name.human)
@@ -84,10 +84,10 @@ class FetchAisController < ApplicationController
     @fetch_ai = FetchAi.find(params[:id])
     if @fetch_ai.destroy
       redirect_to request.referer || fetch_ais_url,
-        notice: t('defaults.flash_message.destroy', item: FetchAi.model_name.human)
+                  notice: t('defaults.flash_message.destroy', item: FetchAi.model_name.human)
     else
       redirect_to fetch_ai_path(@fetch_ai),
-        alert: t('defaults.flash_message.not_destroy', item: FetchAi.model_name.human)
+                  alert: t('defaults.flash_message.not_destroy', item: FetchAi.model_name.human)
     end
   end
 

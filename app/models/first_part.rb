@@ -10,7 +10,7 @@ class FirstPart < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  scope :without_second_part, -> {
+  scope :without_second_part, lambda {
     joins(:make)
       .where(makes: { id: Make.left_outer_joins(:second_part)
       .where(second_parts: { id: nil })
