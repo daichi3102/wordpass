@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :active_informations, class_name: 'Information', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_informations, class_name: 'Information', foreign_key: 'visited_id', dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, on: :create
   validates :email, presence: true, uniqueness: true
 
   # ここからクラスメソッドで、メソッドの最初につける'self.'を省略できる
