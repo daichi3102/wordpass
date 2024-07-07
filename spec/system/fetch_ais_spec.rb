@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 # spec/system/fetch_ais_spec.rb
 
 require 'rails_helper'
 
-RSpec.describe "FetchAis", type: :system do
+RSpec.describe 'FetchAis', type: :system do
   let(:user) { create(:user, name: 'ラッコ', email: 'meigenotter@example.com', password: 'password') }
 
   before do
     driven_by(:rack_test)
   end
 
-  describe "AIによる名言の自動生成" do
-    context "サインインしている場合" do
+  describe 'AIによる名言の自動生成' do
+    context 'サインインしている場合' do
       before do
         login_as(user)
-        allow(ChatgptService).to receive(:call).and_return("AIからの名言")
+        allow(ChatgptService).to receive(:call).and_return('AIからの名言')
       end
 
-      it "AIが新しい名言を生成し、その詳細ページにリダイレクトされる" do
+      it 'AIが新しい名言を生成し、その詳細ページにリダイレクトされる' do
         visit root_path
         click_button '条件を指定して受け取る' # モーダルを開くボタンのテキスト
 
@@ -32,28 +34,28 @@ RSpec.describe "FetchAis", type: :system do
         expect(page).to have_content 'AIからの名言を受け取ったよ'
 
         fetch_ai = FetchAi.last
-        expect(fetch_ai.response).to eq("AIからの名言")
+        expect(fetch_ai.response).to eq('AIからの名言')
       end
 
-      it "すぐに受け取るボタンをクリックしてAIが名言を自動生成する" do
+      it 'すぐに受け取るボタンをクリックしてAIが名言を自動生成する' do
         visit root_path
         click_button 'すぐに受け取る' # すぐに受け取るボタンのテキスト
 
         expect(page).to have_content 'AIからの名言を受け取ったよ'
 
         fetch_ai = FetchAi.last
-        expect(fetch_ai.response).to eq("AIからの名言")
+        expect(fetch_ai.response).to eq('AIからの名言')
       end
     end
 
-    context "サインインしていない場合" do
-      it "条件を指定して受け取るボタンが表示されない" do
+    context 'サインインしていない場合' do
+      it '条件を指定して受け取るボタンが表示されない' do
         visit root_path
         expect(page).not_to have_button '条件を指定して受け取る'
       end
 
-      it "すぐに受け取るボタンをクリックしてAIが名言を自動生成する" do
-        allow(ChatgptService).to receive(:call).and_return("AIからの名言")
+      it 'すぐに受け取るボタンをクリックしてAIが名言を自動生成する' do
+        allow(ChatgptService).to receive(:call).and_return('AIからの名言')
 
         visit root_path
         click_button 'すぐに受け取る' # すぐに受け取るボタンのテキスト
@@ -61,7 +63,7 @@ RSpec.describe "FetchAis", type: :system do
         expect(page).to have_content 'AIからの名言を受け取ったよ'
 
         fetch_ai = FetchAi.last
-        expect(fetch_ai.response).to eq("AIからの名言")
+        expect(fetch_ai.response).to eq('AIからの名言')
       end
     end
   end

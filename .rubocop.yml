@@ -22,19 +22,3 @@ Style/Documentation:
 # 認知複雑度（Perceived Complexity）の最大値を10
 Metrics/PerceivedComplexity:
   Max: 10
-
-# 行の長さの設定
-Layout/LineLength:
-  Max: 200
-  Exclude:
-    - 'bin/bundle'
-    - 'spec/concerns/**/*'
-
-# 手動で作成しない特定のファイルをチェックから除外
-AllCops:
-  Exclude:
-    - 'db/migrate/*'
-    - 'bin/*'
-    - 'spec/**/*'
-    - 'vendor/bundle/**/*'
-  NewCops: disable

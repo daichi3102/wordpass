@@ -24,20 +24,20 @@ RSpec.describe Make, type: :model do
 
     it 'first_partが存在する場合、バリデーションが機能してvalidになるか' do
       first_part = build(:first_part)
-      make = build(:make, first_part: first_part, second_part: nil)
+      make = build(:make, first_part:, second_part: nil)
       expect(make).to be_valid
     end
 
     it 'second_partが存在する場合、バリデーションが機能してvalidになるか' do
       second_part = build(:second_part)
-      make = build(:make, first_part: nil, second_part: second_part)
+      make = build(:make, first_part: nil, second_part:)
       expect(make).to be_valid
     end
 
     it 'first_partとsecond_partの両方が存在する場合、バリデーションが機能してvalidになるか' do
       first_part = build(:first_part)
       second_part = build(:second_part)
-      make = build(:make, first_part: first_part, second_part: second_part)
+      make = build(:make, first_part:, second_part:)
       expect(make).to be_valid
     end
   end

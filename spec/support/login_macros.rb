@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/login_macros.rb
 
 module LoginMacros

@@ -30,7 +30,12 @@ class Make < ApplicationRecord
 
   def create_information_like!(current_user)
     # すでにいいねしているか確認
-    temp = Information.where(['visitor_id = ? and visited_id = ? and make_id = ? and action = ? ', current_user.id, user_id, id, 'like'])
+    temp = Information.where(
+      visitor_id: current_user.id,
+      visited_id: user_id,
+      make_id: id,
+      action: 'like'
+    )
     # いいねしていない場合のみ、通知を作成
     return unless temp.blank?
 
@@ -46,7 +51,12 @@ class Make < ApplicationRecord
 
   def create_information_first_part!(current_user)
     # すでに上の句を作成しているか確認
-    temp = Information.where(['visitor_id = ? and visited_id = ? and make_id = ? and action = ? ', current_user.id, user_id, id, 'first_part'])
+    temp = Information.where(
+      visitor_id: current_user.id,
+      visited_id: user_id,
+      make_id: id,
+      action: 'first_part'
+    )
     # 上の句を作成していない場合のみ、通知を作成
     return unless temp.blank?
 
@@ -62,7 +72,13 @@ class Make < ApplicationRecord
 
   def create_information_second_part!(current_user)
     # すでに下の句を作成しているか確認
-    temp = Information.where(['visitor_id = ? and visited_id = ? and make_id = ? and action = ? ', current_user.id, user_id, id, 'second_part'])
+    Information.where(
+      visitor_id: current_user.id,
+      visited_id: user_id,
+      make_id: id,
+      action: 'second_part'
+    )
+    temp = Information.where(visitor_id: current_user.id, visited_id: user_id, make_id: id, action: 'like')
     # 下の句を作成していない場合のみ、通知を作成
     return unless temp.blank?
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Makes', type: :system do
@@ -71,17 +73,21 @@ RSpec.describe 'Makes', type: :system do
 
       context '名言作成一覧ページ' do
         it '自分が作成していない名言には、詳細を見るボタンが表示されない' do
-          create(:make, first_part: create(:first_part, content: '他人の上の句', user: another_user), second_part: create(:second_part, content: '他人の下の句', user: another_user))
+          create(:make,
+                 first_part: create(:first_part, content: '他人の上の句', user: another_user),
+                 second_part: create(:second_part, content: '他人の下の句', user: another_user))
           visit makes_path
           expect(page).not_to have_link '詳細を見る'
         end
 
         it '詳細を見るボタンを押すとshowページが表示される' do
-          make = create(:make, first_part: create(:first_part, content: '上の句', user: user), second_part: create(:second_part, content: '下の句', user: user))
-          
+          make = create(:make,
+                        first_part: create(:first_part, content: '上の句', user:),
+                        second_part: create(:second_part, content: '下の句', user:))
+
           # showページに直接遷移
           visit make_path(make)
-        
+
           expect(page).to have_content '上の句'
           expect(page).to have_content '下の句'
         end
@@ -89,7 +95,9 @@ RSpec.describe 'Makes', type: :system do
 
       describe '詳細ページ' do
         it 'フォームから上の句と下の句のcontentの更新や削除ができる' do
-          make = create(:make, first_part: create(:first_part, content: '上の句', user: user), second_part: create(:second_part, content: '下の句', user: user))
+          make = create(:make,
+                        first_part: create(:first_part, content: '上の句', user:),
+                        second_part: create(:second_part, content: '下の句', user:))
           visit make_path(make)
           click_button '編集', match: :first
           fill_in 'make_first_part_attributes_content', with: '更新された上の句'

@@ -31,9 +31,19 @@ class MakesController < ApplicationController
     @make = Make.new(make_params)
     @make.user = current_user
 
-    @make.build_first_part(content: params[:make][:first_part_attributes][:content], user: current_user) if params[:make][:first_part_attributes][:content].present?
+    if params[:make][:first_part_attributes][:content].present?
+      @make.build_first_part(
+        content: params[:make][:first_part_attributes][:content],
+        user: current_user
+      )
+    end
 
-    @make.build_second_part(content: params[:make][:second_part_attributes][:content], user: current_user) if params[:make][:second_part_attributes][:content].present?
+    if params[:make][:second_part_attributes][:content].present?
+      @make.build_second_part(
+        content: params[:make][:second_part_attributes][:content],
+        user: current_user
+      )
+    end
 
     if @make.save
       redirect_to @make, notice: t('defaults.flash_message.created', item: Make.model_name.human)
@@ -68,7 +78,9 @@ class MakesController < ApplicationController
   end
 
   def authorize_user!
-    return if current_user == @make.user || current_user == @make.first_part&.user || current_user == @make.second_part&.user
+    return if current_user == @make.user ||
+              current_user == @make.first_part&.user ||
+              current_user == @make.second_part&.user
 
     redirect_to makes_path, alert: t('defaults.flash_message.not_authorized')
   end

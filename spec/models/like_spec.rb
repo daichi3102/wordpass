@@ -21,9 +21,9 @@ RSpec.describe Like, type: :model do
 
     it '同じユーザーが同じmakeを複数回likeできない場合、バリデーションが機能してinvalidになるか' do
       user = create(:user)
-      make = create(:make, user: user, first_part: build(:first_part, user: user))
-      create(:like, user: user, make: make)
-      duplicate_like = build(:like, user: user, make: make)
+      make = create(:make, user:, first_part: build(:first_part, user:))
+      create(:like, user:, make:)
+      duplicate_like = build(:like, user:, make:)
       expect(duplicate_like).to be_invalid
       expect(duplicate_like.errors[:user_id]).to include('はすでに存在します')
     end
