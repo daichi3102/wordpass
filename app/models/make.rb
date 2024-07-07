@@ -78,7 +78,6 @@ class Make < ApplicationRecord
       make_id: id,
       action: 'second_part'
     )
-    temp = Information.where(visitor_id: current_user.id, visited_id: user_id, make_id: id, action: 'like')
     # 下の句を作成していない場合のみ、通知を作成
     return unless temp.blank?
 
